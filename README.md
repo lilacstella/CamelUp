@@ -26,11 +26,11 @@ Core
 	1 Dice			-	Sarim
 	1 Camel			-	Eric
 	1 Tile			-	Abhinav
-	1 Player		- David
+	1 Player		- 	David
 	1 Trap			- 
 	2 Pyramid		-	Sarim
-	2 BetCards	- 
-	
+	2 BetCards		- 
+	2 DiceDock 		-
 
 Graphic
-	Board 
+	? Board 
