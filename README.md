@@ -4,6 +4,8 @@ Computer Science Data Structure Camel Up Project
 Classes
 #-Sequence Of Priority | Class Name | (Optional Descrption)
 
+https://docs.google.com/spreadsheets/d/1R44-O4MIjY6hcqs1i9FJ--4-fBs9KdkzjSsNW8PCL5c/edit?usp=sharing
+
 CamelUp - Game State Class
 TextDriver
 Board - graphics class - 2
