@@ -27,10 +27,10 @@ Core
 	1 Camel			-	Eric
 	1 Tile			-	Abhinav
 	1 Player		- 	David
-	1 Trap			- 
+	1 Trap			- 	David
 	2 Pyramid		-	Sarim
 	2 BetCards		- 
 	2 DiceDock 		-
 
 Graphic
-	? Board 
+	? GraphicBoard 
