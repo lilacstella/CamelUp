@@ -11,7 +11,7 @@ Pyramid - sarim
 Dice - 1 sarim
 Camel - 1 eric 
 Tile - 1 abhinav
-Traps -3
+Trap -3
 Player has Coins - 1 david
 BetCards - 4
 LegBets - 4
