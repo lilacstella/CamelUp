@@ -1,11 +1,10 @@
-Notepad
 Overview
-Presentation add assingment
-Presentation future execution
+Presentation add assingment - eric
+Presentation future execution - eric
 specific classes test classes
 GraphicBoard image technical paper
 Graphic Helper Classes image
 core classes image
 board image example
 presentation uml pictures
-presentation problem and solutions
+presentation problem and solutions - david
