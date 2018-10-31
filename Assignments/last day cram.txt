@@ -5,4 +5,3 @@ Graphic Helper Classes image
 core classes image
 board image example
 presentation uml pictures
-presentation problem and solutions - david
