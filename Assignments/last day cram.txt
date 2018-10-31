@@ -1,5 +1,5 @@
 Overview
-specific classes test classes
+
 GraphicBoard image technical paper
 Graphic Helper Classes image
 core classes image
