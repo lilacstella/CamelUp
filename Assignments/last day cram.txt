@@ -1,6 +1,4 @@
 Overview
-Presentation add assingment - eric
-Presentation future execution - eric
 specific classes test classes
 GraphicBoard image technical paper
 Graphic Helper Classes image
