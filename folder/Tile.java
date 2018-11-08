@@ -23,7 +23,7 @@ public class Tile
 		trap = null;
 		return t;
 	}
-	public linkedlist<Camel> getCamel()
+	public LinkedList<Camel> getCamel()
 	{
 		return camels;
 	}
