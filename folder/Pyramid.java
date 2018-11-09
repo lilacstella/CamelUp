@@ -25,6 +25,8 @@ public class Pyramid
 	}
 	
 	
+	
+	//chooses and returns the dice that 
 	public Dice roll()
 	{
 		//Chooses a random die out of the 5
@@ -36,6 +38,7 @@ public class Pyramid
 		 count++;
 		 if(count==dieToChoose)
 		 {
+			 d.rollDice();
 			 s.remove(d);
 			 return d;
 		 }
