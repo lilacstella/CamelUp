@@ -2,7 +2,6 @@ import java.util.LinkedList;
 
 public class Tile 
 {
-	private Camel camel;
 	private LinkedList<Camel> camels;
 	private Trap trap;
 	public Tile() 
