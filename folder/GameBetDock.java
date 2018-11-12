@@ -7,16 +7,11 @@ public class GameBetDock {
     private static final int[] values = {8, 5, 3, 2, 1};
 
     public GameBetDock() {
-        gameBetQueue = new LinkedList<>();
-
+        gameBetQueue = new LinkedList<>(); //init
     }
 
     public void addGameBet(GameBet g) {
-        gameBetQueue.offer(g);
-    }
-
-    public GameBet getTopCard() {
-        return gameBetQueue.peek();
+        gameBetQueue.offer(g); //adds a gamebet to the queue
     }
 
     public void calc(Player[] players, Camel c) {
