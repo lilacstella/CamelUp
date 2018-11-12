@@ -4,19 +4,12 @@ public class Player {
     private int coins;
     private ArrayList<GameBet> gameBets;
     private ArrayList<LegBet> legBets;
-    private ArrayList<RollCard> rollCards;
     private String name;
+    private int rollCards;
     private static final String[] camelColors = {"blue", "yellow", "green", "orange", "white"};
 
     //TO DO
-    // ASK SOMEONE HOW THE TRAP CLASS WORKS AS IT IS VERY POORLY COMMENTED
-    //ALSO ASK HOW THE RESET METHOD WORKS
-    //ALSO CREATE A METHOD THAT GIVES THE PLAYERS THE COINS HE NEEDS AT THE END OF EACH LEG
-    //RESOLVE HOW A PLAYER IS GOING TO GET A ROLLCARD
-    //RESOLVE HOW TO CREATE GAMEBETS
-    //ALSO TELL EVERYONE TO COMMENT THEIR CODE MUCH BETTER.
     //ALSO I HAVE TO COMMENT SOME OF MY METHODS IN MY GAMEBET DOCK AFTER THESE ISSUES ARE RESOLVED
-    //SINCERELY SARIM
 
 
     public Player(String name) {
@@ -28,7 +21,7 @@ public class Player {
         }
 
         legBets = new ArrayList<>(); //initialize leg bets
-        rollCards = new ArrayList<>(); //initialize roll cards
+        rollCards = 0;
 
 
     }
@@ -45,17 +38,35 @@ public class Player {
         legBets.add(legBetDock.getLegBet(color));
     }
 
-    public void betGameBets() {
+    public void betGameBets(String camelColor, GameBetDock dock) {
+        dock.addGameBet(new GameBet(name, camelColor));
+        for (int i = 0; i < gameBets.size(); i++) {
+            if (gameBets.get(i).getCamelColor().equals(camelColor)) {
+                gameBets.remove(i);
+            }
+        }
+    }
 
+    public ArrayList<GameBet> getGameBets() {
+        return gameBets;
+    }
+
+    public ArrayList<LegBet> getLegBets() {
+        return legBets;
     }
 
     public void addRollCard() {
+        rollCards++;
+    }
 
+    public int getRollCards() {
+        return rollCards;
     }
 
     public String getName() {
         return name;
     }
+
 
 
 
