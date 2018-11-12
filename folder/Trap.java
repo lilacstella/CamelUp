@@ -1,8 +1,7 @@
 public class Trap 
 {
-	private boolean isForward;
+	private int dir;
 	private Player player;
-	private int pos;
 	public Trap(Player p) 
 	{
 		player = p;
@@ -12,14 +11,9 @@ public class Trap
 	{
 		player.setCoins(player.getCoins()+1);
 	}
-	//set the position
-	public void setPos(int p)
-	{
-		pos = p;
-	}
 	//set the direction the trap moves the camel
-	public void setForward(boolean f)
+	public void setDirection(int dir)
 	{
-		isForward = f;
+		this.dir = dir;
 	}
 }
