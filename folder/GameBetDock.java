@@ -1,11 +1,6 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
-//NOT COMPLETE
-//NOT COMPLETE
-//NOT COMPLETE
-//NOT COMPLETE
-
 public class GameBetDock {
 
     private Queue<GameBet> gameBetQueue;
