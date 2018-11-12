@@ -1,8 +1,8 @@
 public class Trap 
 {
-	private int dir;
+	private final int dir;
 	private Player player;
-	public Trap(Player p) 
+	public Trap(Player p, int d) 
 	{
 		player = p;
 	}
@@ -12,8 +12,13 @@ public class Trap
 		player.setCoins(player.getCoins()+1);
 	}
 	//set the direction the trap moves the camel
-	public void setDirection(int dir)
+	public void setDir(int dir)
 	{
 		this.dir = dir;
+	}
+	//gets the direction <o/
+	public int getDir()
+	{
+		return dir;
 	}
 }
