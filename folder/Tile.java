@@ -20,7 +20,7 @@ public class Tile
 		trap = t;
 	}
 	//remove the trap
-	public Trap RemoveTrap()
+	public Trap removeTrap()
 	{
 		Trap t = trap;
 		trap = null;
