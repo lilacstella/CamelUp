@@ -1,17 +1,17 @@
 public class GameBet {
     private String playerName;
-    private String camelName;
+    private String camelColor;
 
     public GameBet(String playerName, String camelName) {
         this.playerName = playerName;
-        this.camelName = camelName;
+        this.camelColor = camelName;
     }
 
     public String getPlayerName() {
         return playerName;
     }
 
-    public String getCamelName() {
-        return camelName;
+    public String getCamelColor() {
+        return camelColor;
     }
 }

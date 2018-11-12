@@ -25,16 +25,26 @@ public class GameBetDock {
     }
 
     public void calc(Player[] players, Camel c) {
-        String color = c.getCamelColor();
 
+        String color = c.getCamelColor();
         int index = 0;
 
-        for (GameBet gameBet : gameBetQueue) {
-
+        while(!gameBetQueue.isEmpty()) {
+            GameBet gameBet = gameBetQueue.poll();
+            String playerName = gameBet.getPlayerName();
+            if(gameBet.getCamelColor().equals(color)) {
+                addPlayerCoins(playerName, players, values[index++]);
+            } else {
+                addPlayerCoins(playerName, players, -1);
+            }
         }
-
-
     }
 
-
+    public void addPlayerCoins(String playerName, Player[] players, int value) {
+        for(Player p: players) {
+            if (p.getName().equals(playerName)) {
+                p.setCoins(p.getCoins() + value);
+            }
+        }
+    }
 }
