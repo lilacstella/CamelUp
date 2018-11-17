@@ -1,7 +1,7 @@
 import java.util.Stack;
 import java.util.TreeMap;
 import java.util.Map;
-public class SyntaxChecker 
+public class SyntaxChecker
 {
 	private Stack<Character> stack;
 	private Map<Character, Character> map;
@@ -52,23 +52,4 @@ public class SyntaxChecker
 			s += " is incorrect.";
 		return s;
 	}
-}
-
-------------------------------------------------------------------------------------------------------
-import java.io.*;
-import java.util.Scanner;
-public class SyntaxCheckRunner
-{
-
-	public static void main(String[] args) throws IOException
-	{
-		Scanner scan = new Scanner(new File("SyntaxChecker.txt"));
-		while(scan.hasNext())
-		{
-			SyntaxChecker s = new SyntaxChecker(scan.nextLine());
-			System.out.println(s + "\n");
-		}
-		scan.close();
-	}
-
 }
