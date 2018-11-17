@@ -2,37 +2,4 @@
 Computer Science Data Structure Camel Up Project
 
 Classes
-#-Sequence Of Priority | Class Name | (Optional Descrption)
-
-https://docs.google.com/spreadsheets/d/1R44-O4MIjY6hcqs1i9FJ--4-fBs9KdkzjSsNW8PCL5c/edit?usp=sharing
-
-CamelUp - Game State Class
-TextDriver
-Board - graphics class - 2
-Pyramid - sarim
-Dice - 1 sarim
-Camel - 1 eric 
-Tile - 1 abhinav
-Trap -3
-Player has Coins - 1 david
-BetCards - 4
-LegBets - 4
-Winner - 4
-Loser - 4
-
-
-Game State
-	5 CamelUp
-
-Core
-	1 Dice			-	Sarim
-	1 Camel			-	Eric
-	1 Tile			-	Abhinav
-	1 Player		- 	David
-	1 Trap			- 	David
-	2 Pyramid		-	Sarim
-	2 BetCards		- 
-	2 DiceDock 		-
-
-Graphic
-	? GraphicBoard 
+https://docs.google.com/document/d/1RM8Nw9QdEaxuc4aLWVhM9r3Klf8ZajCnszvXlRGxNlE/edit?usp=sharing
