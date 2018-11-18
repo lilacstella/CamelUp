@@ -2,6 +2,7 @@ public class Trap
 {
 	private final int dir;
 	private Player player;
+	
 	public Trap(Player p, int d) 
 	{
 		player = p;
