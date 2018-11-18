@@ -46,6 +46,12 @@ public class Tile
 		} catch (ConcurrentModificationException e){}
 		return temp;
 	}
+	
+	public void setCamel()
+	{
+		// TODO Auto-generated method stub
+
+	}
 
 	public boolean empty()
 	{
