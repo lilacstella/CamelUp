@@ -51,7 +51,7 @@ public class CamelUp
 		{
 			track[indecies[camel]].getCamel(color);
 			indecies[camel] += dieFace;
-			track[indecies[camel]] //it's time to commit die
+	//		track[indecies[camel]] //it's time to commit die
 		}
 		catch(ArrayIndexOutOfBoundsException e)
 		{
