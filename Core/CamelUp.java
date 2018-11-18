@@ -21,8 +21,10 @@ public class CamelUp
 		Arrays.fill(indecies, 0);
 		pyramid = new Pyramid();
 		rolled = new HashSet<>();
+		gameBetDocks = new HashMap<>();
 		gameBetDocks.put("winner", new GameBetDock());
 		gameBetDocks.put("loser", new GameBetDock());
+		legBetDocks = new HashMap<>();
 		legBetDocks.put("blue", new LegBetDock());
 		legBetDocks.put("yellow", new LegBetDock());
 		legBetDocks.put("green", new LegBetDock());

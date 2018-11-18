@@ -1,9 +1,8 @@
 
-public class CamelUpTester
+public class TextRunner
 {
 	public static void main(String[] args)
 	{
-		int[] arr = new int[-1];
 		CamelUp game = new CamelUp();
 		while(!game.won())
 		{
