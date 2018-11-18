@@ -1,3 +1,4 @@
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -30,15 +31,20 @@ public class Tile
 	// get the linkedList of camels for the graphics
 	public Camel getCamel(String color)
 	{
-		//ask stroud if we are allowed to use the get(index) of linked list
+		// ask Stroud if we are allowed to use the remove(Object) of linked list
+		// or iterator because it kind of breaks the law of Queues
 		Iterator<Camel> iter = camels.iterator();
-		while(iter.hasNext())
+		Camel temp = null;
+		try
 		{
-			Camel temp = iter.next();
-			if(temp.getCamelColor().equals(color)) 
-				return temp;
-		}
-		return null;
+			while (iter.hasNext())
+			{
+				temp = iter.next();
+				if (temp.getCamelColor().equals(color))
+					camels.remove(temp);
+			}
+		} catch (ConcurrentModificationException e){}
+		return temp;
 	}
 
 	public boolean empty()

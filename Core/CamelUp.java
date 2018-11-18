@@ -49,7 +49,7 @@ public class CamelUp
 		int camel = color2Num(color);
 		try
 		{
-			track[indecies[camel]].getCamel();
+			track[indecies[camel]].getCamel(color);
 			indecies[camel] += dieFace;
 		}
 		
