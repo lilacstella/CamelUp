@@ -11,16 +11,9 @@ public class LegBetDock {
 
 
     //instantiating all the legBet
-    public LegBetDock() {
-
-        legBets = new HashMap<>();
-
-        for (String s : camelColors) {
-            legBets.put(s, new Stack<LegBet>());
-            for (Integer i : cardValues) {
-                legBets.get(s).push(new LegBet(i, s));
-            }
-        }
+    public LegBetDock()
+    {
+      reset();
     }
 
 
@@ -41,14 +34,14 @@ public class LegBetDock {
     }
 
     //resets the dock to its original position, meant for the beginning
-    public void reset() {
+    public void reset()
+    {
         legBets = new HashMap<>();
-
-        for (String s : camelColors) {
+        for (String s : camelColors)
+        {
             legBets.put(s, new Stack<LegBet>());
-            for (Integer i : cardValues) {
+            for (Integer i : cardValues)
                 legBets.get(s).push(new LegBet(i, s));
-            }
         }
     }
 }
