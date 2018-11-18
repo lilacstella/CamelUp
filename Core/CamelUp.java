@@ -20,4 +20,9 @@ public class CamelUp
     legBetDocks.put("white", new LegBetDock());
     players = new Player[5];
   }
+
+  public void play()
+  {
+      Iterator iter =
+  }
 }
