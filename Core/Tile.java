@@ -1,17 +1,17 @@
+import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
-import java.util.LinkedList;
 
 //The Tile class is important because it represents the important feature of the desert tile in the sophisticated board game of camel up
 //Below are some insightful explanation of the function of each method.
 public class Tile
 {
-	private LinkedList<Camel> camels;
+	private ArrayList<Camel> camels;
 	private Trap trap;
 
 	public Tile()
 	{
-		camels = new LinkedList<Camel>();
+		camels = new ArrayList<Camel>();
 	}
 
 	// put a trap on the tile
@@ -43,16 +43,23 @@ public class Tile
 				if (temp.getCamelColor().equals(color))
 					camels.remove(temp);
 			}
-		} catch (ConcurrentModificationException e){}
+		} catch (ConcurrentModificationException e)
+		{
+			
+		}
 		return temp;
 	}
 	
-	public void setCamel()
+	public void add(ArrayList<Camel> camel)
 	{
-		// TODO Auto-generated method stub
-
+		camels.addAll(camel);
 	}
-
+	
+	public void add(ArrayList<Camel> camel, int index)
+	{
+		camels.addAll(0,camel);
+	}
+	
 	public boolean empty()
 	{
 		return camels.isEmpty();
