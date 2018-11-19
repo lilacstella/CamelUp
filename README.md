@@ -9,7 +9,7 @@ Our Java program attempts to digitally emulate the popular board game Camel Up. 
 
 ## Schedule
 
-![Schedule](info\Schedule.PNG)
+![Schedule](info/Schedule.PNG)
 
 ## Task Manager
 
