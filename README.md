@@ -2,6 +2,8 @@
 
 Computer Science Camel Up Project
 
-Classes\n
+Class Glossory
+
 https://docs.google.com/document/d/1RM8Nw9QdEaxuc4aLWVhM9r3Klf8ZajCnszvXlRGxNlE/edit?usp=sharing
 
+[![Manuel](https://www.fgbradleys.com/rules/rules2/CamelUp-rules.pdf)]
