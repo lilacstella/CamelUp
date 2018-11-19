@@ -17,6 +17,8 @@ public class CamelUp
 	public CamelUp()
 	{
 		track = new Tile[16];
+		for(int i = 0; i < track.length; i++)
+			track[i] = new Tile();
 		indecies = new int[5]; //0 = blue, 1 = yellow, 2 = green, 3 = orange, 4 = white
 		Arrays.fill(indecies, 0);
 		pyramid = new Pyramid();
@@ -57,8 +59,7 @@ public class CamelUp
 		}
 		catch(ArrayIndexOutOfBoundsException e)
 		{
-			
-			indecies[camel] = 31;
+			indecies[camel] = 15;
 		}
 	}
 
@@ -69,7 +70,7 @@ public class CamelUp
 
 	public boolean won()
 	{
-		return track[31].empty();
+		return track[15].empty();
 	}
 	
 	private int color2Num(String color)
