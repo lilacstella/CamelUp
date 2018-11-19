@@ -7,7 +7,7 @@ Our Java program attempts to digitally emulate the popular board game Camel Up. 
 
 ## Schedule
 
-[![Schedule](Schedule.png)]
+[![Schedule](Schedule.PNG)]
 
 ## Tools
 
