@@ -1,4 +1,4 @@
-[![Discord](https://cdn.discordapp.com/attachments/513430601106325507/513922147798876170/unknown.png)](https://discordapp.com/)
+[![Logo](https://cdn.discordapp.com/attachments/513430601106325507/513922147798876170/unknown.png)](https://discordapp.com/)
 
 # Camel Up
 
@@ -13,7 +13,7 @@ Our Java program attempts to digitally emulate the popular board game Camel Up. 
 
 ## Task Manager
 
-[[Click Up](app.clickup.com)](https://clickup.com/)
+[Click Up](https://app.clickup.com/)
 
 # Tools
 
