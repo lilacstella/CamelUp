@@ -1,4 +1,4 @@
-# CamelUp
+[![Discord](https://cdn.discordapp.com/attachments/513430601106325507/513922147798876170/unknown.png)](https://discordapp.com/)
 Computer Science Data Structure Camel Up Project
 
 Classes
