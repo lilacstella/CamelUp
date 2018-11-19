@@ -13,7 +13,7 @@ Our Java program attempts to digitally emulate the popular board game Camel Up. 
 
 ## Task Manager
 
-[Click Up](app.clickup.com)
+[[Click Up](app.clickup.com)](https://clickup.com/)
 
 # Tools
 
