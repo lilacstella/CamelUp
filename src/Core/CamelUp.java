@@ -4,14 +4,14 @@ import java.util.HashSet;
 
 public class CamelUp
 {
-	Tile[] track;
+	Tile[] track; //array of all the tiles
 	int[] indecies; //keeps track of each camel
-	Pyramid pyramid;
-	HashSet<Dice> rolled;
-	HashMap<String, GameBetDock> gameBetDocks;
-	HashMap<String, LegBetDock> legBetDocks;
-	Player[] players;
-	int current;
+	Pyramid pyramid; //what is yet to be rolled - just the pyramid
+	HashSet<Dice> rolled; //to store the dice rolled out of pyramid for display
+	HashMap<String, GameBetDock> gameBetDocks;// 2 gameBetDocks called by winner/loser
+	HashMap<String, LegBetDock> legBetDocks; //5 legBetDocks called by color
+	Player[] players; //array of all players in game to be iterated thru with the var current
+	int current; //current player number
 
 	// initialize board
 	public CamelUp()
@@ -33,9 +33,10 @@ public class CamelUp
 		legBetDocks.put("orange", new LegBetDock());
 		legBetDocks.put("white", new LegBetDock());
 		players = new Player[5];
-		current = 0;
+		current = 0; //current player num
 	}
 
+//called each move, triggers the continuation of the game
 	public void proceed(String toDo)
 	{
 		current = ++current%5;
@@ -47,32 +48,20 @@ public class CamelUp
 			rolled.add(temp);
 		}
 	}
-	
-	private void roll(String color, int dieFace)
-	{
-		int camel = color2Num(color);
-		try
-		{
-			track[indecies[camel]].getCamel(color);
-			indecies[camel] += dieFace;
-	//		track[indecies[camel]] //it's time to commit die
-		}
-		catch(ArrayIndexOutOfBoundsException e)
-		{
-			indecies[camel] = 15;
-		}
-	}
 
+//current player playing the game
 	public Player currentPlayer()
 	{
 		return players[current];
 	}
 
+//if the game has been won
 	public boolean won()
 	{
 		return track[15].empty();
 	}
-	
+
+	//converts color of camel to index in array
 	private int color2Num(String color)
 	{
 		switch(color)

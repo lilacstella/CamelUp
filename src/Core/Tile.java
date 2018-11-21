@@ -29,37 +29,37 @@ public class Tile
 	}
 
 	// get the linkedList of camels for the graphics
-	public Camel getCamel(String color)
+	public ArrayList<Camel> getCamel(String color)
 	{
 		// ask Stroud if we are allowed to use the remove(Object) of linked list
 		// or iterator because it kind of breaks the law of Queues
 		Iterator<Camel> iter = camels.iterator();
 		Camel temp = null;
-		try
+		ArrayList<Camel> list = new ArrayList<>();
+		while (iter.hasNext())
 		{
-			while (iter.hasNext())
+			temp = iter.next();
+			if (temp.getCamelColor().equals(color))
 			{
-				temp = iter.next();
-				if (temp.getCamelColor().equals(color))
-					camels.remove(temp);
+				list.add(iter.next());
+				break;
 			}
-		} catch (ConcurrentModificationException e)
-		{
-			
 		}
-		return temp;
+		while(iter.hasNext())
+				list.add(iter.next());
+		return list;
 	}
-	
+
 	public void add(ArrayList<Camel> camel)
 	{
 		camels.addAll(camel);
 	}
-	
+
 	public void add(ArrayList<Camel> camel, int index)
 	{
 		camels.addAll(0,camel);
 	}
-	
+
 	public boolean empty()
 	{
 		return camels.isEmpty();
