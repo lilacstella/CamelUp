@@ -33,7 +33,7 @@ public class CamelUp
 		legBetDocks.put("orange", new LegBetDock());
 		legBetDocks.put("white", new LegBetDock());
 		players = new Player[5];
-		current = 0; //current player num
+		current = 0;
 	}
 
 //called each move, triggers the continuation of the game
@@ -42,7 +42,7 @@ public class CamelUp
 		current = ++current%5;
 		switch(toDo)
 		{
-		case("roll"):
+		case("roll"): //if the player rolls
 			Dice temp = pyramid.roll();
 			roll(temp.color(),temp.getDieFace());
 			rolled.add(temp);
