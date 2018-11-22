@@ -49,6 +49,8 @@ public class CamelUp
 		}
 	}
 
+	
+
 //current player playing the game
 	public Player currentPlayer()
 	{
