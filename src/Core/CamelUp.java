@@ -48,6 +48,22 @@ public class CamelUp
 		}
 	}
 
+	public boolean roll() // will always be true because if there are no more roll cards the leg will
+							// reset
+	{
+		players[current].addRollCard();
+		Dice temp = pyramid.roll();
+		String color = temp.color();
+		int dieFace = temp.getDieFace();
+		rolled.add(temp);
+		int index = indices[color2Num(color)];
+		ArrayList<Camel> list = track[index].getCamel(color);
+		for (Camel item : list)
+			indices[color2Num(item.getCamelColor())] = (index + dieFace > 15) ? 15 : index + dieFace;
+		track[indices[color2Num(color)]].add(list);
+		return true;
+	}
+
 	public boolean trap(int index, int dir)
 	{
 		if (!players[current].trap()) // if player already has trap then don't put another one
@@ -65,24 +81,14 @@ public class CamelUp
 		return true;
 	}
 
-	public boolean roll() // will always be true because if there are no more roll cards the leg will reset
-	{
-		players[current].addRollCard();
-		Dice temp = pyramid.roll();
-		String color = temp.color();
-		int dieFace = temp.getDieFace();
-		rolled.add(temp);
-		int index = indices[color2Num(color)];
-		ArrayList<Camel> list = track[index].getCamel(color);
-		for (Camel item : list)
-			indices[color2Num(item.getCamelColor())] = (index + dieFace > 15) ? 15 : index + dieFace;
-		track[indices[color2Num(color)]].add(list);
-		return true;
-	}
-
 	public boolean legBet(String color) // takes top legBet from legBetDock of color and put it into current player
 	{
 		return players[current].addLegBet(legBetDocks.get(color).getLegBet());
+	}
+
+	public boolean gameBet(String color, boolean winner)
+	{
+		return gameBetDocks.get((winner) ? "winner" : "loser").addGameBet(players[current].getGameBet(color));
 	}
 
 //current player playing the game

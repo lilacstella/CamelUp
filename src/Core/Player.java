@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Player
 {
@@ -21,10 +22,7 @@ public class Player
 		setCoins(5); // i assume this is how many coins the player starts out with though not sure
 		gameBets = new ArrayList<>(); // initialize gameBets
 		for (int i = 0; i < 5; i++)
-		{
 			gameBets.add(new GameBet(name, camelColors[i])); // sets the players five gameBets of each camel color;
-		}
-
 		legBets = new ArrayList<>(); // initialize leg bets
 		rollCards = 0;
 		trap = false;
@@ -40,9 +38,23 @@ public class Player
 		this.coins = coins;
 	}
 
-	public ArrayList<GameBet> getGameBets()
+	public ArrayList<GameBet> getGameBet()
 	{
 		return gameBets;
+	}
+
+	public GameBet getGameBet(String color)
+	{
+		Iterator<GameBet> iter = gameBets.iterator();
+		while (iter.hasNext())
+		{
+			GameBet temp = iter.next();
+			if (!temp.getCamelColor().equals(color))
+				continue;
+			iter.remove();
+			return temp;
+		}
+		return null;
 	}
 
 	public ArrayList<LegBet> getLegBets()
