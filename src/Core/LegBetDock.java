@@ -1,6 +1,7 @@
 import java.util.Stack;
 
 public class LegBetDock
+{
 	private Stack<LegBet> legBets;
 	private static final int[] cardValues =
 	{ 2, 3, 5 };
