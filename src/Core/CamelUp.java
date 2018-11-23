@@ -54,18 +54,19 @@ public class CamelUp
 			return false;
 		try // testing if the surrounding tiles have traps
 		{
-			if(track[index].hasTrap()||track[index+1].hasTrap()||track[index-1].hasTrap())
+			if (track[index].hasTrap() || track[index + 1].hasTrap() || track[index - 1].hasTrap())
 				return false;
 		} catch (ArrayIndexOutOfBoundsException e)
 		{
-			if((index==15 && track[index-1].hasTrap())||(index==0&&track[index+1].hasTrap()))
+			if ((index == 15 && track[index - 1].hasTrap()) || (index == 0 && track[index + 1].hasTrap()))
 				return false;
 		}
-		track[index].setTrap(new Trap(players[current],dir));
+		track[index].setTrap(new Trap(players[current], dir));
 		return true;
 	}
 
-	public boolean roll() // will always be true because if there are no more roll cards the leg will reset
+	public boolean roll() // will always be true because if there are no more roll cards the leg will
+							// reset
 	{
 		players[current].addRollCard();
 		Dice temp = pyramid.roll();
@@ -80,9 +81,9 @@ public class CamelUp
 		return true;
 	}
 
-	public boolean legBet(String color)
+	public boolean legBet(String color) // takes top legBet from legBetDock of color and put it into current player
 	{
-		
+		return players[current].addLegBet(legBetDocks.get(color).getLegBet());
 	}
 
 //current player playing the game

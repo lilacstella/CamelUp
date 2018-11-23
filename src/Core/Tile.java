@@ -18,12 +18,12 @@ public class Tile
 	{
 		trap = t;
 	}
-	
+
 	public boolean hasTrap()
 	{
-		return trap!=null;
+		return trap != null;
 	}
-	
+
 	// remove the trap from the tile and returns it
 	public Trap removeTrap()
 	{
