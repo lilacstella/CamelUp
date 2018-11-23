@@ -7,7 +7,7 @@ public class Player
 	private ArrayList<LegBet> legBets;
 	private String name;
 	private int rollCards;
-	private boolean trap; //true if trap is on track
+	private boolean trap; // true if trap is on track
 	private static final String[] camelColors =
 	{ "blue", "yellow", "green", "orange", "white" };
 
@@ -40,23 +40,6 @@ public class Player
 		this.coins = coins;
 	}
 
-	public void betLeg(String color, LegBetDock legBetDock)
-	{
-		legBets.add(legBetDock.getLegBet(color));
-	}
-
-	public void betGameBets(String camelColor, GameBetDock dock)
-	{
-		dock.addGameBet(new GameBet(name, camelColor));
-		for (int i = 0; i < gameBets.size(); i++)
-		{
-			if (gameBets.get(i).getCamelColor().equals(camelColor))
-			{
-				gameBets.remove(i);
-			}
-		}
-	}
-
 	public ArrayList<GameBet> getGameBets()
 	{
 		return gameBets;
@@ -84,9 +67,16 @@ public class Player
 
 	public boolean trap()
 	{
-		if(trap) //if trap is on track
-			return !trap; //false to not put down more trap
+		if (trap) // if trap is on track
+			return !trap; // false to not put down more trap
 		trap = !trap;
-		return trap; //true to proceed placing trap
-	}	
+		return trap; // true to proceed placing trap
+	}
+
+	public boolean addLegBet(LegBet legBet)
+	{
+		if (legBet == null)
+			return false;
+		return legBets.add(legBet);
+	}
 }
