@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 //The Tile class is important because it represents the important feature of the desert tile in the sophisticated board game of camel up
@@ -19,7 +18,12 @@ public class Tile
 	{
 		trap = t;
 	}
-
+	
+	public boolean hasTrap()
+	{
+		return trap!=null;
+	}
+	
 	// remove the trap from the tile and returns it
 	public Trap removeTrap()
 	{
