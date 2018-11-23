@@ -7,6 +7,7 @@ public class Player
 	private ArrayList<LegBet> legBets;
 	private String name;
 	private int rollCards;
+	private boolean trap; //true if trap is on track
 	private static final String[] camelColors =
 	{ "blue", "yellow", "green", "orange", "white" };
 
@@ -26,7 +27,7 @@ public class Player
 
 		legBets = new ArrayList<>(); // initialize leg bets
 		rollCards = 0;
-
+		trap = false;
 	}
 
 	public int getCoins()
@@ -81,4 +82,11 @@ public class Player
 		return name;
 	}
 
+	public boolean trap()
+	{
+		if(trap) //if trap is on track
+			return !trap; //false to not put down more trap
+		trap = !trap;
+		return trap; //true to proceed placing trap
+	}	
 }
