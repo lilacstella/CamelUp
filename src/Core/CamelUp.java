@@ -41,21 +41,6 @@ public class CamelUp
 	public void proceed()
 	{
 		current = ++current % 5;
-<<<<<<< HEAD
-		switch (toDo)
-		{
-		case ("roll"): // if the player rolls
-			players[current].addRollCard();
-			Dice temp = pyramid.roll();
-			roll(temp.color(), temp.getDieFace());
-			rolled.add(temp);
-
-		}
-	}
-
-	private void roll(String color, int dieFace)
-	{
-=======
 		if (rolled.size() == 5)
 		{
 			pyramid.reset();
@@ -70,7 +55,7 @@ public class CamelUp
 		try // testing if the surrounding tiles have traps
 		{
 			if(track[index].hasTrap()||track[index+1].hasTrap()||track[index-1].hasTrap())
-				return false;	
+				return false;
 		} catch (ArrayIndexOutOfBoundsException e)
 		{
 			if((index==15 && track[index-1].hasTrap())||(index==0&&track[index+1].hasTrap()))
@@ -87,21 +72,17 @@ public class CamelUp
 		String color = temp.color();
 		int dieFace = temp.getDieFace();
 		rolled.add(temp);
->>>>>>> trap-system
 		int index = indices[color2Num(color)];
 		ArrayList<Camel> list = track[index].getCamel(color);
 		for (Camel item : list)
 			indices[color2Num(item.getCamelColor())] = (index + dieFace > 15) ? 15 : index + dieFace;
 		track[indices[color2Num(color)]].add(list);
-<<<<<<< HEAD
-=======
 		return true;
 	}
-	
+
 	public boolean legBet(String color)
 	{
 		
->>>>>>> trap-system
 	}
 
 //current player playing the game
