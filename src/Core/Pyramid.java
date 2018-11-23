@@ -21,7 +21,7 @@ public class Pyramid
 		s.add(new Dice("green"));
 		s.add(new Dice("white"));
 		Iterator<Dice> iter = s.iterator();
-		while(iter.hasNext())
+		while (iter.hasNext())
 			iter.next().rollDice();
 	}
 
@@ -31,7 +31,7 @@ public class Pyramid
 		Random gen = new Random();
 		int rand = gen.nextInt(s.size());
 		Iterator<Dice> iter = s.iterator();
-		while(--rand > 0)
+		while (--rand > 0)
 			iter.next();
 		return iter.next();
 	}

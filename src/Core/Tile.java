@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 //The Tile class is important because it represents the important feature of the desert tile in the sophisticated board game of camel up
@@ -36,17 +35,20 @@ public class Tile
 		Iterator<Camel> iter = camels.iterator();
 		Camel temp = null;
 		ArrayList<Camel> list = new ArrayList<>();
+		ArrayList<Camel> remaining = new ArrayList<>();
 		while (iter.hasNext())
 		{
 			temp = iter.next();
 			if (temp.getCamelColor().equals(color))
 			{
-				list.add(iter.next());
+				list.add(temp);
 				break;
 			}
+			remaining.add(temp);
 		}
-		while(iter.hasNext())
-				list.add(iter.next());
+		while (iter.hasNext())
+			list.add(iter.next());
+		camels = remaining;
 		return list;
 	}
 
@@ -57,7 +59,7 @@ public class Tile
 
 	public void add(ArrayList<Camel> camel, int index)
 	{
-		camels.addAll(0,camel);
+		camels.addAll(0, camel);
 	}
 
 	public boolean empty()
