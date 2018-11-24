@@ -36,6 +36,8 @@ public class CamelUp
 		legBetDocks.put("orange", new LegBetDock("orange"));
 		legBetDocks.put("white", new LegBetDock("white"));
 		players = new Player[5];
+		for(int i = 0; i < players.length; i++)
+			players[i] = new Player("P" + (i+1));
 		current = 0;
 	}
 
