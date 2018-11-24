@@ -23,7 +23,6 @@ public class GameBetDock
 
 	public void calc(Player[] players, Camel c)
 	{
-
 		String color = c.getCamelColor();
 		int index = 0;
 		while (!gameBetQueue.isEmpty())

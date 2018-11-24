@@ -33,6 +33,11 @@ public class Tile
 	}
 
 	// get the linkedList of camels for the graphics
+	public ArrayList<Camel> getCamel()
+	{
+		return camels;
+	}
+	
 	public ArrayList<Camel> getCamel(String color)
 	{
 		// ask Stroud if we are allowed to use the remove(Object) of linked list

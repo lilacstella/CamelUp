@@ -47,6 +47,7 @@ public class CamelUp
 		{
 			pyramid.reset();
 			rolled.clear();
+			legCalc();
 		}
 	}
 
@@ -105,8 +106,20 @@ public class CamelUp
 		if(track[15].empty())
 			return false;
 		
-		gameBetDocks.get("winnier")
+		Camel winner = track[15].getCamel().get(track[15].getCamel().size()-1);
+		Camel loser = new Camel(null);
+		for(Tile item : track)
+			if(!item.empty())
+				loser = item.getCamel().get(0);
+		gameBetDocks.get("winner").calc(players, winner);
+		gameBetDocks.get("loser").calc(players, loser);
+		legCalc();
 		return true;
+	}
+
+	private void legCalc()
+	{
+		//gives player coins according to roll cards and leg bets from their inventories
 	}
 
 	// converts color of camel to index in array
