@@ -28,11 +28,11 @@ public class CamelUp
 		gameBetDocks.put("winner", new GameBetDock());
 		gameBetDocks.put("loser", new GameBetDock());
 		legBetDocks = new HashMap<>();
-		legBetDocks.put("blue", new LegBetDock());
-		legBetDocks.put("yellow", new LegBetDock());
-		legBetDocks.put("green", new LegBetDock());
-		legBetDocks.put("orange", new LegBetDock());
-		legBetDocks.put("white", new LegBetDock());
+		legBetDocks.put("blue", new LegBetDock("blue"));
+		legBetDocks.put("yellow", new LegBetDock("yellow"));
+		legBetDocks.put("green", new LegBetDock("green"));
+		legBetDocks.put("orange", new LegBetDock("orange"));
+		legBetDocks.put("white", new LegBetDock("white"));
 		players = new Player[5];
 		current = 0;
 	}
