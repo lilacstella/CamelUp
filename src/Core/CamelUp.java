@@ -51,6 +51,11 @@ public class CamelUp
 		}
 	}
 
+	public HashSet<Dice> getRolled()
+	{
+		return rolled;
+	}
+	
 	public boolean roll() // will always be true because if there are no more roll cards the leg will
 							// reset
 	{
