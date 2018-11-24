@@ -20,6 +20,8 @@ public class CamelUp
 		track = new Tile[16];
 		for (int i = 0; i < track.length; i++)
 			track[i] = new Tile();
+		track[0].add(new ArrayList<Camel>(Arrays.asList(new Camel[]
+		{ new Camel("blue"), new Camel("yellow"), new Camel("green"), new Camel("orange"), new Camel("white") }))); //need to determine the orders these start in
 		indices = new int[5]; // 0 = blue, 1 = yellow, 2 = green, 3 = orange, 4 = white
 		Arrays.fill(indices, 0);
 		pyramid = new Pyramid();
@@ -97,10 +99,14 @@ public class CamelUp
 		return players[current];
 	}
 
-//if the game has been won
+//if the game has been won and cash out if yes
 	public boolean won()
 	{
-		return track[15].empty();
+		if(track[15].empty())
+			return false;
+		
+		gameBetDocks.get("winnier")
+		return true;
 	}
 
 	// converts color of camel to index in array
