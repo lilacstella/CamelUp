@@ -84,7 +84,12 @@ public class Player
 		trap = !trap;
 		return trap; // true to proceed placing trap
 	}
-
+	
+	public void returnTrap()
+	{
+		trap = false;
+	}
+	
 	public boolean addLegBet(LegBet legBet)
 	{
 		if (legBet == null)

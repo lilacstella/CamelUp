@@ -129,6 +129,8 @@ public class CamelUp
 		//gives player coins according to roll cards and leg bets from their inventories and reset traps
 		for(Tile item : track)
 			item.removeTrap();
+		for(Player item : players)
+			item.returnTrap();
 	}
 
 	// converts color of camel to index in array
