@@ -21,7 +21,14 @@ public class CamelUp
 		for (int i = 0; i < track.length; i++)
 			track[i] = new Tile();
 		track[0].add(new ArrayList<Camel>(Arrays.asList(new Camel[]
-		{ new Camel("blue"), new Camel("yellow"), new Camel("green"), new Camel("orange"), new Camel("white") }))); //need to determine the orders these start in
+		{ new Camel("blue"), new Camel("yellow"), new Camel("green"), new Camel("orange"), new Camel("white") }))); // need
+																													// to
+																													// determine
+																													// the
+																													// orders
+																													// these
+																													// start
+																													// in
 		indices = new int[5]; // 0 = blue, 1 = yellow, 2 = green, 3 = orange, 4 = white
 		Arrays.fill(indices, 0);
 		pyramid = new Pyramid();
@@ -36,8 +43,8 @@ public class CamelUp
 		legBetDocks.put("orange", new LegBetDock("orange"));
 		legBetDocks.put("white", new LegBetDock("white"));
 		players = new Player[5];
-		for(int i = 0; i < players.length; i++)
-			players[i] = new Player("P" + (i+1));
+		for (int i = 0; i < players.length; i++)
+			players[i] = new Player("P" + (i + 1));
 		current = 0;
 	}
 
@@ -57,7 +64,7 @@ public class CamelUp
 	{
 		return rolled;
 	}
-	
+
 	public boolean roll() // will always be true because if there are no more roll cards the leg will
 							// reset
 	{
@@ -110,14 +117,17 @@ public class CamelUp
 //if the game has been won and cash out if yes
 	public boolean won()
 	{
-		if(track[15].empty())
+		if (track[15].empty())
 			return false;
-		
-		Camel winner = track[15].getCamel().get(track[15].getCamel().size()-1);
+
+		Camel winner = track[15].getCamel().get(track[15].getCamel().size() - 1);
 		Camel loser = new Camel(null);
-		for(Tile item : track)
-			if(!item.empty())
+		for (Tile item : track)
+			if (!item.empty())
+			{
 				loser = item.getCamel().get(0);
+				break; // issue #26
+			}
 		gameBetDocks.get("winner").calc(players, winner);
 		gameBetDocks.get("loser").calc(players, loser);
 		legCalc();
@@ -126,11 +136,33 @@ public class CamelUp
 
 	private void legCalc()
 	{
-		//gives player coins according to roll cards and leg bets from their inventories and reset traps
-		for(Tile item : track)
+		// gives player coins according to roll cards and leg bets from their inventory
+		for (Player item : players)
+		{
+			item.legClear(); // roll cards and traps
+			ArrayList<LegBet> temp = item.getLegBets();
+			int winIndexOnTrack = 0;
+			int winIndexOnIndices = 0;
+			for (int i = 0; i < indices.length; i++)
+				if (indices[i] > winIndexOnTrack)
+				{
+					winIndexOnTrack = indices[i];
+					winIndexOnIndices = i;
+				}
+			
+			int secIndexOnTrack = 0; //need to find the second place in the race create a method? 
+			for(int i = 0; i < indices.length; i++)
+				
+
+			for (LegBet current : temp)
+			{
+
+			}
+		}
+		// trap
+		for (Tile item : track)
 			item.removeTrap();
-		for(Player item : players)
-			item.returnTrap();
+
 	}
 
 	// converts color of camel to index in array

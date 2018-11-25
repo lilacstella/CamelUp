@@ -85,8 +85,10 @@ public class Player
 		return trap; // true to proceed placing trap
 	}
 	
-	public void returnTrap()
+	public void legClear()
 	{
+		coins += rollCards;
+		rollCards = 0;
 		trap = false;
 	}
 	
