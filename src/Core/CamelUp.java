@@ -126,7 +126,9 @@ public class CamelUp
 
 	private void legCalc()
 	{
-		//gives player coins according to roll cards and leg bets from their inventories
+		//gives player coins according to roll cards and leg bets from their inventories and reset traps
+		for(Tile item : track)
+			item.removeTrap();
 	}
 
 	// converts color of camel to index in array
