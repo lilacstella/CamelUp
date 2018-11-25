@@ -45,7 +45,6 @@ public class CamelUp
 		players = new Player[5];
 		for (int i = 0; i < players.length; i++)
 			players[i] = new Player("P" + (i + 1));
-		current = 0;
 	}
 
 //called before each move, checks background processes
@@ -128,7 +127,7 @@ public class CamelUp
 			return false;
 
 		Camel winner = track[15].getCamel().get(track[15].getCamel().size() - 1);
-		Camel loser = new Camel(null);
+		Camel loser;
 		for (Tile item : track)
 			if (!item.empty())
 			{
