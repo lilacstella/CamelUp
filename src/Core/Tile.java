@@ -62,14 +62,20 @@ public class Tile
 		return list;
 	}
 
-	public void add(ArrayList<Camel> camel)
+	public int add(ArrayList<Camel> camel)
 	{
+		if(trap!=null)
+			return trap.getDir();
 		camels.addAll(camel);
+		return 0;
 	}
 
-	public void add(ArrayList<Camel> camel, int index)
+	public int add(ArrayList<Camel> camel, int index)
 	{
-		camels.addAll(0, camel);
+		if(trap!=null)
+			return trap.getDir();
+		camels.addAll(index, camel);
+		return 0;
 	}
 
 	public boolean empty()

@@ -77,8 +77,15 @@ public class CamelUp
 		ArrayList<Camel> list = track[index].getCamel(color);
 		for (Camel item : list)
 			indices[color2Num(item.getCamelColor())] = (index + dieFace > 15) ? 15 : index + dieFace;
-		track[indices[color2Num(color)]].add(list);
-		return true;
+		if(track[indices[color2Num(color)]].add(list)!=0);
+		{
+			int dir = track[indices[color2Num(color)]].add(list);
+			if(dir == 1)
+				track[indices[color2Num(color)]+1].add(list);
+			else if(dir == -1)
+				track[indices[color2Num(color)]-1].add(list,0);
+		}
+		return true; 
 	}
 
 	public boolean trap(int index, int dir)
