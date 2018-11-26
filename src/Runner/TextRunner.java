@@ -9,6 +9,7 @@ public class TextRunner
 			System.out.println(game.currentPlayer());
 			game.proceed("roll");
 			System.out.println(game);
+			//this sucks
 		}
 	}
 }
