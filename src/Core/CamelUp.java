@@ -190,4 +190,10 @@ public class CamelUp
 			return -1;
 		}
 	}
+	
+	
+	public Tile[] getTrack() {
+		return track;
+	}
+	
 }
