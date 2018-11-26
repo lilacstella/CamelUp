@@ -73,7 +73,7 @@ public class CamelUp
 		int dieFace = temp.getDieFace();
 		rolled.add(temp);
 		int index = indices[color2Num(color)];
-		ArrayList<Camel> list = track[index].getCamels(color);
+		ArrayList<Camel> list = track[index].remCamels(color);
 		for (Camel item : list)
 			indices[color2Num(item.getCamelColor())] = (index + dieFace > 15) ? 15 : index + dieFace;
 		if(track[indices[color2Num(color)]].add(list)!=0);
