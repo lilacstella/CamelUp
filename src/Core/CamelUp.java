@@ -196,19 +196,28 @@ public class CamelUp
 		return track;
 	}
 	
-	private Camel getCamel(int place) 
+	private Camel getRankCamel(int place)
 	{
-		boolean foundOne = false;
-		for(int i = track.length-1; i >= 0; i--)
-		{
-			ArrayList<Camel> list = track[i].getCamels();
-			for(int j = list.size()-1; j >= 0; j--)
-				if(list.get(j)!=null&&place==1)
-					return list.get(j);
-				else if(list.get(j)!=null&&place==2&&foundOne==false)
-					foundOne = true;
-				else
-					return list.get(j);
+		int camelRank = 1;
+		for (int i = track.length - 1; i > -1; i--) {
+			ArrayList<Camel> camelList = track[i].getCamels();
+			for (int j = camelList.size()-1; j > -1; j--) {
+				if (camelRank == place) {
+					return camelList.get(j);
+				}
+			}
+			camelRank++;
 		}
+		return null;
 	}
 }
+
+/*
+index ithcamel = 1;
+for i > moving backwards through the tiels
+	l = getlist
+	for(j list size iterating backwards
+	if ithcamel = place
+		return list j
+	ithcamel++
+ */
