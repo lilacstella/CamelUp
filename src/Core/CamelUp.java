@@ -196,4 +196,12 @@ public class CamelUp
 		return track;
 	}
 	
+	private Camel getFirstCamel() 
+	{
+
+	}
+	private Camel getSecondCamel() 
+	{
+
+	}
 }
