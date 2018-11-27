@@ -196,4 +196,19 @@ public class CamelUp
 		return track;
 	}
 	
+	private Camel getCamel(int place) 
+	{
+		boolean foundOne = false;
+		for(int i = track.length-1; i >= 0; i--)
+		{
+			ArrayList<Camel> list = track[i].getCamels();
+			for(int j = list.size()-1; j >= 0; j--)
+				if(list.get(j)!=null&&place==1)
+					return list.get(j);
+				else if(list.get(j)!=null&&place==2&&foundOne==false)
+					foundOne = true;
+				else
+					return list.get(j);
+		}
+	}
 }
