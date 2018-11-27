@@ -126,12 +126,12 @@ public class CamelUp
 		if (track[15].empty())
 			return false;
 
-		Camel winner = track[15].getCamel().get(track[15].getCamel().size() - 1);
-		Camel loser;
+		Camel winner = track[15].getCamels().get(track[15].getCamels().size() - 1);
+		Camel loser = null;
 		for (Tile item : track)
 			if (!item.empty())
 			{
-				loser = item.getCamel().get(0);
+				loser = item.getCamels().get(0);
 				break; // issue #26
 			}
 		gameBetDocks.get("winner").calc(players, winner);
