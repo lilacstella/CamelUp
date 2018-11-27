@@ -5,13 +5,13 @@ import java.util.HashSet;
 
 public class CamelUp
 {
-	Tile[] track; // array of all the tiles
-	int[] indices; // keeps track of each camel
-	Pyramid pyramid; // what is yet to be rolled - just the pyramid
-	HashSet<Dice> rolled; // to store the dice rolled out of pyramid for display
-	HashMap<String, GameBetDock> gameBetDocks;// 2 gameBetDocks called by winner/loser
-	HashMap<String, LegBetDock> legBetDocks; // 5 legBetDocks called by color
-	Player[] players; // array of all players in game to be iterated thru with the variable current
+	private Tile[] track; // array of all the tiles
+	private int[] indices; // keeps track of each camel
+	private Pyramid pyramid; // what is yet to be rolled - just the pyramid
+	private HashSet<Dice> rolled; // to store the dice rolled out of pyramid for display
+	private HashMap<String, GameBetDock> gameBetDocks;// 2 gameBetDocks called by winner/loser
+	private HashMap<String, LegBetDock> legBetDocks; // 5 legBetDocks called by color
+	private Player[] players; // array of all players in game to be iterated thru with the variable current
 	int current; // current player number
 
 	// initialize board
