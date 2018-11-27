@@ -147,23 +147,8 @@ public class CamelUp
 		{
 			item.legClear(); // roll cards and traps
 			ArrayList<LegBet> temp = item.getLegBets();
-			int winIndexOnTrack = 0;
-			int winIndexOnIndices = 0;
-			for (int i = 0; i < indices.length; i++)
-				if (indices[i] > winIndexOnTrack)
-				{
-					winIndexOnTrack = indices[i];
-					winIndexOnIndices = i;
-				}
-			
-			int secIndexOnTrack = 0; //need to find the second place in the race create a method? 
-			for(int i = 0; i < indices.length; i++)
-				
-
-			for (LegBet current : temp)
-			{
-
-			}
+			int first = indices[color2Num(getCamel(1).getCamelColor())];
+			int second = indices[color2Num(getCamel(2).getCamelColor())];
 		}
 		// trap
 		for (Tile item : track)
@@ -210,5 +195,6 @@ public class CamelUp
 				else
 					return list.get(j);
 		}
+		return null;
 	}
 }
