@@ -177,11 +177,10 @@ public class CamelUp
 		for (int i = track.length - 1; i > -1; i--) {
 			ArrayList<Camel> camelList = track[i].getCamels();
 			for (int j = camelList.size()-1; j > -1; j--) {
-				if (camelRank == place) {
+				if (camelRank++ == place) {
 					return camelList.get(j);
 				}
 			}
-			camelRank++;
 		}
 		return null;
 	}
