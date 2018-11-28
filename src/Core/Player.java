@@ -90,14 +90,13 @@ public class Player
 		rollCards = 0;
 		trap = false;
 
-		for (LegBet legBet : legBets) {
-			if (legBet.getCamelColor().equals(firstRank.getCamelColor())) {
+		for (LegBet legBet : legBets) 
+		{
+			if (legBet.getCamelColor().equals(firstRank.getCamelColor())) 
 				coins += legBet.getValue();
-			}
-
-			if (legBet.getCamelColor().equals(secondRank.getCamelColor())) {
+			
+			if (legBet.getCamelColor().equals(secondRank.getCamelColor())) 
 				coins++;
-			}
 		}
 
 		legBets.clear();
