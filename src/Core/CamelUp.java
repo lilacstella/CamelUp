@@ -11,8 +11,8 @@ public class CamelUp
 	private HashSet<Dice> rolled; // to store the dice rolled out of pyramid for display
 	private HashMap<String, GameBetDock> gameBetDocks;// 2 gameBetDocks called by winner/loser
 	private HashMap<String, LegBetDock> legBetDocks; // 5 legBetDocks called by color
-	private Player[] players; // array of all players in game to be iterated thru with the variable current
-	int current; // current player number
+	private Player[] players; // array of all players in game to be iterated through with the variable current
+	private int current; // current player number
 
 	// initialize board
 	public CamelUp()
@@ -20,15 +20,8 @@ public class CamelUp
 		track = new Tile[16];
 		for (int i = 0; i < track.length; i++)
 			track[i] = new Tile();
-		track[0].add(new ArrayList<Camel>(Arrays.asList(new Camel[]
-		{ new Camel("blue"), new Camel("yellow"), new Camel("green"), new Camel("orange"), new Camel("white") }))); // need
-																													// to
-																													// determine
-																													// the
-																													// orders
-																													// these
-																													// start
-																													// in
+		track[0].add(new ArrayList<Camel>(Arrays.asList(new Camel[] { new Camel("blue"), new Camel("yellow"), new Camel("green"), new Camel("orange"), new Camel("white") })));
+		// need to determine the orders these start
 		indices = new int[5]; // 0 = blue, 1 = yellow, 2 = green, 3 = orange, 4 = white
 		Arrays.fill(indices, 0);
 		pyramid = new Pyramid();
@@ -76,7 +69,7 @@ public class CamelUp
 		ArrayList<Camel> list = track[index].remCamels(color);
 		for (Camel item : list)
 			indices[color2Num(item.getCamelColor())] = (index + dieFace > 15) ? 15 : index + dieFace;
-		if(track[indices[color2Num(color)]].add(list)!=0);
+		if(track[indices[color2Num(color)]].add(list)!=0)
 		{
 			int dir = track[indices[color2Num(color)]].add(list);
 			if(dir == 1)
@@ -84,7 +77,7 @@ public class CamelUp
 			else if(dir == -1)
 				track[indices[color2Num(color)]-1].add(list,0);
 		}
-		return true; 
+		return true;
 	}
 
 	public boolean trap(int index, int dir)
@@ -147,8 +140,8 @@ public class CamelUp
 		{
 			item.legClear(); // roll cards and traps
 			ArrayList<LegBet> temp = item.getLegBets();
-			int first = indices[color2Num(getCamel(1).getCamelColor())];
-			int second = indices[color2Num(getCamel(2).getCamelColor())];
+			int first = indices[color2Num(getRankCamel(1).getCamelColor())];
+			int second = indices[color2Num(getRankCamel(2).getCamelColor())];
 		}
 		// trap
 		for (Tile item : track)
@@ -175,13 +168,13 @@ public class CamelUp
 			return -1;
 		}
 	}
-	
-	
+
+
 	public Tile[] getTrack() {
 		return track;
 	}
-	
-	private Camel getRankCamel(int place)
+
+	private Camel getRankCamel(int place) //gets the camel given a rank ex. first place
 	{
 		int camelRank = 1;
 		for (int i = track.length - 1; i > -1; i--) {
@@ -196,13 +189,3 @@ public class CamelUp
 		return null;
 	}
 }
-
-/*
-index ithcamel = 1;
-for i > moving backwards through the tiels
-	l = getlist
-	for(j list size iterating backwards
-	if ithcamel = place
-		return list j
-	ithcamel++
- */
