@@ -136,13 +136,10 @@ public class CamelUp
 	private void legCalc()
 	{
 		// gives player coins according to roll cards and leg bets from their inventory
+
 		for (Player item : players)
-		{
-			item.legClear(); // roll cards and traps
-			ArrayList<LegBet> temp = item.getLegBets();
-			int first = indices[color2Num(getRankCamel(1).getCamelColor())];
-			int second = indices[color2Num(getRankCamel(2).getCamelColor())];
-		}
+			item.legClear(getRankCamel(1), getRankCamel(2));
+		
 		// trap
 		for (Tile item : track)
 			item.removeTrap();
