@@ -21,13 +21,7 @@ public class CamelUp
 		for (int i = 0; i < track.length; i++)
 			track[i] = new Tile();
 		track[0].add(new ArrayList<Camel>(Arrays.asList(new Camel[]
-		{ new Camel("blue"), new Camel("yellow"), new Camel("green"), new Camel("orange"), new Camel("white") }))); // need
-																													// to
-																													// determine
-																													// the
-																													// orders
-																													// these
-																													// start
+		{ new Camel("blue"), new Camel("yellow"), new Camel("green"), new Camel("orange"), new Camel("white") }))); // need to determine the orders these start
 																													// in
 		indices = new int[5]; // 0 = blue, 1 = yellow, 2 = green, 3 = orange, 4 = white
 		Arrays.fill(indices, 0);
@@ -84,7 +78,7 @@ public class CamelUp
 			else if(dir == -1)
 				track[indices[color2Num(color)]-1].add(list,0);
 		}
-		return true; 
+		return true;
 	}
 
 	public boolean trap(int index, int dir)
@@ -175,12 +169,12 @@ public class CamelUp
 			return -1;
 		}
 	}
-	
-	
+
+
 	public Tile[] getTrack() {
 		return track;
 	}
-	
+
 	private Camel getRankCamel(int place)
 	{
 		int camelRank = 1;
