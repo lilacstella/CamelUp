@@ -96,7 +96,7 @@ public class Player
 			}
 
 			if (legBet.getCamelColor().equals(secondRank.getCamelColor())) {
-				coins += 1;
+				coins++;
 			}
 		}
 
