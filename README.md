@@ -7,7 +7,7 @@ Our Java program attempts to digitally emulate the popular board game Camel Up. 
 
 # Graphics Board
 
-![Board](info/Board Graph.png)
+![Board](info/board.png)
 
 # Organization
 
