@@ -1,3 +1,6 @@
+package core;
+
+
 public class Camel
 {
 	private String color;

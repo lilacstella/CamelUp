@@ -1,3 +1,5 @@
+package core;
+
 public class Trap
 {
 	private int dir;
