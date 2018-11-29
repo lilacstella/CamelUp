@@ -1,4 +1,4 @@
-
+package Core;
 public class Dice
 {
 	private int dieFace;

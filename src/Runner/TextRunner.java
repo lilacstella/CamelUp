@@ -1,3 +1,6 @@
+package Runner;
+
+import Core.CamelUp;
 
 public class TextRunner
 {
@@ -6,9 +9,7 @@ public class TextRunner
 		CamelUp game = new CamelUp();
 		while(!game.won())
 		{
-			System.out.println(game.currentPlayer());
-			game.proceed("roll");
-			System.out.println(game);
+
 		}
 	}
 }
