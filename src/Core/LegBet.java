@@ -29,4 +29,9 @@ public class LegBet
 	{
 		this.camelColor = camelColor;
 	}
+
+	public String toString() {
+		return camelColor + " " + value;
+	}
+
 }

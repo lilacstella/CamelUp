@@ -23,6 +23,10 @@ public class LegBetDock
 		return legBets.pop();
 	}
 
+	public LegBet getTopLeg() {
+		return legBets.peek();
+	}
+
 	// resets the dock to its original position, meant for the beginning
 	public void reset()
 	{
@@ -30,4 +34,9 @@ public class LegBetDock
 		for (Integer i : cardValues)
 			legBets.push(new LegBet(i, color));
 	}
+
+	public String toString() {
+		return getTopLeg().toString();
+	}
+
 }

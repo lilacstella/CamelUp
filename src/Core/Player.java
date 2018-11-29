@@ -37,12 +37,12 @@ public class Player
 		this.coins = coins;
 	}
 
-	public ArrayList<GameBet> getGameBet()
+	public ArrayList<GameBet> getGameBets()
 	{
 		return gameBets;
 	}
 
-	public GameBet getGameBet(String color)
+	public GameBet remGameBet(String color)
 	{
 		Iterator<GameBet> iter = gameBets.iterator();
 		while (iter.hasNext())
@@ -91,13 +91,11 @@ public class Player
 		trap = false;
 
 		for (LegBet legBet : legBets) {
-			if (legBet.getCamelColor().equals(firstRank.getCamelColor())) {
+			if (legBet.getCamelColor().equals(firstRank.getCamelColor()))
 				coins += legBet.getValue();
-			}
 
-			if (legBet.getCamelColor().equals(secondRank.getCamelColor())) {
+			if (legBet.getCamelColor().equals(secondRank.getCamelColor()))
 				coins += 1;
-			}
 		}
 
 		legBets.clear();
@@ -109,5 +107,16 @@ public class Player
 		if (legBet == null)
 			return false;
 		return legBets.add(legBet);
+	}
+
+	public String toString() {
+		String ret = "";
+		ret += "name: " + getName();
+		ret += "coins: " + getCoins() + "\n";
+		ret += "leg bets: " + legBets;
+		ret += "rollCards: " + getRollCards();
+		ret += "game bets: " + getGameBets();
+		ret += "has trap: " + trap;
+		return ret;
 	}
 }
