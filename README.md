@@ -5,7 +5,7 @@
 Our Java program attempts to digitally emulate the popular board game Camel Up. In this repository, we will detail our process of care coordination to build this complex program. The instructions to the board game will be listed in the repository or the link following.
 [Game Instructions](https://www.fgbradleys.com/rules/rules2/CamelUp-rules.pdf)
 
-#Graphics Board
+# Graphics Board
 
 ![Board](info/Board Graph.PNG)
 
