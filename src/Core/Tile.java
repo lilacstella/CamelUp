@@ -33,7 +33,12 @@ public class Tile
 	}
 
 	// get the linkedList of camels for the graphics
-	public ArrayList<Camel> getCamel(String color)
+	public ArrayList<Camel> getCamels()
+	{
+		return camels;
+	}
+	
+	public ArrayList<Camel> remCamels(String color)
 	{
 		// ask Stroud if we are allowed to use the remove(Object) of linked list
 		// or iterator because it kind of breaks the law of Queues
@@ -57,14 +62,20 @@ public class Tile
 		return list;
 	}
 
-	public void add(ArrayList<Camel> camel)
+	public int add(ArrayList<Camel> camel)
 	{
+		if(trap!=null)
+			return trap.getDir();
 		camels.addAll(camel);
+		return 0;
 	}
 
-	public void add(ArrayList<Camel> camel, int index)
+	public int add(ArrayList<Camel> camel, int index)
 	{
-		camels.addAll(0, camel);
+		if(trap!=null)
+			return trap.getDir();
+		camels.addAll(index, camel);
+		return 0;
 	}
 
 	public boolean empty()
