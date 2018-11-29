@@ -9,8 +9,7 @@ public class Player
 	private String name;
 	private int rollCards;
 	private boolean trap; // true if trap is on track
-	private static final String[] camelColors =
-	{ "blue", "yellow", "green", "orange", "white" };
+	private static final String[] camelColors = { "blue", "yellow", "green", "orange", "white" };
 
 	// TO DO
 	// ALSO I HAVE TO COMMENT SOME OF MY METHODS IN MY GAMEBET DOCK AFTER THESE
@@ -19,7 +18,7 @@ public class Player
 	public Player(String name)
 	{
 		this.name = name;
-		setCoins(5); // i assume this is how many coins the player starts out with though not sure
+		setCoins(3); // start out with 3 coins issue #28
 		gameBets = new ArrayList<>(); // initialize gameBets
 		for (int i = 0; i < 5; i++)
 			gameBets.add(new GameBet(name, camelColors[i])); // sets the players five gameBets of each camel color;
@@ -84,7 +83,26 @@ public class Player
 		trap = !trap;
 		return trap; // true to proceed placing trap
 	}
+	
+	public void legClear(Camel firstRank, Camel secondRank)
+	{
+		coins += rollCards;
+		rollCards = 0;
+		trap = false;
 
+		for (LegBet legBet : legBets) 
+		{
+			if (legBet.getCamelColor().equals(firstRank.getCamelColor())) 
+				coins += legBet.getValue();
+			
+			if (legBet.getCamelColor().equals(secondRank.getCamelColor())) 
+				coins++;
+		}
+
+		legBets.clear();
+
+	}
+	
 	public boolean addLegBet(LegBet legBet)
 	{
 		if (legBet == null)

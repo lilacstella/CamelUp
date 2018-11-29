@@ -3,14 +3,14 @@ import java.util.Stack;
 public class LegBetDock
 {
 	private Stack<LegBet> legBets;
+	private String color;
 	private static final int[] cardValues =
 	{ 2, 3, 5 };
-	private static final String[] camelColors =
-	{ "blue", "yellow", "green", "orange", "white" };
 
 	// instantiating all the legBet
-	public LegBetDock()
+	public LegBetDock(String color)
 	{
+		this.color = color;
 		reset();
 	}
 
@@ -26,8 +26,7 @@ public class LegBetDock
 	public void reset()
 	{
 		legBets = new Stack<>();
-		for (String s : camelColors)
-			for (Integer i : cardValues)
-				legBets.push(new LegBet(i, s));
+		for (Integer i : cardValues)
+			legBets.push(new LegBet(i, color));
 	}
 }
