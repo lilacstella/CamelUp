@@ -23,4 +23,8 @@
 hs_err_pid*
 
 #Eclipse workspace files
-.project
+*.project
+
+#IntelliJ
+*.idea
+*.xml
