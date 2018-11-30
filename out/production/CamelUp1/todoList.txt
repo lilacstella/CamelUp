@@ -1,0 +1,18 @@
+
+
+- tile toString
+
+unit tests
+- track tests
+- gamebet test
+- camelRank test
+- legbet test
+- dice test
+- rolling test
+
+
+
+- text runner
+
+
+
