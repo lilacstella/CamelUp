@@ -1,8 +1,6 @@
 
 
-- player toString
 - tile toString
-- trap toString
 
 unit tests
 - track tests
@@ -14,7 +12,7 @@ unit tests
 
 
 
-text runner
+- text runner
 
 
 

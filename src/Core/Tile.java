@@ -11,7 +11,7 @@ public class Tile
 
 	public Tile()
 	{
-		camels = new ArrayList<Camel>();
+		camels = new ArrayList<>();
 	}
 
 	// put a trap on the tile
@@ -83,4 +83,12 @@ public class Tile
 	{
 		return camels.isEmpty();
 	}
+
+	public String toString() {
+		String ret = "";
+		ret += "trap:" + trap + "\n";
+		ret += "camels" + camels;
+		return ret;
+	}
+
 }
