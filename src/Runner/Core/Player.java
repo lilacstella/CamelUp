@@ -21,7 +21,7 @@ public class Player
 		setCoins(3); // start out with 3 coins issue #28
 		gameBets = new ArrayList<>(); // initialize gameBets
 		for (int i = 0; i < 5; i++)
-			gameBets.add(new GameBet(name, camelColors[i])); // sets the players five gameBets of each camel color;
+			gameBets.add(new GameBet(name, camelColors[i])); // sets the players five gameBets of each camel getColor;
 		legBets = new ArrayList<>(); // initialize leg bets
 		rollCards = 0;
 		trap = false;

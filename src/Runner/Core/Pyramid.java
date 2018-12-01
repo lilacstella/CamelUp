@@ -5,23 +5,23 @@ import java.util.Iterator;
 
 public class Pyramid
 {
-	HashSet<Dice> s;
+	HashSet<Dice> die;
 
 	public Pyramid()
 	{
-		s = new HashSet<Dice>();
+		die = new HashSet<Dice>();
 		reset();
 	}
 
 	// helper method to add dice to the set; also useful for reset
 	public void reset()
 	{
-		s.add(new Dice("blue"));
-		s.add(new Dice("yellow"));
-		s.add(new Dice("orange"));
-		s.add(new Dice("green"));
-		s.add(new Dice("white"));
-		Iterator<Dice> iter = s.iterator();
+		die.add(new Dice("blue"));
+		die.add(new Dice("yellow"));
+		die.add(new Dice("orange"));
+		die.add(new Dice("green"));
+		die.add(new Dice("white"));
+		Iterator<Dice> iter = die.iterator();
 		while (iter.hasNext())
 			iter.next().rollDice();
 	}
@@ -30,10 +30,14 @@ public class Pyramid
 	public Dice roll()
 	{
 		Random gen = new Random();
-		int rand = gen.nextInt(s.size());
-		Iterator<Dice> iter = s.iterator();
+		int rand = gen.nextInt(die.size());
+		Iterator<Dice> iter = die.iterator();
 		while (--rand > 0)
 			iter.next();
-		return iter.next();
+
+		Dice dice = iter.next();
+		iter.remove();
+
+		return dice;
 	}
 }

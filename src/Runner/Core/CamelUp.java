@@ -11,7 +11,7 @@ public class CamelUp
 	private Pyramid pyramid; // what is yet to be rolled - just the pyramid
 	private HashSet<Dice> rolled; // to store the dice rolled out of pyramid for display
 	private HashMap<String, GameBetDock> gameBetDocks;// 2 gameBetDocks called by winner/loser
-	private HashMap<String, LegBetDock> legBetDocks; // 5 legBetDocks called by color
+	private HashMap<String, LegBetDock> legBetDocks; // 5 legBetDocks called by getColor
 	private Player[] players; // array of all players in game to be iterated through with the variable current
 	private int current; // current player number
 
@@ -63,7 +63,7 @@ public class CamelUp
 	{
 		players[current].addRollCard();
 		Dice temp = pyramid.roll();
-		String color = temp.color();
+		String color = temp.getColor();
 		int dieFace = temp.getDieFace();
 		rolled.add(temp);
 		int index = indices[color2Num(color)];
@@ -78,7 +78,7 @@ public class CamelUp
 			else if(dir == -1)
 				track[indices[color2Num(color)]-1].add(list,0);
 		}
-		System.out.println(temp.color() + " " + temp.getDieFace());
+		System.out.println(temp.getColor() + " " + temp.getDieFace());
 		return true;
 	}
 
@@ -99,7 +99,7 @@ public class CamelUp
 		return true;
 	}
 
-	public boolean legBet(String color) // takes top legBet from legBetDock of color and put it into current player
+	public boolean legBet(String color) // takes top legBet from legBetDock of getColor and put it into current player
 	{
 		return players[current].addLegBet(legBetDocks.get(color).getLegBet());
 	}
@@ -148,7 +148,7 @@ public class CamelUp
 
 	}
 
-	// converts color of camel to index in array
+	// converts getColor of camel to index in array
 	private int color2Num(String color)
 	{
 		switch (color)

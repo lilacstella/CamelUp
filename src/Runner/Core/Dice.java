@@ -4,13 +4,13 @@ public class Dice
 	private int dieFace;
 	private String color;
 
-	// sets the color only
+	// sets the getColor only
 	public Dice(String co)
 	{
 		setColor(co);
 	}
 
-	// helper method to set color
+	// helper method to set getColor
 	public void setColor(String color)
 	{
 		this.color = color;
@@ -29,9 +29,13 @@ public class Dice
 		return dieFace;
 	}
 
-	// returns the color
-	public String color()
+	// returns the getColor
+	public String getColor()
 	{
 		return color;
+	}
+
+	public String toString() {
+		return getColor() + getDieFace();
 	}
 }
