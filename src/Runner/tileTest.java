@@ -7,10 +7,27 @@ public class tileTest {
         CamelUp gameState = new CamelUp();
         printTrack(gameState);
 
-        System.out.println(gameState.trap(0, 1));
+        System.out.println(gameState.trap(0, 1)); //should return false because there are camels here
+        System.out.println(gameState.trap(1, -1));
+        System.out.println(gameState.trap(3, -1));
+        System.out.println(gameState.trap(2, -1)); // should return false
+        System.out.println(gameState.trap(14, 1));
+        System.out.println(gameState.trap(15, 1)); //should not work
+        gameState.roll();
         print10blankLines();
-
         printTrack(gameState);
+
+
+        print10blankLines();
+        gameState.legCalc();
+        printTrack(gameState);
+
+        print10blankLines();
+        gameState.trap(1, -1);
+        printTrack(gameState);
+
+        System.out.println(gameState.currentPlayer());
+
 
 
 

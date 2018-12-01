@@ -12,7 +12,7 @@ public class CamelUp
 	private HashSet<Dice> rolled; // to store the dice rolled out of pyramid for display
 	private HashMap<String, GameBetDock> gameBetDocks;// 2 gameBetDocks called by winner/loser
 	private HashMap<String, LegBetDock> legBetDocks; // 5 legBetDocks called by getColor
-	private Player[] players; // array of all players in game to be iterated through with the variable current
+	Player[] players; // array of all players in game to be iterated through with the variable current
 	private int current; // current player number
 
 	// initialize board
@@ -77,6 +77,7 @@ public class CamelUp
 				track[indices[color2Num(color)]+1].add(list);
 			else if(dir == -1)
 				track[indices[color2Num(color)]-1].add(list,0);
+			currentPlayer().setCoins(currentPlayer().getCoins()+1);
 		}
 		System.out.println(temp.getColor() + " " + temp.getDieFace());
 		return true;
@@ -84,11 +85,13 @@ public class CamelUp
 
 	public boolean trap(int index, int dir)
 	{
-		if (!players[current].trap()) // if player already has trap then don't put another one
+
+		if (players[current].placedTrap()) // if player already has put a trap then don't put another one
 			return false;
 
-		if(!track[index].getCamels().isEmpty()) //if the tile already has camels on it
+		if(!track[index].empty()) //if the tile already has camels on it
 			return false;
+
 
 		try // testing if the surrounding tiles have traps
 		{
@@ -138,7 +141,7 @@ public class CamelUp
 		return true;
 	}
 
-	private void legCalc()
+	public void legCalc()
 	{
 		// gives player coins according to roll cards and leg bets from their inventory
 

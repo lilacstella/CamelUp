@@ -76,12 +76,14 @@ public class Player
 		return name;
 	}
 
-	public boolean trap()
+	public boolean placedTrap() {
+		return trap;
+	}
+
+	public void trap()
 	{
-		if (trap) // if trap is on track
-			return !trap; // false to not put down more trap
-		trap = !trap;
-		return trap; // true to proceed placing trap
+
+		trap = true; //trap = true
 	}
 	
 	public void legClear(Camel firstRank, Camel secondRank)
