@@ -78,6 +78,7 @@ public class CamelUp
 			else if(dir == -1)
 				track[indices[color2Num(color)]-1].add(list,0);
 		}
+		System.out.println(temp.color() + " " + temp.getDieFace());
 		return true;
 	}
 
@@ -172,7 +173,7 @@ public class CamelUp
 		return track;
 	}
 
-	private Camel getRankCamel(int place) //gets the camel given a rank ex. first place
+	public Camel getRankCamel(int place) //gets the camel given a rank ex. first place
 	{
 		int camelRank = 1;
 		for (int i = track.length - 1; i > -1; i--) {

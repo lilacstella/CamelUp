@@ -1,9 +1,13 @@
 import Core.*;
+import Core.CamelUp;
+
+import java.util.Arrays;
 
 public class TextRunner
 {
 	public static void main(String[] args)
 	{
-		System.out.println(1);
+		CamelUp gameState = new CamelUp();
+		System.out.println(Arrays.toString(gameState.getTrack()));
 	}
 }

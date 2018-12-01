@@ -7,7 +7,7 @@ import java.util.Iterator;
 public class Tile
 {
 	private ArrayList<Camel> camels;
-	private Trap trap;
+	private Core.Trap trap;
 
 	public Tile()
 	{
@@ -86,8 +86,8 @@ public class Tile
 
 	public String toString() {
 		String ret = "";
-		ret += "trap:" + trap + "\n";
-		ret += "camels" + camels;
+		ret += "trap:" + trap + " ";
+		ret += "camels " + camels + "\n";
 		return ret;
 	}
 
