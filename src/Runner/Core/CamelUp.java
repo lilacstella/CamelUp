@@ -86,6 +86,10 @@ public class CamelUp
 	{
 		if (!players[current].trap()) // if player already has trap then don't put another one
 			return false;
+
+		if(!track[index].getCamels().isEmpty()) //if the tile already has camels on it
+			return false;
+
 		try // testing if the surrounding tiles have traps
 		{
 			if (track[index].hasTrap() || track[index + 1].hasTrap() || track[index - 1].hasTrap())
