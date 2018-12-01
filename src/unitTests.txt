@@ -1,16 +1,21 @@
-
-
-unit tests
+TO DO unit tests
 - track tests
 - gamebet test
 - camelRank test
 - legbet test
 - dice test
 - rolling test
-
-
-
 - text runner
+
+
+SUCCESSFUL
+
+- camelRank test
+
+
+
+
+
 
 
 

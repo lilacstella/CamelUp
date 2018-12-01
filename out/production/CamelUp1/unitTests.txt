@@ -1,5 +1,3 @@
-
-
 unit tests
 - track tests
 - gamebet test
@@ -7,10 +5,19 @@ unit tests
 - legbet test
 - dice test
 - rolling test
-
-
-
 - text runner
+
+
+
+SUCCESSFUL
+
+- camelRank test
+
+Failure
+
+
+
+
 
 
 

@@ -86,8 +86,8 @@ public class Tile
 
 	public String toString() {
 		String ret = "";
-		ret += "trap:" + trap + " ";
-		ret += "camels " + camels + "\n";
+		ret += "\ntrap:" + trap + " ";
+		ret += "camels " + camels;
 		return ret;
 	}
 
