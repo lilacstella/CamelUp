@@ -1,6 +1,8 @@
 TO DO unit tests
+
+
+- tile test
 - gamebet test
-- camelRank test
 - legbet test
 - player test
 - text runner

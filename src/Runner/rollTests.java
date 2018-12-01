@@ -20,6 +20,11 @@ public class rollTests {
         printTrack(gameState);
 
 
+        gameState.proceed();
+        gameState.roll();
+        System.out.println(gameState.getRolled());
+
+
     }
 
     public static void printTrack(CamelUp camelUp) {

@@ -116,8 +116,7 @@ public class CamelUp
 	}
 
 //if the game has been won and cash out if yes
-	public boolean won()
-	{
+	public boolean won() {
 		if (track[15].empty())
 			return false;
 
