@@ -1,4 +1,3 @@
-package Core;
 public class GameBet
 {
 	private String playerName;

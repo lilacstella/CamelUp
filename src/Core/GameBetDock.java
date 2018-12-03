@@ -1,4 +1,3 @@
-package Core;
 import java.util.LinkedList;
 import java.util.Queue;
 

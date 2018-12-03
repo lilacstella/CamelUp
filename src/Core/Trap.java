@@ -1,4 +1,3 @@
-package Core;
 public class Trap
 {
 	private int dir;

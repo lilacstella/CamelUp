@@ -1,16 +1,16 @@
 TO DO unit tests
 
-- tile test
+
 - gamebet test
 - legbet test
 - player test
 - text runner
 
-
 SUCCESSFUL
 
 - camelRank test
 - rolling test
+- tile test
 
 
 

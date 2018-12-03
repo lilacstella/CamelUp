@@ -1,4 +1,3 @@
-package Core;
 import java.util.Stack;
 
 public class LegBetDock

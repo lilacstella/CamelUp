@@ -1,4 +1,3 @@
-package Core;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -7,7 +6,7 @@ import java.util.Iterator;
 public class Tile
 {
 	private ArrayList<Camel> camels;
-	private Core.Trap trap;
+	private Trap trap;
 
 	public Tile()
 	{

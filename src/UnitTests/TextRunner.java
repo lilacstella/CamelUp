@@ -1,6 +1,3 @@
-import Core.*;
-import Core.CamelUp;
-
 import java.util.Arrays;
 
 public class TextRunner

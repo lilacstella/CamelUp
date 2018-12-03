@@ -1,4 +1,3 @@
-package Core;
 public class LegBet
 {
 	private int value;

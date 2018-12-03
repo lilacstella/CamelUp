@@ -147,9 +147,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="260" />
+    <option name="y" value="20" />
+    <option name="width" value="1637" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -190,7 +192,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543635077465" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543863219373" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/Runner" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -236,6 +238,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.TextRunner" />
+      <item itemvalue="Application.camelRankTest" />
+      <item itemvalue="Application.rollTests" />
+      <item itemvalue="Application.tileTest" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.tileTest" />
