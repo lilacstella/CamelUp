@@ -26,5 +26,5 @@ hs_err_pid*
 *.project
 
 #IntelliJ
-*.idea
+.idea\
 *.xml
