@@ -1,3 +1,5 @@
+package Core;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 public class Player
@@ -112,12 +114,12 @@ public class Player
 
 	public String toString() {
 		String ret = "";
-		ret += "name: " + getName();
+		ret += "name: " + getName() + "\n";
 		ret += "coins: " + getCoins() + "\n";
-		ret += "leg bets: " + legBets;
-		ret += "rollCards: " + getRollCards();
-		ret += "game bets: " + getGameBets();
-		ret += "has trap: " + trap;
+		ret += "leg bets: " + legBets + "\n";
+		ret += "rollCards: " + getRollCards() + "\n";
+		ret += "game bets: " + getGameBets() + "\n";
+		ret += "has trap: " + trap + "\n";
 		return ret;
 	}
 }

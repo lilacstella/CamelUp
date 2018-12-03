@@ -1,3 +1,5 @@
+package Core;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -11,7 +13,7 @@ public class CamelUp
 	private HashSet<Dice> rolled; // to store the dice rolled out of pyramid for display
 	private HashMap<String, GameBetDock> gameBetDocks;// 2 gameBetDocks called by winner/loser
 	private HashMap<String, LegBetDock> legBetDocks; // 5 legBetDocks called by getColor
-	Player[] players; // array of all players in game to be iterated through with the variable current
+	private Player[] players; // array of all players in game to be iterated through with the variable current
 	private int current; // current player number
 
 	// initialize board
@@ -190,5 +192,9 @@ public class CamelUp
 			}
 		}
 		return null;
+	}
+
+	public Player[] getPlayers() {
+		return players;
 	}
 }

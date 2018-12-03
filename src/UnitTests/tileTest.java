@@ -1,3 +1,7 @@
+package UnitTests;
+
+import Core.CamelUp;
+
 import java.util.Arrays;
 
 public class tileTest {
