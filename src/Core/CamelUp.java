@@ -80,7 +80,6 @@ public class CamelUp
 				track[indices[color2Num(color)]-1].add(list,0);
 			currentPlayer().setCoins(currentPlayer().getCoins()+1);
 		}
-		System.out.println(temp.getColor() + " " + temp.getDieFace());
 		return true;
 	}
 

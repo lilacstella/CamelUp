@@ -12,18 +12,50 @@ public class gamebetTest {
         System.out.println(gameState.currentPlayer());
 
         gameState.gameBet("blue", true);
-        System.out.println(gameState.currentPlayer());
+        System.out.println(gameState.currentPlayer()); //testing if the gamebet is removed
+
+
+        print10blankLines();
+        print10blankLines();
+
+
+        gameState.proceed();
+        gameState.gameBet("yellow", true);
+        gameState.proceed();
+        gameState.gameBet("green", true);
+        gameState.proceed();
+        gameState.gameBet("white", true);
+        gameState.proceed();
+        gameState.gameBet("orange", true);
+        gameState.proceed();
+
+
+
+        gameState.gameBet("yellow", false);
+        gameState.proceed();
+        gameState.gameBet("green", false);
+        gameState.proceed();
+        gameState.gameBet("white", false);
+        gameState.proceed();
+        gameState.gameBet("orange", false);
+        gameState.proceed();
+        gameState.gameBet("blue", false);
+        gameState.proceed();
+
+
+
+
+
+        int r = 1; // roll num
+
+
         while (!gameState.won()) {
             gameState.roll();
             gameState.proceed();
+            System.out.println(r++);
         }
         printCoins(gameState);
         printTrack(gameState);
-
-
-
-
-
     }
 
 
