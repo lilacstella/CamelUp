@@ -1,4 +1,4 @@
-package Core;
+package core;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -96,9 +96,10 @@ public class Player
 		for (LegBet legBet : legBets) {
 			if (legBet.getCamelColor().equals(firstRank.getCamelColor()))
 				coins += legBet.getValue();
-
-			if (legBet.getCamelColor().equals(secondRank.getCamelColor()))
+			else if (legBet.getCamelColor().equals(secondRank.getCamelColor()))
 				coins += 1;
+			else
+				coins -= 1;
 		}
 
 		legBets.clear();

@@ -1,4 +1,4 @@
-package Core;
+package core;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -78,7 +78,7 @@ public class CamelUp
 				track[indices[color2Num(color)]+1].add(list);
 			else if(dir == -1)
 				track[indices[color2Num(color)]-1].add(list,0);
-			currentPlayer().setCoins(currentPlayer().getCoins()+1);
+			getCurrentPlayer().setCoins(getCurrentPlayer().getCoins()+1);
 		}
 		return true;
 	}
@@ -117,7 +117,7 @@ public class CamelUp
 	}
 
 //current player playing the game
-	public Player currentPlayer()
+	public Player getCurrentPlayer()
 	{
 		return players[current];
 	}

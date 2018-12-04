@@ -1,7 +1,7 @@
-package UnitTests;
+package unit_tests;
 
-import Core.CamelUp;
-import Core.Player;
+import core.CamelUp;
+import core.Player;
 
 import java.util.Arrays;
 
@@ -9,10 +9,10 @@ public class gamebetTest {
     public static void main(String[] args) {
         CamelUp gameState = new CamelUp();
         printTrack(gameState);
-        System.out.println(gameState.currentPlayer());
+        System.out.println(gameState.getCurrentPlayer());
 
         gameState.gameBet("blue", true);
-        System.out.println(gameState.currentPlayer()); //testing if the gamebet is removed
+        System.out.println(gameState.getCurrentPlayer()); //testing if the gamebet is removed
 
 
         print10blankLines();

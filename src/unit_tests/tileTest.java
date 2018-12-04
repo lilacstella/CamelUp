@@ -1,6 +1,6 @@
-package UnitTests;
+package unit_tests;
 
-import Core.CamelUp;
+import core.CamelUp;
 
 import java.util.Arrays;
 
@@ -28,7 +28,7 @@ public class tileTest {
         gameState.trap(1, -1);
         printTrack(gameState);
 
-        System.out.println(gameState.currentPlayer());
+        System.out.println(gameState.getCurrentPlayer());
 
 
 

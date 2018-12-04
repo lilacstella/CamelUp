@@ -1,6 +1,6 @@
-package UnitTests;
+package unit_tests;
 
-import Core.CamelUp;
+import core.CamelUp;
 
 import java.util.Arrays;
 
