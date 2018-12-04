@@ -80,7 +80,7 @@ public class Tile
 
 	public boolean empty()
 	{
-		return getCamels().size() == 0;
+		return getCamels().isEmpty();
 	}
 
 	public String toString() {
