@@ -1,6 +1,6 @@
 package graphics;
 
-import Core.Dice;
+import core.Dice;
 
 import java.awt.Point;
 import java.awt.Shape;
