@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class GraphicDice
 {
     private Point pos;
-    Dice dice;
+    private Dice dice;
     public GraphicDice(Point point, Dice dice)
     {
         pos = point;
@@ -18,30 +18,61 @@ public class GraphicDice
     }
 
     public void draw(Graphics2D graphics2D) {
-        
+        graphics2D.setPaint(Color.BLACK);
+
+        int x = pos.x;
+        int y = pos.y;
+
+
+        switch (dice.getDieFace()) {
+
+            case 1:
+
+                graphics2D.fillOval(x + 43, y + 43, 15, 15);
+                break;
+
+            case 2:
+
+                graphics2D.fillOval(x+18, y+68, 15, 15);
+                graphics2D.fillOval(x+68, y+18, 15, 15);
+                break;
+
+            case 3:
+
+                graphics2D.fillOval(x+18, y+68, 15, 15);
+                graphics2D.fillOval(x+43, y+43, 15, 15);
+                graphics2D.fillOval(x+68, y+18, 15, 15);
+                break;
+
+            case 4:
+
+                graphics2D.fillOval(x+23, y+23, 15, 15);
+                graphics2D.fillOval(x+63, y+63, 15, 15);
+                graphics2D.fillOval(x+23, y+63, 15, 15);
+                graphics2D.fillOval(x+63, y+23, 15, 15);
+                break;
+
+            case 5:
+
+                graphics2D.fillOval(x+23, y+23, 15, 15);
+                graphics2D.fillOval(x+63, y+63, 15, 15);
+                graphics2D.fillOval(x+23, y+63, 15, 15);
+                graphics2D.fillOval(x+63, y+23, 15, 15);
+                graphics2D.fillOval(x+43, y+43, 15, 15);
+                break;
+
+            case 6:
+
+                graphics2D.fillOval(x+13, y+13, 15, 15);
+                graphics2D.fillOval(x+43, y+13, 15, 15);
+                graphics2D.fillOval(x+73, y+13, 15, 15);
+                graphics2D.fillOval(x+13, y+73, 15, 15);
+                graphics2D.fillOval(x+43, y+73, 15, 15);
+                graphics2D.fillOval(x+73, y+73, 15, 15);
+                break;
+
+            default:
+                break;
+        }
     }
-
-
-
-
-
-//    public ArrayList<Shape> draw()
-//    {
-//        ArrayList<Shape> shapes = new ArrayList<Shape>();
-//        shapes.add(new Rectangle((int)pos.getX(), (int)pos.getY(), 100, 100));
-//        if(getDieFace() == 1)
-//            shapes.add(new Ellipse2D.Double(pos.getX() + 50, pos.getY() + 50, 10, 10));
-//        else if(super.getDieFace() == 2)
-//        {
-//            shapes.add(new Ellipse2D.Double(pos.getX() + 25, pos.getY() + 25, 10, 10));
-//            shapes.add(new Ellipse2D.Double(pos.getX() + 75, pos.getY() + 75, 10, 10));
-//        }
-//        else if(super.getDieFace() == 3)
-//        {
-//            shapes.add(new Ellipse2D.Double(pos.getX()+50, pos.getY()+50, 10, 10));
-//            shapes.add(new Ellipse2D.Double(pos.getX() + 25, pos.getY() + 25, 10, 10));
-//            shapes.add(new Ellipse2D.Double(pos.getX() + 75, pos.getY() + 75, 10, 10));
-//        }
-//        return shapes;
-//    }
 }
