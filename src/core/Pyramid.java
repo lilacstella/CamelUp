@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 public class Pyramid
 {
-	HashSet<Dice> die;
+	protected HashSet<Dice> die;
 
 	public Pyramid()
 	{
@@ -17,6 +17,7 @@ public class Pyramid
 	// helper method to add dice to the set; also useful for reset
 	public void reset()
 	{
+		die.clear();
 		die.add(new Dice("blue"));
 		die.add(new Dice("yellow"));
 		die.add(new Dice("orange"));
