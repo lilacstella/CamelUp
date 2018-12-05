@@ -11,13 +11,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 
-public class GraphicPyramid extends Pyramid
+public class GraphicPyramid
 {
     private Point pos;
     public GraphicPyramid()
     {
-        super();
-        die.clear();
+
         pos = new Point(1100,100);
     }
 
@@ -29,17 +28,5 @@ public class GraphicPyramid extends Pyramid
         return shapes;
     }
     
-    @Override
-    public void reset()
-	{
-    	die.clear();
-		die.add(new GraphicDice(new Point(500,200),"blue"));
-		die.add(new GraphicDice(new Point(600,200),"yellow"));
-		die.add(new GraphicDice(new Point(700,200),"orange"));
-		die.add(new GraphicDice(new Point(800,200), "green"));
-		die.add(new GraphicDice(new Point(900,200),"white"));
-		Iterator<Dice> iter = die.iterator();
-		while (iter.hasNext())
-			iter.next().rollDice();
-	}
+
 }
