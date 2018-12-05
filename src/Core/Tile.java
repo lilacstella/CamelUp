@@ -12,7 +12,7 @@ public class Tile
 
 	public Tile()
 	{
-		camels = new ArrayList<Camel>();
+		camels = new ArrayList<>();
 	}
 
 	// put a trap on the tile
@@ -42,8 +42,6 @@ public class Tile
 	
 	public ArrayList<Camel> remCamels(String color)
 	{
-		// ask Stroud if we are allowed to use the remove(Object) of linked list
-		// or iterator because it kind of breaks the law of Queues
 		Iterator<Camel> iter = camels.iterator();
 		Camel temp = null;
 		ArrayList<Camel> list = new ArrayList<>();
@@ -82,6 +80,14 @@ public class Tile
 
 	public boolean empty()
 	{
-		return camels.isEmpty();
+		return getCamels().isEmpty();
 	}
+
+	public String toString() {
+		String ret = "";
+		ret += "\ntrap:" + trap + " ";
+		ret += "camels " + camels;
+		return ret;
+	}
+
 }

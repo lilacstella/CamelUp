@@ -2,7 +2,6 @@ package core;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
 public class Player
 {
 	private int coins;
@@ -23,7 +22,7 @@ public class Player
 		setCoins(3); // start out with 3 coins issue #28
 		gameBets = new ArrayList<>(); // initialize gameBets
 		for (int i = 0; i < 5; i++)
-			gameBets.add(new GameBet(name, camelColors[i])); // sets the players five gameBets of each camel color;
+			gameBets.add(new GameBet(name, camelColors[i])); // sets the players five gameBets of each camel getColor;
 		legBets = new ArrayList<>(); // initialize leg bets
 		rollCards = 0;
 		trap = false;
@@ -39,12 +38,12 @@ public class Player
 		this.coins = coins;
 	}
 
-	public ArrayList<GameBet> getGameBet()
+	public ArrayList<GameBet> getGameBets()
 	{
 		return gameBets;
 	}
 
-	public GameBet getGameBet(String color)
+	public GameBet remGameBet(String color)
 	{
 		Iterator<GameBet> iter = gameBets.iterator();
 		while (iter.hasNext())
@@ -78,12 +77,14 @@ public class Player
 		return name;
 	}
 
-	public boolean trap()
+	public boolean placedTrap() {
+		return trap;
+	}
+
+	public void trap()
 	{
-		if (trap) // if trap is on track
-			return !trap; // false to not put down more trap
-		trap = !trap;
-		return trap; // true to proceed placing trap
+
+		trap = true; //trap = true
 	}
 	
 	public void legClear(Camel firstRank, Camel secondRank)
@@ -92,13 +93,13 @@ public class Player
 		rollCards = 0;
 		trap = false;
 
-		for (LegBet legBet : legBets) 
-		{
-			if (legBet.getCamelColor().equals(firstRank.getCamelColor())) 
+		for (LegBet legBet : legBets) {
+			if (legBet.getCamelColor().equals(firstRank.getCamelColor()))
 				coins += legBet.getValue();
-			
-			if (legBet.getCamelColor().equals(secondRank.getCamelColor())) 
-				coins++;
+			else if (legBet.getCamelColor().equals(secondRank.getCamelColor()))
+				coins += 1;
+			else
+				coins -= 1;
 		}
 
 		legBets.clear();
@@ -110,5 +111,16 @@ public class Player
 		if (legBet == null)
 			return false;
 		return legBets.add(legBet);
+	}
+
+	public String toString() {
+		String ret = "";
+		ret += "name: " + getName() + "\n";
+		ret += "coins: " + getCoins() + "\n";
+		ret += "leg bets: " + legBets + "\n";
+		ret += "rollCards: " + getRollCards() + "\n";
+		ret += "game bets: " + getGameBets() + "\n";
+		ret += "has trap: " + trap + "\n";
+		return ret;
 	}
 }

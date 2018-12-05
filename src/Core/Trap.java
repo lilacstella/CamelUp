@@ -17,9 +17,13 @@ public class Trap
 		player.setCoins(player.getCoins() + 1);
 	}
 
-	// gets the direction <o/
+	// gets the direction <o/. either -1 or 1 unless not initialized
 	public int getDir()
 	{
 		return dir;
+	}
+
+	public String toString() {
+		return "player" + player.getName() + "dir" + dir;
 	}
 }

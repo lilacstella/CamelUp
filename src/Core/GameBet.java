@@ -20,4 +20,8 @@ public class GameBet
 	{
 		return camelColor;
 	}
+
+	public String toString() {
+		return getPlayerName() + " " + getCamelColor();
+	}
 }

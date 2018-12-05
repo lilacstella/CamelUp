@@ -12,7 +12,7 @@ public class CamelUp
 	private Pyramid pyramid; // what is yet to be rolled - just the pyramid
 	private HashSet<Dice> rolled; // to store the dice rolled out of pyramid for display
 	private HashMap<String, GameBetDock> gameBetDocks;// 2 gameBetDocks called by winner/loser
-	private HashMap<String, LegBetDock> legBetDocks; // 5 legBetDocks called by color
+	private HashMap<String, LegBetDock> legBetDocks; // 5 legBetDocks called by getColor
 	private Player[] players; // array of all players in game to be iterated through with the variable current
 	private int current; // current player number
 
@@ -64,7 +64,7 @@ public class CamelUp
 	{
 		players[current].addRollCard();
 		Dice temp = pyramid.roll();
-		String color = temp.color();
+		String color = temp.getColor();
 		int dieFace = temp.getDieFace();
 		rolled.add(temp);
 		int index = indices[color2Num(color)];
@@ -78,14 +78,21 @@ public class CamelUp
 				track[indices[color2Num(color)]+1].add(list);
 			else if(dir == -1)
 				track[indices[color2Num(color)]-1].add(list,0);
+			getCurrentPlayer().setCoins(getCurrentPlayer().getCoins()+1);
 		}
 		return true;
 	}
 
 	public boolean trap(int index, int dir)
 	{
-		if (!players[current].trap()) // if player already has trap then don't put another one
+
+		if (players[current].placedTrap()) // if player already has put a trap then don't put another one
 			return false;
+
+		if(!track[index].empty()) //if the tile already has camels on it
+			return false;
+
+
 		try // testing if the surrounding tiles have traps
 		{
 			if (track[index].hasTrap() || track[index + 1].hasTrap() || track[index - 1].hasTrap())
@@ -99,25 +106,24 @@ public class CamelUp
 		return true;
 	}
 
-	public boolean legBet(String color) // takes top legBet from legBetDock of color and put it into current player
+	public boolean legBet(String color) // takes top legBet from legBetDock of getColor and put it into current player
 	{
 		return players[current].addLegBet(legBetDocks.get(color).getLegBet());
 	}
 
 	public boolean gameBet(String color, boolean winner)
 	{
-		return gameBetDocks.get((winner) ? "winner" : "loser").addGameBet(players[current].getGameBet(color));
+		return gameBetDocks.get((winner) ? "winner" : "loser").addGameBet(players[current].remGameBet(color));
 	}
 
 //current player playing the game
-	public Player currentPlayer()
+	public Player getCurrentPlayer()
 	{
 		return players[current];
 	}
 
 //if the game has been won and cash out if yes
-	public boolean won()
-	{
+	public boolean won() {
 		if (track[15].empty())
 			return false;
 
@@ -135,7 +141,7 @@ public class CamelUp
 		return true;
 	}
 
-	private void legCalc()
+	public void legCalc()
 	{
 		// gives player coins according to roll cards and leg bets from their inventory
 
@@ -148,7 +154,7 @@ public class CamelUp
 
 	}
 
-	// converts color of camel to index in array
+	// converts getColor of camel to index in array
 	private int color2Num(String color)
 	{
 		switch (color)
@@ -173,7 +179,7 @@ public class CamelUp
 		return track;
 	}
 
-	private Camel getRankCamel(int place) //gets the camel given a rank ex. first place
+	public Camel getRankCamel(int place) //gets the camel given a rank ex. first place
 	{
 		int camelRank = 1;
 		for (int i = track.length - 1; i > -1; i--) {
@@ -185,5 +191,9 @@ public class CamelUp
 			}
 		}
 		return null;
+	}
+
+	public Player[] getPlayers() {
+		return players;
 	}
 }
