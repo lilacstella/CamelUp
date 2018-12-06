@@ -63,33 +63,6 @@ public class GraphicDice
                 graphics2D.fillOval(x+68, y+18, 15, 15);
                 break;
 
-            case 4:
-
-                graphics2D.fillOval(x+23, y+23, 15, 15);
-                graphics2D.fillOval(x+63, y+63, 15, 15);
-                graphics2D.fillOval(x+23, y+63, 15, 15);
-                graphics2D.fillOval(x+63, y+23, 15, 15);
-                break;
-
-            case 5:
-
-                graphics2D.fillOval(x+23, y+23, 15, 15);
-                graphics2D.fillOval(x+63, y+63, 15, 15);
-                graphics2D.fillOval(x+23, y+63, 15, 15);
-                graphics2D.fillOval(x+63, y+23, 15, 15);
-                graphics2D.fillOval(x+43, y+43, 15, 15);
-                break;
-
-            case 6:
-
-                graphics2D.fillOval(x+13, y+13, 15, 15);
-                graphics2D.fillOval(x+43, y+13, 15, 15);
-                graphics2D.fillOval(x+73, y+13, 15, 15);
-                graphics2D.fillOval(x+13, y+73, 15, 15);
-                graphics2D.fillOval(x+43, y+73, 15, 15);
-                graphics2D.fillOval(x+73, y+73, 15, 15);
-                break;
-
             default:
                 break;
         }
