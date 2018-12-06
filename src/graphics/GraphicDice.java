@@ -36,6 +36,10 @@ public class GraphicDice
         graphics2D.setColor(colorHashMap.get(dice.getColor()));
         graphics2D.fill(new Rectangle(x, y, 100, 100));
         graphics2D.setPaint(Color.BLACK);
+        int thickness = 3;
+        Stroke oldStroke = graphics2D.getStroke();
+        graphics2D.setStroke(new BasicStroke(thickness));
+        graphics2D.drawRect(x, y, 100, 100);
 
 
 
@@ -89,5 +93,6 @@ public class GraphicDice
             default:
                 break;
         }
+        graphics2D.setStroke(oldStroke);
     }
 }
