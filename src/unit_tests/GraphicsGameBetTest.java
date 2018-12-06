@@ -21,8 +21,7 @@ public class GraphicsGameBetTest extends JPanel {
         GraphicsGameBetTest board = new GraphicsGameBetTest();
         window.add(board);
         gameState = new CamelUp();
-        TimeUnit.SECONDS.sleep(6);
-        gameState.gameBet("blue", true);
+        gameState.gameBet("green", true);
 
 
     }
@@ -39,6 +38,7 @@ public class GraphicsGameBetTest extends JPanel {
 
     public void drawPlayerGameBets(Graphics2D graphics2D) {
         ArrayList<GameBet> gameBets = gameState.getCurrentPlayer().getGameBets();
+        System.out.println(gameState.getCurrentPlayer().getGameBets());
         int adjX = 0;
         for (GameBet gameBet : gameBets) {
             GraphicGameBet graphicGameBet = new GraphicGameBet(new Point(500 + adjX, 500), gameBet);

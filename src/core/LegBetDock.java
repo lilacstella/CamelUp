@@ -19,9 +19,12 @@ public class LegBetDock
 	// polls the top camel on the stack for the player
 	public LegBet getLegBet()
 	{
-		if (legBets.size() == 0)
+		try {
+			return legBets.pop();
+		}catch(NullPointerException e)
+		{
 			return null;
-		return legBets.pop();
+		}
 	}
 
 	public LegBet getTopLeg() {

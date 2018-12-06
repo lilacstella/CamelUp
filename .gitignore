@@ -25,6 +25,7 @@ hs_err_pid*
 
 #Eclipse workspace files
 *.project
+*.classpath
 
 #IntelliJ
 .idea\
@@ -62,6 +63,8 @@ hs_err_pid*
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
+
+.idea\workspace.xml___jb_tmp__
 
 # CMake
 cmake-build-*/
