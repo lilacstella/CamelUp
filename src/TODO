@@ -4,7 +4,6 @@ todo:
 graphicboard - hard
 graphiccamel - hard
 graphiccoin - easy
-graphicGameBet - medium
 GraphicBetDock - medium
 GraphicLegBetDock - medium
 GraphicLegBet - medium
@@ -16,3 +15,4 @@ GraphicTrap - medium
 
 done:
 graphics dice
+graphicGameBet

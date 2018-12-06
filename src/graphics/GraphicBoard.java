@@ -2,8 +2,10 @@ package graphics;
 
 import core.CamelUp;
 import core.Dice;
+import core.GameBet;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.awt.*;
 
@@ -19,15 +21,13 @@ public class GraphicBoard extends JPanel {
         GraphicBoard board = new GraphicBoard();
         window.add(board);
         gameState = new CamelUp();
-        gameState.roll();
-        gameState.roll();
-        gameState.roll();
     }
 
 
     public void paintComponent(Graphics graphics) {
         Graphics2D graphics2D = (Graphics2D)graphics;
         drawDiceRolled(graphics2D, gameState.getRolled());
+        drawPlayerGameBets(graphics2D);
         repaint();
     }
 
@@ -40,8 +40,18 @@ public class GraphicBoard extends JPanel {
             adjX += 125;
 
         }
-
     }
+
+    public void drawPlayerGameBets(Graphics2D graphics2D) {
+        ArrayList<GameBet> gameBets = gameState.getCurrentPlayer().getGameBets();
+        int adjX = 0;
+        for (GameBet gameBet : gameBets) {
+            GraphicGameBet graphicGameBet = new GraphicGameBet(new Point(500 + adjX, 500), gameBet);
+            graphicGameBet.draw(graphics2D);
+            adjX += 125;
+        }
+    }
+
 
 
 }
