@@ -1,16 +1,11 @@
 package unit_tests;
 
 import core.CamelUp;
-import core.Dice;
 import core.GameBet;
-import core.Player;
-import graphics.GraphicDice;
 import graphics.GraphicGameBet;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
