@@ -85,9 +85,16 @@ public class CamelUp
 
 	public boolean trap(int index, int dir)
 	{
-
-		if (players[current].placedTrap()) // if player already has put a trap then don't put another one
-			return false;
+		if (getCurrentPlayer().placedTrap()) // if player already has put a trap then remove it from primary location
+		{
+			for(Tile tile : track)
+				if (tile.getTrap().getPlayer().equals(players[current].getName()))
+				{
+					tile.removeTrap();
+					players[current].removeTrap();
+					break;
+				}
+		}
 
 		if(!track[index].empty()) //if the tile already has camels on it
 			return false;

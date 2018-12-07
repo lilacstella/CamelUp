@@ -14,7 +14,7 @@ public class tileTest {
         System.out.println(gameState.trap(3, -1));
         System.out.println(gameState.trap(2, -1)); // should return false
         System.out.println(gameState.trap(14, 1));
-        System.out.println(gameState.trap(15, 1)); //should not work
+        System.out.println(gameState.trap(15, 1)); //should not wor
         gameState.roll();
         print10blankLines();
         printTrack(gameState);

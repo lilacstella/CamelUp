@@ -83,10 +83,14 @@ public class Player
 
 	public void trap()
 	{
-
 		trap = true; //trap = true
 	}
-	
+
+	public void removeTrap()
+	{
+		trap = false;
+	}
+
 	public void legClear(Camel firstRank, Camel secondRank)
 	{
 		coins += rollCards;

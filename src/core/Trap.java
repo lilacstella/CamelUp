@@ -26,4 +26,8 @@ public class Trap
 	public String toString() {
 		return "player" + player.getName() + "dir" + dir;
 	}
+
+	public String getPlayer() {
+		return player.getName();
+	}
 }
