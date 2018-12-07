@@ -21,6 +21,8 @@ public class GraphicPlayer {
         drawPlayerGameBets(graphics2D);
         drawPlayerLegBets(graphics2D);
         drawRollCards(graphics2D);
+        drawTitles(graphics2D);
+        drawCoins(graphics2D);
     }
 
     public void drawRollCards(Graphics2D graphics2D) {
@@ -28,9 +30,9 @@ public class GraphicPlayer {
         int adjX = 0;
 
         for(int i = 0; i < rollCards; i++) {
-            GraphicRollCard graphicRollCard = new GraphicRollCard(new Point(pos.x + adjX, pos.y));
+            GraphicRollCard graphicRollCard = new GraphicRollCard(new Point(pos.x + 125 + adjX, pos.y+50));
             graphicRollCard.draw(graphics2D);
-            adjX += 125;
+            adjX += 60;
         }
     }
 
@@ -38,9 +40,9 @@ public class GraphicPlayer {
         ArrayList<LegBet> legBets = player.getLegBets();
         int adjX = 0;
         for (LegBet legBet : legBets) {
-            GraphicLegBet graphicLegBet = new GraphicLegBet(new Point(pos.x + adjX,  pos.y + 300), legBet);
+            GraphicLegBet graphicLegBet = new GraphicLegBet(new Point(pos.x + 125 + adjX,  pos.y + 125+50), legBet);
             graphicLegBet.draw(graphics2D);
-            adjX += 125;
+            adjX += 60;
         }
     }
 
@@ -48,10 +50,24 @@ public class GraphicPlayer {
         ArrayList<GameBet> gameBets = player.getGameBets();
         int adjX = 0;
         for (GameBet gameBet : gameBets) {
-            GraphicGameBet graphicGameBet = new GraphicGameBet(new Point(pos.x + adjX, pos.y + 600), gameBet);
+            GraphicGameBet graphicGameBet = new GraphicGameBet(new Point(pos.x + 125 + adjX, pos.y + 250+50), gameBet);
             graphicGameBet.draw(graphics2D);
-            adjX += 125;
+            adjX += 60;
         }
+    }
+
+    public void drawTitles(Graphics2D graphics2D) {
+        graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        graphics2D.drawString(player.getName(), pos.x, pos.y);
+
+        graphics2D.drawString("Roll Cards: ", pos.x, pos.y+100);
+        graphics2D.drawString("Leg Bets: ", pos.x, pos.y+225);
+        graphics2D.drawString("Game Bets: ", pos.x, pos.y+350);
+    }
+
+    public void drawCoins(Graphics2D graphics2D) {
+        graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
+        graphics2D.drawString("Coins: " + player.getCoins(), pos.x, pos.y+30);
     }
 
 

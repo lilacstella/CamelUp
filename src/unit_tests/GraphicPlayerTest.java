@@ -16,6 +16,7 @@ public class GraphicPlayerTest extends JPanel {
         window.setVisible(true);
         GraphicPlayerTest board = new GraphicPlayerTest();
         window.add(board);
+        window.setExtendedState(JFrame.MAXIMIZED_BOTH);
         gameState = new CamelUp();
         gameState.legBet("blue");
         gameState.legBet("blue");
@@ -25,6 +26,7 @@ public class GraphicPlayerTest extends JPanel {
         gameState.roll();
         gameState.roll();
         gameState.roll();
+        window.setExtendedState(JFrame.NORMAL);
     }
 
     public void paintComponent(Graphics graphics) {
