@@ -1,7 +1,8 @@
-package graphics;
+package unit_tests;
 
 import core.CamelUp;
 import core.Player;
+import graphics.GraphicPlayer;
 
 import javax.swing.*;
 import java.awt.*;
