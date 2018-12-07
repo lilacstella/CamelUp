@@ -196,4 +196,14 @@ public class CamelUp
 	public Player[] getPlayers() {
 		return players;
 	}
+
+	public ArrayList<LegBet> getTopLegs() {
+		ArrayList<LegBet> topCards = new ArrayList<>();
+		for (LegBetDock legBetDock : legBetDocks.values()) {
+			topCards.add(legBetDock.getTopLeg());
+		}
+		return topCards;
+	}
+
+
 }

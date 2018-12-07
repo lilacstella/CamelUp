@@ -1,5 +1,6 @@
 package core;
 
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 public class LegBetDock
@@ -28,7 +29,12 @@ public class LegBetDock
 	}
 
 	public LegBet getTopLeg() {
-		return legBets.peek();
+		try {
+			return legBets.peek();
+		}catch(EmptyStackException e)
+		{
+			return null;
+		}
 	}
 
 	// resets the dock to its original position, meant for the beginning

@@ -28,6 +28,17 @@ public class GraphicLegBet {
         int x = pos.x;
         int y = pos.y;
 
+        if (legBet == null) {
+            graphics2D.setPaint(Color.BLACK);
+            int thickness = 3;
+            Stroke oldStroke = graphics2D.getStroke();
+            graphics2D.setStroke(new BasicStroke(thickness));
+            graphics2D.drawRect(x, y, 100, 200);
+            graphics2D.setStroke(oldStroke);
+            return;
+        }
+
+
         graphics2D.setColor(colorHashMap.get(legBet.getCamelColor()));
         graphics2D.fill(new Rectangle(x, y, 100, 200));
         graphics2D.setPaint(Color.BLACK);
@@ -37,5 +48,7 @@ public class GraphicLegBet {
         graphics2D.drawRect(x, y, 100, 200);
         graphics2D.drawString(Integer.toString(legBet.getValue()), x + 43, y + 95);
         graphics2D.setStroke(oldStroke);
+
+
     }
 }
