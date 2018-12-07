@@ -6,7 +6,6 @@ GraphicTile - medium
 GraphicTrap - medium
 
 today sareeem plans:
-GraphicLegBetDock - medium
 GraphicPlayer - hard
 GraphicRollCard - easy
 
@@ -17,3 +16,4 @@ done:
 graphics dice
 graphicGameBet
 GraphicLegBet
+GraphicLegBetDock
