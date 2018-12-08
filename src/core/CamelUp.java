@@ -86,23 +86,43 @@ public class CamelUp
 	public boolean trap(int index, int dir)
 	{
 
-		if (players[current].placedTrap()) // if player already has put a trap then don't put another one
-			return false;
+		int oldIndex = -1;
+		Trap oldTrap = null;
 
-		if(!track[index].empty()) //if the tile already has camels on it
-			return false;
+		if (getCurrentPlayer().placedTrap()) {
+			for (int i = 0; i < track.length; i++) {
+				if(track[i].getTrap() == null) continue;
+				if (track[i].getTrap().getPlayerName().equals(getCurrentPlayer().getName())) {
+					oldTrap = track[i].removeTrap();
+					oldIndex = i;
+				}
+			}
+		}
 
+		if(!track[index].empty()) {//if the tile already has camels on it
+			if (getCurrentPlayer().placedTrap())
+				track[oldIndex].setTrap(oldTrap);
+			return false;
+		}
 
 		try // testing if the surrounding tiles have traps
 		{
-			if (track[index].hasTrap() || track[index + 1].hasTrap() || track[index - 1].hasTrap())
+			if (track[index].hasTrap() || track[index + 1].hasTrap() || track[index - 1].hasTrap()) {
+				if (getCurrentPlayer().placedTrap())
+					track[oldIndex].setTrap(oldTrap);
 				return false;
+			}
 		} catch (ArrayIndexOutOfBoundsException e)
 		{
-			if ((index == 15 && track[index - 1].hasTrap()) || (index == 0 && track[index + 1].hasTrap()))
+			if ((index == 15 && track[index - 1].hasTrap()) || (index == 0 && track[index + 1].hasTrap())) {
+				if (getCurrentPlayer().placedTrap())
+					track[oldIndex].setTrap(oldTrap);
 				return false;
+			}
+
 		}
-		track[index].setTrap(new Trap(players[current], dir));
+		track[index].setTrap(new Trap(getCurrentPlayer(), dir));
+		getCurrentPlayer().trap();
 		return true;
 	}
 

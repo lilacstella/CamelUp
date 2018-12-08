@@ -78,6 +78,10 @@ public class Tile
 		return 0;
 	}
 
+	public Trap getTrap() {
+		return trap;
+	}
+
 	public boolean empty()
 	{
 		return getCamels().isEmpty();
