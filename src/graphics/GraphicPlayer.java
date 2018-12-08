@@ -68,9 +68,29 @@ public class GraphicPlayer {
     public void drawCoins(Graphics2D graphics2D) {
         graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
         graphics2D.drawString("Coins: " + player.getCoins(), pos.x, pos.y+30);
+
+        int adjX =50;
+        int coins = player.getCoins();
+        while (coins != 0) {
+
+            if (coins >= 10) {
+                GraphicCoin coin = new GraphicCoin(new Point(pos.x + adjX, pos.y + 30), 10);
+                coins -= 10;
+                coin.draw(graphics2D);
+            } else if (coins >= 5) {
+                GraphicCoin coin = new GraphicCoin(new Point(pos.x + adjX, pos.y + 30), 5);
+                coins -= 5;
+                coin.draw(graphics2D);
+            } else {
+                GraphicCoin coin = new GraphicCoin(new Point(pos.x + adjX, pos.y + 30), 1);
+                coins -= 1;
+                coin.draw(graphics2D);
+            }
+
+            adjX += 60;
+
+        }
+
+
     }
-
-
-
-
 }

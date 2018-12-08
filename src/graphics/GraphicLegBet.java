@@ -40,7 +40,7 @@ public class GraphicLegBet {
 
 
         graphics2D.setColor(colorHashMap.get(legBet.getCamelColor()));
-        graphics2D.fill(new Rectangle(x, y, 50, 100));
+        graphics2D.fillRect(x, y, 50, 100);
         graphics2D.setPaint(Color.BLACK);
         int thickness = 3;
         Stroke oldStroke = graphics2D.getStroke();

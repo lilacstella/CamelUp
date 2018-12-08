@@ -17,7 +17,7 @@ public class GraphicRollCard {
 
 
         graphics2D.setColor(new Color(218,165,32)); // goldenrod i think? i dunno i got it from google
-        graphics2D.fill(new Rectangle(x, y, 50, 100));
+        graphics2D.fillRect(x, y, 50, 100);
         graphics2D.setPaint(Color.BLACK);
         int thickness = 3;
         Stroke oldStroke = graphics2D.getStroke();

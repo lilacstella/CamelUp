@@ -27,7 +27,7 @@ public class graphicLegBetTest extends JPanel {
         gameState.legBet("yellow");
         gameState.legBet("green");
         gameState.legBet("blue");
- }
+    }
 
     public void paintComponent(Graphics graphics) {
         Graphics2D graphics2D = (Graphics2D) graphics;
