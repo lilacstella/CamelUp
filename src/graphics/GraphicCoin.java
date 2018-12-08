@@ -19,19 +19,19 @@ public class GraphicCoin {
     public void draw(Graphics2D graphics2D) {
 
         graphics2D.setColor(colorHashMap.get(coinVal));
-        graphics2D.fillOval(pos.x, pos.y, 50, 50);
+        graphics2D.fillOval(pos.x, pos.y, 35, 35);
 
         graphics2D.setPaint(Color.BLACK);
         int thickness = 3;
         Stroke oldStroke = graphics2D.getStroke();
         graphics2D.setStroke(new BasicStroke(thickness));
-        graphics2D.drawOval(pos.x, pos.y, 50, 50);
+        graphics2D.drawOval(pos.x, pos.y, 35, 35);
 
-        graphics2D.setFont(new Font("COMIC SANS MS", Font.BOLD, 25));
+        graphics2D.setFont(new Font("COMIC SANS MS", Font.BOLD, 15));
         if(coinVal != 10)
-            graphics2D.drawString(Integer.toString(coinVal), pos.x + 19, pos.y + 32);
+            graphics2D.drawString(Integer.toString(coinVal), pos.x + 14, pos.y + 25);
         else
-            graphics2D.drawString(Integer.toString(coinVal), pos.x + 10, pos.y + 32);
+            graphics2D.drawString(Integer.toString(coinVal), pos.x + 8, pos.y + 25);
 
 
 

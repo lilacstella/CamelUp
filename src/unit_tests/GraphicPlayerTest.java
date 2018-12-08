@@ -27,6 +27,7 @@ public class GraphicPlayerTest extends JPanel {
         gameState.roll();
         gameState.roll();
         window.setExtendedState(JFrame.NORMAL);
+        gameState.getCurrentPlayer().setCoins(38);
     }
 
     public void paintComponent(Graphics graphics) {
