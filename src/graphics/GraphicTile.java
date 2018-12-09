@@ -1,5 +1,6 @@
 package graphics;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -35,7 +36,7 @@ public class GraphicTile
 		list = new ArrayList<GraphicCamel>();
 		for(int i = 0; i < tile.getCamels().size(); i++)
 			list.add(new GraphicCamel(string2Color(tile.getCamels().get(i).getCamelColor()), new Point(x+50,y+50),i));
-		if(trap!=null)
+		if(tile.getTrap()!=null)
 			this.trap = new GraphicTrap(x,y,tile.getTrap());
 	}
 
@@ -59,6 +60,10 @@ public class GraphicTile
 
 	public void draw(Graphics2D g)
 	{
+		g.setColor(new Color(255,218,185));
+		g.fillRect(x, y, 100, 100);
+		g.setColor(Color.black);
+		g.setStroke(new BasicStroke(3));
 		g.draw(new Rectangle(x,y,100,100));
 		for(GraphicCamel camel : list)
 			camel.draw(g);
