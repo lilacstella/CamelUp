@@ -1,10 +1,8 @@
 package graphics;
 
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
+
 import core.Camel;
 import java.util.ArrayList;
 
@@ -41,6 +39,10 @@ public class GraphicTile
 
 	public void draw(Graphics2D g)
 	{
+		g.setColor(new Color(255,218,185));
+		g.fillRect(x, y, 100, 100);
+		g.setColor(Color.black);
+		g.setStroke(new BasicStroke(3));
 		g.draw(new Rectangle(x,y,100,100));
 		for(GraphicCamel camel : list)
 			camel.draw(g);
