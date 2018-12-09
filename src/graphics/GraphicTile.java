@@ -1,12 +1,12 @@
 package graphics;
 
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.util.ArrayList;
-
 import core.Camel;
+import java.util.ArrayList;
 
 public class GraphicTile
 {
