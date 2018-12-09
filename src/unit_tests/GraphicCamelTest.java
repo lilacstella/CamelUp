@@ -1,14 +1,17 @@
 package unit_tests;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 import core.Camel;
 import core.CamelUp;
-import core.Player;
 import graphics.GraphicCamel;
-import graphics.GraphicPlayer;
 
-import javax.swing.*;
-import java.awt.*;
-
+@SuppressWarnings("serial")
 public class GraphicCamelTest extends JPanel {
     private static CamelUp game;
     public static void main(String[] args) {
@@ -41,8 +44,10 @@ public class GraphicCamelTest extends JPanel {
     public void drawCamel(Graphics2D graphics2D) {
         Camel camel = game.getRankCamel(1);
         System.out.println(camel.getCamelColor());
-        GraphicCamel graphicCamel = new GraphicCamel(string2Color(camel.getCamelColor()));
-        graphicCamel.draw(graphics2D);
+//        GraphicCamel graphicCamel = new GraphicCamel(string2Color(camel.getCamelColor()),1);
+//        GraphicCamel graphicCamelB = new GraphicCamel(string2Color(game.getRankCamel(2).getCamelColor()),0);
+//        graphicCamel.draw(graphics2D);
+//        graphicCamelB.draw(graphics2D);
     }
 
     public Color string2Color(String string)

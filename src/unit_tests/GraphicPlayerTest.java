@@ -32,6 +32,7 @@ public class GraphicPlayerTest extends JPanel {
 
     public void paintComponent(Graphics graphics) {
         Graphics2D graphics2D = (Graphics2D) graphics;
+        graphics2D.draw(new Rectangle(100,100, 500, 400));
         drawPlayer(graphics2D);
         try {
             repaint();
