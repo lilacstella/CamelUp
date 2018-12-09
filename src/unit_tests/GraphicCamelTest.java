@@ -40,6 +40,7 @@ public class GraphicCamelTest extends JPanel {
 
     public void drawCamel(Graphics2D graphics2D) {
         Camel camel = game.getRankCamel(1);
+        System.out.println(camel.getCamelColor());
         GraphicCamel graphicCamel = new GraphicCamel(string2Color(camel.getCamelColor()));
         graphicCamel.draw(graphics2D);
     }

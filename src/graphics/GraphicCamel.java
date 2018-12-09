@@ -6,10 +6,11 @@ import java.awt.geom.Path2D;
 public class GraphicCamel
 {
     private double[] arr;
-    private Path2D.Double path;
+    private Path2D path;
     private Color color;
     public GraphicCamel(Color color)
     {
+        path = new Path2D.Double();
         this.color = color;
         arr = new double[]{
                 -0.25, 0.31,
@@ -32,7 +33,7 @@ public class GraphicCamel
                 -0.40, 0.09,
                 -0.40, 0.08,
                 -0.40, 0.06,
-                -0.41,0.04,
+                -0.41, 0.04,
                 -0.41, 0.03,
                 -0.41, 0.01,
                 -0.41, -0.01,
@@ -44,7 +45,7 @@ public class GraphicCamel
                 -0.41, -0.10,
                 -0.41, -0.12,
                 -0.41, -0.14,
-                -0.41,-0.15,
+                -0.41, -0.15,
                 -0.41, -0.17,
                 -0.41, -0.19,
                 -0.41, -0.21,
@@ -209,11 +210,16 @@ public class GraphicCamel
                 -0.22, 0.27,
                 -0.23, 0.28,
                 -0.24, 0.30,
-                -0.25,0.30,
+                -0.25, 0.30,
                 -0.26, 0.31,
         };
-        for (int i = 0; i < arr.length; i+=2)
-            path.moveTo(arr[i],arr[i+1]);
+
+        System.out.println(arr.length);
+
+        path.moveTo(arr[1] * 100, arr[0] * 100);
+        for (int i = 2; i < arr.length-2; i+=2)
+            path.lineTo(arr[i+1] * 100 + 200, arr[i] * 100 + 200);
+        path.lineTo(arr[1] * 100, arr[0] * 100);
         path.closePath();
     }
 
