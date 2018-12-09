@@ -1,5 +1,9 @@
 package graphics;
 
+import core.Camel;
+
+import java.util.ArrayList;
+
 public class GraphicTile
 {
 	int x,y;
