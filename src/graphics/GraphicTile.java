@@ -7,22 +7,40 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import core.Camel;
+import core.Tile;
+import core.Trap;
 
 public class GraphicTile
 {
 	int x,y;
 	ArrayList<GraphicCamel> list;
-	public GraphicTile(int x, int y, ArrayList<Camel> camels)
+	GraphicTrap trap;
+	public GraphicTile(int x, int y, ArrayList<Camel> camels, Trap trap)
 	{
 		this.x = x;
 		this.y = y;
 		list = new ArrayList<GraphicCamel>();
 		for(int i = 0; i < camels.size(); i++)
 			list.add(new GraphicCamel(string2Color(camels.get(i).getCamelColor()), new Point(x+50,y+50),i));
+		if(trap!=null)
+			this.trap = new GraphicTrap(x,y,trap);
 	}
 	
 	
 	
+	public GraphicTile(int x, int y, Tile tile)
+	{
+		this.x = x;
+		this.y = y;
+		list = new ArrayList<GraphicCamel>();
+		for(int i = 0; i < tile.getCamels().size(); i++)
+			list.add(new GraphicCamel(string2Color(tile.getCamels().get(i).getCamelColor()), new Point(x+50,y+50),i));
+		if(trap!=null)
+			this.trap = new GraphicTrap(x,y,tile.getTrap());
+	}
+
+
+
 	public Color string2Color(String string)
 	    {
 	        switch(string)
@@ -44,5 +62,6 @@ public class GraphicTile
 		g.draw(new Rectangle(x,y,100,100));
 		for(GraphicCamel camel : list)
 			camel.draw(g);
+		trap.draw(g);
 	}
 }

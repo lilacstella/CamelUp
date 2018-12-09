@@ -52,7 +52,7 @@ public class GraphicTileTest extends JPanel
 	{
 		Tile tile = game.getTrack()[0];
 		System.out.println(tile.getCamels());
-		GraphicTile gTile = new GraphicTile(500,500,tile.getCamels());
+		GraphicTile gTile = new GraphicTile(500,500,tile.getCamels(),tile.getTrap());
 		gTile.draw(graphics2D);
 //		Camel camel = game.getRankCamel(1);
 //		System.out.println(camel.getCamelColor());
