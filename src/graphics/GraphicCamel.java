@@ -210,7 +210,7 @@ public class GraphicCamel
                 -0.13 ,-0.40,
         };
 
-        System.out.println(arr.length);
+//        System.out.println(arr.length);
 
         path.moveTo(arr[0] * 100 + point.x, arr[1] * 100+point.y-pos*50 );
 //        path.lineTo(100,100);

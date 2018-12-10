@@ -62,7 +62,7 @@ public class GraphicTile
 	{
 //		g.setColor(new Color(255,218,185));
 //		g.fillRect(x, y, 100, 100);
-		g.setColor(Color.ORANGE);
+		g.setColor(new Color(193, 144, 36));
 		g.fillRect(x,y,100,100);
 		g.setColor(Color.black);
 		g.setStroke(new BasicStroke(3));

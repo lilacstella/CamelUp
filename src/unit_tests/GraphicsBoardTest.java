@@ -23,11 +23,22 @@ public class GraphicsBoardTest extends JPanel {
         window.setExtendedState(JFrame.MAXIMIZED_BOTH);
         gameState = new CamelUp();
         window.setExtendedState(JFrame.NORMAL);
+        System.out.println(window.getWidth());
+        System.out.println(window.getHeight());
         trackPositions = new Point[16];
         Scanner in = new Scanner(new File("TrackPositions.txt"));
         for (int i = 0; i < trackPositions.length; i++) {
             trackPositions[i] = new Point(in.nextInt(), in.nextInt());
         }
+        gameState.roll();
+        gameState.proceed();
+        gameState.roll();
+        gameState.proceed();
+        gameState.roll();
+        gameState.proceed();
+        gameState.roll();
+        gameState.proceed();
+        gameState.trap(15, 1);
     }
 
     public void paintComponent(Graphics graphics) {
@@ -39,7 +50,7 @@ public class GraphicsBoardTest extends JPanel {
     public void drawBoard(Graphics2D graphics2D) {
         Tile[] track = gameState.getTrack();
         for (int i = 0; i < trackPositions.length; i++) {
-            GraphicTile graphicTile = new GraphicTile(trackPositions[i].x, trackPositions[i].y, track[i]);
+            GraphicTile graphicTile = new GraphicTile(trackPositions[i].x, trackPositions[i].y + 200, track[i]);
             graphicTile.draw(graphics2D);
         }
     }
