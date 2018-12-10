@@ -67,6 +67,9 @@ public class GraphicTile
 		g.draw(new Rectangle(x,y,100,100));
 		for(GraphicCamel camel : list)
 			camel.draw(g);
+		if (trap == null) {
+			return;
+		}
 		trap.draw(g);
 	}
 }
