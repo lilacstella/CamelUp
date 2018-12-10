@@ -4,13 +4,10 @@ todo:
 
 
 sareeem plans:
-GraphicCoin - easy
 graphicBoard - hard
 
 eric plans:
-GraphicCamel - hard
-GraphicTile - medium
-GraphicTrap - medium
+
 
 done:
 graphicsDice
@@ -19,3 +16,7 @@ GraphicLegBet
 GraphicLegBetDock
 GraphicRollCard
 GraphicPlayer
+GraphicCoin
+GraphicCamel
+GraphicTile
+GraphicTrap

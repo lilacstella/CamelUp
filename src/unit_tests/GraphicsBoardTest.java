@@ -38,7 +38,7 @@ public class GraphicsBoardTest extends JPanel {
         gameState.proceed();
         gameState.roll();
         gameState.proceed();
-        gameState.trap(15, 1);
+        gameState.trap(15, -1);
     }
 
     public void paintComponent(Graphics graphics) {
