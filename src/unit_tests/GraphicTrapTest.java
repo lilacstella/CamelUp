@@ -39,6 +39,8 @@ public class GraphicTrapTest extends JPanel {
 
     public void drawTile(Graphics2D g) 
     {
+		g.setColor(new Color(255,218,185));
+		g.fillRect(0, 0, 1600, 1200);
     	Tile thing = new Tile();
     	thing.setTrap(new Trap(new Player("P1"),1));
     	GraphicTile tile = new GraphicTile(500,500,thing);

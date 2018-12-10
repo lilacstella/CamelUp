@@ -60,8 +60,10 @@ public class GraphicTile
 
 	public void draw(Graphics2D g)
 	{
-		g.setColor(new Color(255,218,185));
-		g.fillRect(x, y, 100, 100);
+//		g.setColor(new Color(255,218,185));
+//		g.fillRect(x, y, 100, 100);
+		g.setColor(Color.ORANGE);
+		g.fillRect(x,y,100,100);
 		g.setColor(Color.black);
 		g.setStroke(new BasicStroke(3));
 		g.draw(new Rectangle(x,y,100,100));

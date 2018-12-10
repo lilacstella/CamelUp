@@ -1,6 +1,8 @@
 package unit_tests;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -41,8 +43,11 @@ public class GraphicCamelTest extends JPanel {
 
     public void drawCamel(Graphics2D graphics2D) {
         Camel camel = game.getRankCamel(1);
-        GraphicCamel graphicCamel = new GraphicCamel(string2Color(camel.getCamelColor()), new Point(500, 500), 3);
-        graphicCamel.draw(graphics2D);
+        System.out.println(camel.getCamelColor());
+//        GraphicCamel graphicCamel = new GraphicCamel(string2Color(camel.getCamelColor()),1);
+//        GraphicCamel graphicCamelB = new GraphicCamel(string2Color(game.getRankCamel(2).getCamelColor()),0);
+//        graphicCamel.draw(graphics2D);
+//        graphicCamelB.draw(graphics2D);
     }
 
     public Color string2Color(String string)
