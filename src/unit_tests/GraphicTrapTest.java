@@ -12,10 +12,6 @@ import core.Tile;
 import core.Trap;
 import graphics.GraphicTile;
 
-//import core.Camel;
-//import core.CamelUp;
-
-@SuppressWarnings("serial")
 public class GraphicTrapTest extends JPanel {
 //    private static CamelUp game;
     public static void main(String[] args) {
