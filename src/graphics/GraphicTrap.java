@@ -10,7 +10,7 @@ public class GraphicTrap
 {
 	private Trap trap;
 	private int x,y;
-	private static final Color COLOR = new Color(166,128,100);
+	private static final Color COLOR = new Color(128, 0, 0);
 	
 	public GraphicTrap(int x, int y, Trap trap)
 	{
