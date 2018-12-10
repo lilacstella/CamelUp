@@ -28,7 +28,10 @@ public class GraphicTrap
 		g.drawString(trap.getPlayerName(),x+40,y+30);
 		g.drawOval(x + 25, y + 35, 50,50);
 		g.setFont(new Font("COMIC SANS MS", Font.BOLD, 30));
-		g.drawString(""+trap.getDir(),x+42,y+70);
+		if(trap.getDir()==-1)
+			g.drawString(""+trap.getDir(),x+30,y+70);
+		else
+			g.drawString(""+trap.getDir(),x+42,y+70);
 		g.setColor(Color.black);
 	}
 }
