@@ -6,6 +6,7 @@ import graphics.GraphicRollCard;
 import javax.swing.*;
 import java.awt.*;
 
+@SuppressWarnings("serial")
 public class GraphicRollCardTest extends JPanel {
     private static CamelUp gameState;
     public static void main(String[] args) {

@@ -1,14 +1,18 @@
 package unit_tests;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.util.ArrayList;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 import core.CamelUp;
 import core.GameBet;
 import graphics.GraphicGameBet;
 
-import javax.swing.*;
-import java.util.ArrayList;
-import java.awt.*;
-import java.util.concurrent.TimeUnit;
-
+@SuppressWarnings("serial")
 public class GraphicsGameBetTest extends JPanel {
 
     private static CamelUp gameState;

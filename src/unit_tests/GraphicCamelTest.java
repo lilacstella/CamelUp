@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 
 import core.Camel;
 import core.CamelUp;
-import graphics.GraphicCamel;
 
 @SuppressWarnings("serial")
 public class GraphicCamelTest extends JPanel {

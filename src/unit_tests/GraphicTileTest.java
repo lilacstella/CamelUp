@@ -7,11 +7,7 @@ import java.awt.Graphics2D;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import core.Camel;
 import core.CamelUp;
-import core.Tile;
-import graphics.GraphicCamel;
-import graphics.GraphicTile;
 
 @SuppressWarnings("serial")
 public class GraphicTileTest extends JPanel
@@ -50,11 +46,11 @@ public class GraphicTileTest extends JPanel
 
 	public void drawTile(Graphics2D graphics2D)
 	{
-		Tile tile = game.getTrack()[0];
+//		Tile tile = game.getTrack()[0];
     
-		GraphicTile gTile = new GraphicTile(500,500,tile.getCamels(),tile.getTrap());
+//		GraphicTile gTile = new GraphicTile(500,500,tile.getCamels(),tile.getTrap());
 
-		gTile.draw(graphics2D);
+//		gTile.draw(graphics2D);
 //		Camel camel = game.getRankCamel(1);
 //		System.out.println(camel.getCamelColor());
 //        GraphicCamel graphicCamel = new GraphicCamel(string2Color(camel.getCamelColor()),1);

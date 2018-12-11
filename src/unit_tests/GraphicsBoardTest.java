@@ -1,16 +1,19 @@
 package unit_tests;
 
-import core.CamelUp;
-import core.Player;
-import core.Tile;
-import graphics.GraphicPlayer;
-import graphics.GraphicTile;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import core.CamelUp;
+import core.Player;
+import graphics.GraphicPlayer;
 
 @SuppressWarnings("serial")
 public class GraphicsBoardTest extends JPanel
@@ -51,6 +54,7 @@ public class GraphicsBoardTest extends JPanel
 		gameState.roll();
 		gameState.roll();
 		gameState.getCurrentPlayer().setCoins(4);
+		in.close();
 	}
 
 	public void paintComponent(Graphics graphics)
@@ -65,11 +69,11 @@ public class GraphicsBoardTest extends JPanel
 
 	public void drawBoard(Graphics2D graphics2D)
 	{
-		Tile[] track = gameState.getTrack();
+//		Tile[] track = gameState.getTrack();
 		for (int i = 0; i < trackPositions.length; i++)
 		{
-			GraphicTile graphicTile = new GraphicTile(trackPositions[i].x, trackPositions[i].y, track[i]);
-			graphicTile.draw(graphics2D);
+//			GraphicTile graphicTile = new GraphicTile(trackPositions[i].x, trackPositions[i].y, track[i]);
+//			graphicTile.draw(graphics2D);
 		}
 	}
 

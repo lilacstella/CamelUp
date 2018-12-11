@@ -1,5 +1,11 @@
 package graphics;
-import java.awt.*;
+
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
@@ -19,8 +25,8 @@ public class GraphicBoard extends JPanel implements MouseListener
 
 	private static CamelUp game;
 	private static Point[] trackPositions;
-	private static String[][] positions;
-	
+	//recreate game structure with graphic classes
+
 	public static void main(String[] args) throws FileNotFoundException
 	{
 		Scanner in = new Scanner(new File("TrackPositions.dat"));
@@ -32,10 +38,12 @@ public class GraphicBoard extends JPanel implements MouseListener
 		board.addMouseListener(new GraphicBoard());
 		game = new CamelUp();
 		trackPositions = new Point[16];
-		for (int i = 0; i < trackPositions.length; i++) {
+		for (int i = 0; i < trackPositions.length; i++)
+		{
 			trackPositions[i] = new Point(in.nextInt(), in.nextInt());
 		}
 		window.setVisible(true);
+		in.close();
 //		System.out.println(window.getWidth());
 //		System.out.println(window.getHeight());
 //		positions = new String[window.getWidth()][window.getHeight()];
@@ -55,8 +63,6 @@ public class GraphicBoard extends JPanel implements MouseListener
 //			}
 //			System.out.println();
 //		}
-
-
 	}
 
 	public void paintComponent(Graphics graphics)
@@ -87,8 +93,8 @@ public class GraphicBoard extends JPanel implements MouseListener
 
 		}
 	}
-	
-	public void drawBoard(Graphics2D graphics2D)
+
+	public void drawBoard(Graphics2D g2)
 	{
 		Tile[] track = game.getTrack();
         for (int i = 0; i < 6; i++)
@@ -100,8 +106,15 @@ public class GraphicBoard extends JPanel implements MouseListener
         }
 		for (int i = 0; i < trackPositions.length; i++)
 		{
-			GraphicTile graphicTile = new GraphicTile(trackPositions[i].x+100, trackPositions[i].y-200, track[i]);
-			graphicTile.draw(graphics2D);
+			GraphicTile graphicTile = new GraphicTile(trackPositions[i].x, trackPositions[i].y, track[i]);
+			graphicTile.draw(g2);
+		}
+		for (int i = 0; i < 6; i++)
+		{
+			g2.setColor(new Color(244 - i * 10, 182 - i * 10, 66 - i * 10));
+			g2.fillRect(1275 + i * 25, 550 + i * 25, 300 - i * 50, 300 - i * 50);
+			g2.setColor(Color.BLACK);
+			g2.drawRect(1275 + i * 25, 550 + i * 25, 300 - i * 50, 300 - i * 50);
 		}
 
 	}
@@ -113,23 +126,24 @@ public class GraphicBoard extends JPanel implements MouseListener
 		graphicPlayer.draw(graphics2D);
 	}
 
-	public void drawLegBetDock(Graphics2D graphics2D) {
+	public void drawLegBetDock(Graphics2D graphics2D)
+	{
 		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		graphics2D.drawString("LegBet Dock: ", 20, 325);
 
 		GraphicLegBetDock graphicLegBetDock = new GraphicLegBetDock(new Point(180, 275), game.getTopLegs());
 		graphicLegBetDock.draw(graphics2D);
-
 	}
 
-	public void drawLeaderBoard(Graphics2D graphics2D) {
+	public void drawLeaderBoard(Graphics2D graphics2D)
+	{
 		Player[] leaderBoard = Arrays.copyOf(game.getPlayers(), game.getPlayers().length);
 		Arrays.sort(leaderBoard);
 		graphics2D.setColor(Color.BLACK);
 		int x = 1350;
 		int y = 50;
 		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
-		graphics2D.drawString("Leaderboard", x, y+=30);
+		graphics2D.drawString("Leaderboard", x, y += 30);
 		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		for (int i = 0; i < leaderBoard.length; i++) {
 		    graphics2D.drawString(leaderBoard[i].getCoins() + "", x + 170, y+=30);
@@ -137,40 +151,36 @@ public class GraphicBoard extends JPanel implements MouseListener
 		}
 	}
 
-
-
-	public void mouseClicked(MouseEvent e) {
-		int x = e.getX();
+	@Override
+	public void mouseReleased(MouseEvent e)
+	{
+			int x = e.getX();
 		int y = e.getY();
         if (game.won()) return;
 
         if (x > 1275 && x < 1575 && y > 550 && y < 850) {
             game.roll();
             game.proceed();
-        }
-
-
-
-
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
-
+	public void mouseClicked(MouseEvent arg0)
+	{
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
-
+	public void mouseEntered(MouseEvent arg0)
+	{
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent e) {
-
+	public void mouseExited(MouseEvent arg0)
+	{
 	}
 
 	@Override
-	public void mouseExited(MouseEvent e) {
-
+	public void mousePressed(MouseEvent arg0)
+	{
 	}
+
 }

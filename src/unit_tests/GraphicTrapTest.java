@@ -10,8 +10,8 @@ import javax.swing.JPanel;
 import core.Player;
 import core.Tile;
 import core.Trap;
-import graphics.GraphicTile;
 
+@SuppressWarnings("serial")
 public class GraphicTrapTest extends JPanel {
 //    private static CamelUp game;
     public static void main(String[] args) {
@@ -43,8 +43,8 @@ public class GraphicTrapTest extends JPanel {
 		g.fillRect(0, 0, 1600, 1200);
     	Tile thing = new Tile();
     	thing.setTrap(new Trap(new Player("P1"),1));
-    	GraphicTile tile = new GraphicTile(500,500,thing);
-    	tile.draw(g);
+//    	GraphicTile tile = new GraphicTile(500,500,thing);
+//    	tile.draw(g);
     }
 
     public Color string2Color(String string)

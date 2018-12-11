@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.util.HashSet;
 import java.awt.*;
 
+@SuppressWarnings("serial")
 public class graphicsDiceTest extends JPanel {
 
     private static CamelUp gameState;
