@@ -51,6 +51,7 @@ public class GraphicBoard extends JPanel
 		}
 		game.roll();
 		window.setVisible(true);
+		in.close();
 	}
 
 	public void paintComponent(Graphics graphics)
@@ -77,13 +78,20 @@ public class GraphicBoard extends JPanel
 		}
 	}
 	
-	public void drawBoard(Graphics2D graphics2D)
+	public void drawBoard(Graphics2D g2)
 	{
 		Tile[] track = game.getTrack();
 		for (int i = 0; i < trackPositions.length; i++)
 		{
-			GraphicTile graphicTile = new GraphicTile(trackPositions[i].x+100, trackPositions[i].y-200, track[i]);
-			graphicTile.draw(graphics2D);
+			GraphicTile graphicTile = new GraphicTile(trackPositions[i].x, trackPositions[i].y, track[i]);
+			graphicTile.draw(g2);
+		}
+		for(int i = 0; i < 6; i++)
+		{
+			g2.setColor(new Color(244 - i*10, 182 - i*10, 66 - i*10));
+			g2.fillRect(1275 + i*25, 550 + i * 25, 300 - i*50, 300 - i * 50);
+			g2.setColor(Color.BLACK);
+			g2.drawRect(1275 + i*25, 550 + i * 25, 300 - i*50, 300 - i * 50);
 		}
 	}
 
@@ -97,7 +105,6 @@ public class GraphicBoard extends JPanel
 	public void drawLegBetDock(Graphics2D graphics2D) {
 		GraphicLegBetDock graphicLegBetDock = new GraphicLegBetDock(new Point(500, 500), game.getTopLegs());
 		graphicLegBetDock.draw(graphics2D);
-
 	}
 
 	public void drawLeaderBoard(Graphics2D graphics2D) {
