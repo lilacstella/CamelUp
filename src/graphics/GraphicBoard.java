@@ -5,8 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
@@ -21,12 +21,13 @@ import core.Player;
 import core.Tile;
 
 @SuppressWarnings("serial")
-public class GraphicBoard extends JPanel
+public class GraphicBoard extends JPanel implements MouseListener
 {
 
 	private static CamelUp game;
 	private static Point[] trackPositions;
-	
+	//recreate game structure with graphic classes
+
 	public static void main(String[] args) throws FileNotFoundException
 	{
 		Scanner in = new Scanner(new File("TrackPositions.dat"));
@@ -35,19 +36,12 @@ public class GraphicBoard extends JPanel
 		window.setSize(1600, 1200);
 		window.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		GraphicBoard board = new GraphicBoard();
-		window.addMouseListener((new MouseAdapter() {
-			@Override
-			public void mouseMoved(MouseEvent e)
-			{
-				//put if it is inside track here
-//				if(e.getX()>=1075 && e.getX()<=1475 && e.getY() >= 650 && e.getY() <= 1050)
-					//iterate thru tiles and find which one it is in
-			}
-		}));
+
 		window.add(board);
 		game = new CamelUp();
 		trackPositions = new Point[16];
-		for (int i = 0; i < trackPositions.length; i++) {
+		for (int i = 0; i < trackPositions.length; i++)
+		{
 			trackPositions[i] = new Point(in.nextInt(), in.nextInt());
 		}
 		game.roll();
@@ -80,7 +74,7 @@ public class GraphicBoard extends JPanel
 
 		}
 	}
-	
+
 	public void drawBoard(Graphics2D g2)
 	{
 		Tile[] track = game.getTrack();
@@ -89,12 +83,12 @@ public class GraphicBoard extends JPanel
 			GraphicTile graphicTile = new GraphicTile(trackPositions[i].x, trackPositions[i].y, track[i]);
 			graphicTile.draw(g2);
 		}
-		for(int i = 0; i < 6; i++)
+		for (int i = 0; i < 6; i++)
 		{
-			g2.setColor(new Color(244 - i*10, 182 - i*10, 66 - i*10));
-			g2.fillRect(1275 + i*25, 550 + i * 25, 300 - i*50, 300 - i * 50);
+			g2.setColor(new Color(244 - i * 10, 182 - i * 10, 66 - i * 10));
+			g2.fillRect(1275 + i * 25, 550 + i * 25, 300 - i * 50, 300 - i * 50);
 			g2.setColor(Color.BLACK);
-			g2.drawRect(1275 + i*25, 550 + i * 25, 300 - i*50, 300 - i * 50);
+			g2.drawRect(1275 + i * 25, 550 + i * 25, 300 - i * 50, 300 - i * 50);
 		}
 	}
 
@@ -105,7 +99,8 @@ public class GraphicBoard extends JPanel
 		graphicPlayer.draw(graphics2D);
 	}
 
-	public void drawLegBetDock(Graphics2D graphics2D) {
+	public void drawLegBetDock(Graphics2D graphics2D)
+	{
 		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		graphics2D.drawString("LegBet Dock: ", 20, 325);
 
@@ -113,19 +108,46 @@ public class GraphicBoard extends JPanel
 		graphicLegBetDock.draw(graphics2D);
 	}
 
-	public void drawLeaderBoard(Graphics2D graphics2D) {
+	public void drawLeaderBoard(Graphics2D graphics2D)
+	{
 		Player[] leaderBoard = Arrays.copyOf(game.getPlayers(), game.getPlayers().length);
 		Arrays.sort(leaderBoard);
 		graphics2D.setColor(Color.BLACK);
 		int x = 1250;
 		int y = 100;
 		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
-		graphics2D.drawString("Leaderboard", x, y+=30);
+		graphics2D.drawString("Leaderboard", x, y += 30);
 		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		for (int i = 0; i < leaderBoard.length; i++) {
-			graphics2D.drawString(i + 1  + ". " + leaderBoard[i].getName() + " " + leaderBoard[i].getCoins(), x, y+=30);
+		for (int i = 0; i < leaderBoard.length; i++)
+		{
+			graphics2D.drawString(i + 1 + ". " + leaderBoard[i].getName() + " " + leaderBoard[i].getCoins(), x,
+					y += 30);
 		}
 	}
 
+	@Override
+	public void mouseReleased(MouseEvent e)
+	{
+		
+	}
 
+	@Override
+	public void mouseClicked(MouseEvent arg0)
+	{
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0)
+	{
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0)
+	{
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0)
+	{
+	}
 }

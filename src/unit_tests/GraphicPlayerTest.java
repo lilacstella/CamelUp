@@ -7,6 +7,7 @@ import graphics.GraphicPlayer;
 import javax.swing.*;
 import java.awt.*;
 
+@SuppressWarnings("serial")
 public class GraphicPlayerTest extends JPanel {
     private static CamelUp gameState;
     public static void main(String[] args) {

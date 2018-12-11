@@ -1,11 +1,16 @@
 package unit_tests;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 import core.CamelUp;
 import graphics.GraphicCoin;
 
-import javax.swing.*;
-import java.awt.*;
-
+@SuppressWarnings("serial")
 public class GraphicCoinTest extends JPanel {
 
     private static CamelUp gameState;
