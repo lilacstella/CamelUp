@@ -62,7 +62,6 @@ public class GraphicBoard extends JPanel implements MouseListener
 
 	public void drawDiceRolled(Graphics2D graphics2D)
 	{
-
 		int adjX = 50;
 		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		graphics2D.drawString("Dice Rolled: ", 20, 150);
