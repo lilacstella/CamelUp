@@ -68,7 +68,9 @@ public class GraphicBoard extends JPanel
 	public void drawDiceRolled(Graphics2D graphics2D)
 	{
 
-		int adjX = 0;
+		int adjX = 50;
+		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		graphics2D.drawString("Dice Rolled: ", 20, 150);
 		for (Dice dice : game.getRolled())
 		{
 			GraphicDice graphicDice = new GraphicDice(new Point(100 + adjX, 100), dice);
@@ -98,12 +100,15 @@ public class GraphicBoard extends JPanel
 	public void drawPlayer(Graphics2D graphics2D)
 	{
 		Player player = game.getCurrentPlayer();
-		GraphicPlayer graphicPlayer = new GraphicPlayer(new Point(625, 700), player);
+		GraphicPlayer graphicPlayer = new GraphicPlayer(new Point(20, 500), player);
 		graphicPlayer.draw(graphics2D);
 	}
 
 	public void drawLegBetDock(Graphics2D graphics2D) {
-		GraphicLegBetDock graphicLegBetDock = new GraphicLegBetDock(new Point(500, 500), game.getTopLegs());
+		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		graphics2D.drawString("LegBet Dock: ", 20, 325);
+
+		GraphicLegBetDock graphicLegBetDock = new GraphicLegBetDock(new Point(180, 275), game.getTopLegs());
 		graphicLegBetDock.draw(graphics2D);
 	}
 
@@ -111,13 +116,13 @@ public class GraphicBoard extends JPanel
 		Player[] leaderBoard = Arrays.copyOf(game.getPlayers(), game.getPlayers().length);
 		Arrays.sort(leaderBoard);
 		graphics2D.setColor(Color.BLACK);
-		int x = 300;
-		int y = 300;
-		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
-		graphics2D.drawString("Leaderboard", x, y+=20);
-		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 10));
+		int x = 1250;
+		int y = 100;
+		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
+		graphics2D.drawString("Leaderboard", x, y+=30);
+		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		for (int i = 0; i < leaderBoard.length; i++) {
-			graphics2D.drawString(i + 1  + ". " + leaderBoard[i].getName() + " " + leaderBoard[i].getCoins(), x, y+=10);
+			graphics2D.drawString(i + 1  + ". " + leaderBoard[i].getName() + " " + leaderBoard[i].getCoins(), x, y+=30);
 		}
 	}
 
