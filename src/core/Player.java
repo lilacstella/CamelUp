@@ -114,6 +114,6 @@ public class Player implements Comparable<Player> {
 
 
 	public int compareTo(Player o) {
-		return getCoins() - o.getCoins();
+		return o.getCoins()-getCoins();
 	}
 }
