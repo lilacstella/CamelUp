@@ -1,10 +1,14 @@
 package graphics;
 
-import core.LegBet;
-
-import javax.swing.text.Position;
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Stroke;
 import java.util.HashMap;
+
+import core.LegBet;
 
 public class GraphicLegBet {
     private LegBet legBet;

@@ -1,13 +1,15 @@
 package graphics;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
@@ -15,7 +17,6 @@ import javax.swing.JPanel;
 
 import core.CamelUp;
 import core.Dice;
-import core.GameBet;
 import core.Player;
 import core.Tile;
 
