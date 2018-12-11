@@ -32,7 +32,7 @@ public class GraphicBoard extends JPanel
 		JFrame window = new JFrame("Camel Up");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setSize(1600, 1200);
-		window.setVisible(true);
+		window.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		GraphicBoard board = new GraphicBoard();
 		window.addMouseListener((new MouseAdapter() {
 			@Override
@@ -50,6 +50,7 @@ public class GraphicBoard extends JPanel
 			trackPositions[i] = new Point(in.nextInt(), in.nextInt());
 		}
 		game.roll();
+		window.setVisible(true);
 	}
 
 	public void paintComponent(Graphics graphics)
@@ -81,7 +82,7 @@ public class GraphicBoard extends JPanel
 		Tile[] track = game.getTrack();
 		for (int i = 0; i < trackPositions.length; i++)
 		{
-			GraphicTile graphicTile = new GraphicTile(trackPositions[i].x, trackPositions[i].y, track[i]);
+			GraphicTile graphicTile = new GraphicTile(trackPositions[i].x+100, trackPositions[i].y-200, track[i]);
 			graphicTile.draw(graphics2D);
 		}
 	}
