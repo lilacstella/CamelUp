@@ -35,10 +35,6 @@ public class GraphicBoard extends JPanel implements MouseListener
 		for (int i = 0; i < trackPositions.length; i++) {
 			trackPositions[i] = new Point(in.nextInt(), in.nextInt());
 		}
-		game.roll();
-		game.roll();
-		game.legCalc();
-		game.trap(8, 1);
 		window.setVisible(true);
 //		System.out.println(window.getWidth());
 //		System.out.println(window.getHeight());
@@ -95,11 +91,19 @@ public class GraphicBoard extends JPanel implements MouseListener
 	public void drawBoard(Graphics2D graphics2D)
 	{
 		Tile[] track = game.getTrack();
+        for (int i = 0; i < 6; i++)
+        {
+            graphics2D.setColor(new Color(244 - i * 10, 182 - i * 10, 66 - i * 10));
+            graphics2D.fillRect(1275 + i * 25, 550 + i * 25, 300 - i * 50, 300 - i * 50);
+            graphics2D.setColor(Color.BLACK);
+            graphics2D.drawRect(1275 + i * 25, 550 + i * 25, 300 - i * 50, 300 - i * 50);
+        }
 		for (int i = 0; i < trackPositions.length; i++)
 		{
 			GraphicTile graphicTile = new GraphicTile(trackPositions[i].x+100, trackPositions[i].y-200, track[i]);
 			graphicTile.draw(graphics2D);
 		}
+
 	}
 
 	public void drawPlayer(Graphics2D graphics2D)
@@ -137,7 +141,12 @@ public class GraphicBoard extends JPanel implements MouseListener
 	public void mouseClicked(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
-		System.out.println(x + " " + y);
+        if (game.won()) return;
+
+        if (x > 1275 && x < 1575 && y > 550 && y < 850) {
+            game.roll();
+            game.proceed();
+        }
 
 
 
