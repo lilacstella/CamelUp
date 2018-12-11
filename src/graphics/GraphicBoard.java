@@ -26,29 +26,9 @@ public class GraphicBoard extends JPanel implements MouseListener
 
 	private static CamelUp game;
 	private static Point[] trackPositions;
+	private GraphicLegBetDock legBet;
 	//recreate game structure with graphic classes
-
-	public static void main(String[] args) throws FileNotFoundException
-	{
-		Scanner in = new Scanner(new File("TrackPositions.dat"));
-		JFrame window = new JFrame("Camel Up");
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setSize(1600, 1200);
-		window.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		GraphicBoard board = new GraphicBoard();
-
-		window.add(board);
-		game = new CamelUp();
-		trackPositions = new Point[16];
-		for (int i = 0; i < trackPositions.length; i++)
-		{
-			trackPositions[i] = new Point(in.nextInt(), in.nextInt());
-		}
-		game.roll();
-		window.setVisible(true);
-		in.close();
-	}
-
+	
 	public void paintComponent(Graphics graphics)
 	{
 		Graphics2D g2D = (Graphics2D) graphics;
@@ -148,5 +128,26 @@ public class GraphicBoard extends JPanel implements MouseListener
 	@Override
 	public void mousePressed(MouseEvent arg0)
 	{
+	}
+	
+	public static void main(String[] args) throws FileNotFoundException
+	{
+		Scanner in = new Scanner(new File("TrackPositions.dat"));
+		JFrame window = new JFrame("Camel Up");
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setSize(1600, 1200);
+		window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		GraphicBoard board = new GraphicBoard();
+
+		window.add(board);
+		game = new CamelUp();
+		trackPositions = new Point[16];
+		for (int i = 0; i < trackPositions.length; i++)
+		{
+			trackPositions[i] = new Point(in.nextInt(), in.nextInt());
+		}
+		game.roll();
+		window.setVisible(true);
+		in.close();
 	}
 }
