@@ -1,10 +1,6 @@
 package graphics;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.util.ArrayList;
 
 import core.Camel;
@@ -70,6 +66,15 @@ public class GraphicTile
 		for(GraphicCamel camel : list)
 			camel.draw(g);
 		if (trap == null) {
+			g.setColor(new Color(255, 0, 0, 100));
+			g.fillRect(x, y+50, 50, 50);
+			g.setColor(new Color(0, 255, 0, 100));
+			g.fillRect(x+50, y+50, 50, 50);
+			g.setColor(Color.BLACK);
+			g.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
+			g.drawString("-", x +65 , y+ 85);
+			g.drawString("+", x +15 , y+ 85);
+
 			return;
 		}
 		trap.draw(g);
