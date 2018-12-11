@@ -126,13 +126,14 @@ public class GraphicBoard extends JPanel implements MouseListener
 		Player[] leaderBoard = Arrays.copyOf(game.getPlayers(), game.getPlayers().length);
 		Arrays.sort(leaderBoard);
 		graphics2D.setColor(Color.BLACK);
-		int x = 1250;
-		int y = 100;
+		int x = 1350;
+		int y = 50;
 		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
 		graphics2D.drawString("Leaderboard", x, y+=30);
 		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		for (int i = 0; i < leaderBoard.length; i++) {
-			graphics2D.drawString(i + 1  + ". " + leaderBoard[i].getName() + " " + leaderBoard[i].getCoins(), x, y+=30);
+		    graphics2D.drawString(leaderBoard[i].getCoins() + "", x + 170, y+=30);
+			graphics2D.drawString(i + 1  + ". " + leaderBoard[i].getName(), x, y);
 		}
 	}
 
