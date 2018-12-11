@@ -25,7 +25,7 @@ public class GraphicLegBetDock {
         for (LegBet legBet : topCards) {
             GraphicLegBet graphicLegBet = new GraphicLegBet(new Point(x + adjX, y), legBet);
             graphicLegBet.draw(graphics2D);
-            adjX += 125;
+            adjX += 60;
         }
     }
 
