@@ -90,7 +90,15 @@ public class GraphicPlayer {
             adjX += 45;
 
         }
+    }
 
-
+    public ArrayList<GraphicGameBet> getPlayerGraphicGameBets() {
+        ArrayList<GraphicGameBet> graphicGameBets = new ArrayList<>();
+        int adjX = 125;
+        for (GameBet gameBet : player.getGameBets()) {
+            graphicGameBets.add(new GraphicGameBet(new Point(pos.x + adjX,  pos.y + 250+50), gameBet));
+            adjX += 60;
+        }
+        return graphicGameBets;
     }
 }
