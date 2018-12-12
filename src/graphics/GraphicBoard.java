@@ -291,6 +291,30 @@ public class GraphicBoard extends JPanel implements MouseListener
 		timer.start();
 	}
 
+    public void paintLine(Graphics g, int posX, int posY, boolean b) {
+        if (b) {
+            for (int i = 1; i <= 10; i++) {
+                if (i % 2 == 0)
+                    g.setColor(Color.BLACK);
+                else
+                    g.setColor(Color.WHITE);
+                g.fillRect(posX, posY, 10, 10);
+                posX += 10;
+            }
+        } else {
+            for (int i = 1; i <= 10; i++) {
+                if (i % 2 == 0)
+                    g.setColor(Color.BLACK);
+                else
+                    g.setColor(Color.WHITE);
+                g.fillRect(posX, posY, 10, 10);
+                posY += 10;
+            }
+
+
+        }
+    }
+
 	@Override
 	public void mouseClicked(MouseEvent arg0)
 	{
