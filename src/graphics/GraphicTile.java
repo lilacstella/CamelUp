@@ -103,7 +103,7 @@ public class GraphicTile implements GraphicUI
 	
 	public int containsDir(int x, int y)
 	{
-		if (x >= this.x && x <= this.x + 50 && y-50 >= this.y + 50 && y+90 <= this.y + 50)
+		if (x >= this.x && x <= this.x + 50 && y >= this.y + 50 && y <= this.y+100)
 			return 1;
 		return -1;
 	}
