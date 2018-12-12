@@ -47,7 +47,7 @@ public class CamelUp
 	public void proceed()
 	{
 		current = ++current % 5;
-		if (rolled.size() == 6)
+		if (rolled.size() == 5)
 		{
 			pyramid.reset();
 			rolled.clear();
