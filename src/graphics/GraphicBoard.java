@@ -69,6 +69,8 @@ public class GraphicBoard extends JPanel implements MouseListener
 	{
 		super.paintComponent(graphics);
 		Graphics2D g2D = (Graphics2D) graphics;
+		g2D.setColor(new Color(255,218,185));
+		g2D.fillRect(0, 0, 1920, 1080);
 		drawDiceRolled(g2D);
 		drawPlayer(g2D);
 		drawLegBetDock(g2D);
@@ -152,35 +154,36 @@ public class GraphicBoard extends JPanel implements MouseListener
 		graphics2D.drawString("LegBet Dock: ", 20, 325);
 
 		int adjX = 0;
-		for (LegBet card : game.getTopLegs())
-			switch (card.getCamelColor())
-			{
-			case ("blue"):
-				legBets.put("blue", new GraphicLegBet(new Point(180 + adjX, 275), card));
-				adjX += 60;
-				legBets.get("blue").draw(graphics2D);
-				break;
-			case ("yellow"):
-				legBets.put("yellow", new GraphicLegBet(new Point(180 + adjX, 275), card));
-				adjX += 60;
-				legBets.get("yellow").draw(graphics2D);
-				break;
-			case ("green"):
-				legBets.put("green", new GraphicLegBet(new Point(180 + adjX, 275), card));
-				adjX += 60;
-				legBets.get("green").draw(graphics2D);
-				break;
-			case ("orange"):
-				legBets.put("orange", new GraphicLegBet(new Point(180 + adjX, 275), card));
-				adjX += 60;
-				legBets.get("orange").draw(graphics2D);
-				break;
-			case ("white"):
-				legBets.put("white", new GraphicLegBet(new Point(180 + adjX, 275), card));
-				adjX += 60;
-				legBets.get("white").draw(graphics2D);
-				break;
+		for (LegBet card : game.getTopLegs()) {
+			if (card == null) continue;
+			switch (card.getCamelColor()) {
+				case ("blue"):
+					legBets.put("blue", new GraphicLegBet(new Point(180 + adjX, 275), card));
+					adjX += 60;
+					legBets.get("blue").draw(graphics2D);
+					break;
+				case ("yellow"):
+					legBets.put("yellow", new GraphicLegBet(new Point(180 + adjX, 275), card));
+					adjX += 60;
+					legBets.get("yellow").draw(graphics2D);
+					break;
+				case ("green"):
+					legBets.put("green", new GraphicLegBet(new Point(180 + adjX, 275), card));
+					adjX += 60;
+					legBets.get("green").draw(graphics2D);
+					break;
+				case ("orange"):
+					legBets.put("orange", new GraphicLegBet(new Point(180 + adjX, 275), card));
+					adjX += 60;
+					legBets.get("orange").draw(graphics2D);
+					break;
+				case ("white"):
+					legBets.put("white", new GraphicLegBet(new Point(180 + adjX, 275), card));
+					adjX += 60;
+					legBets.get("white").draw(graphics2D);
+					break;
 			}
+		}
 	}
 
 	public void drawLeaderBoard(Graphics2D graphics2D)
@@ -214,7 +217,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 			game.proceed();
 			return;
 		}
-		
+
 		//trap
 		for(int i = 0; i < track.length; i++)
 			if(track[i].contains(e.getX(), e.getY()))
@@ -222,15 +225,17 @@ public class GraphicBoard extends JPanel implements MouseListener
 				if(game.trap(i, track[i].containsDir(e.getX(), e.getY())))
 					game.proceed();
 			}
-		
+
 		//leg bet
-		for (String color : legBets.keySet())
-			if (legBets.get(color).contains(e.getX(), e.getY()))
-			{
+		for (String color : legBets.keySet()) {
+			if (legBets.get(color) == null) return;
+			if (legBets.get(color).contains(e.getX(), e.getY())) {
 				if (game.legBet(color))
 					game.proceed();
 				return;
 			}
+		}
+
 		
 		//game bet
 		Player player = game.getCurrentPlayer();
