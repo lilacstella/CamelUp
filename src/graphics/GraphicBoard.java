@@ -7,13 +7,16 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.Line2D;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EmptyStackException;
 import java.util.HashMap;
@@ -26,7 +29,6 @@ import javax.swing.Timer;
 
 import core.CamelUp;
 import core.Dice;
-import core.GameBet;
 import core.LegBet;
 import core.Player;
 
@@ -67,16 +69,19 @@ public class GraphicBoard extends JPanel implements MouseListener
 
 	public void paintComponent(Graphics graphics)
 	{
+		double x = MouseInfo.getPointerInfo().getLocation().getX() - window.getLocationOnScreen().x;
+		double y = MouseInfo.getPointerInfo().getLocation().getY() - window.getLocationOnScreen().y;
 		super.paintComponent(graphics);
-		Graphics2D g2D = (Graphics2D) graphics;
-		g2D.setColor(new Color(255,218,185));
-		g2D.fillRect(0, 0, 1920, 1080);
-		drawDiceRolled(g2D);
-		drawPlayer(g2D);
-		drawLegBetDock(g2D);
-		drawLeaderBoard(g2D);
-		drawGameBetDock(g2D);
-		drawBoard(g2D);
+		Graphics2D g = (Graphics2D) graphics;
+		drawDiceRolled(g);
+		drawPlayer(g);
+		drawLegBetDock(g);
+		drawLeaderBoard(g);
+		drawGameBetDock(g);
+		drawBoard(g);
+		g.setStroke(new BasicStroke(3));
+		g.draw(new Line2D.Double(x-5,y,x+5,y));
+		g.draw(new Line2D.Double(x,y-5,x,y+5));
 		repaint();
 	}
 
@@ -89,14 +94,14 @@ public class GraphicBoard extends JPanel implements MouseListener
 		g.drawRect(600, 200, 200, 400);
 		g.drawRect(800, 200, 200, 400);
 		if (!winnerBets.isEmpty())
-			
+
 		try
 		{
 			winnerBets.peek().draw(g);
 		}
 		catch(EmptyStackException e)
 		{
-			
+
 		}
 		try
 		{
@@ -104,7 +109,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 		}
 		catch(EmptyStackException e)
 		{
-			
+
 		}
 	}
 
@@ -236,7 +241,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 			}
 		}
 
-		
+
 		//game bet
 		Player player = game.getCurrentPlayer();
 		GraphicPlayer graphicPlayer = new GraphicPlayer(new Point(20, 500), player);
@@ -319,6 +324,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 		GraphicBoard board = new GraphicBoard();
 		window.addMouseListener(board);
 		window.add(board);
+		window.getContentPane().setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB), new Point(0, 0), "blank cursor"));
 		window.setVisible(true);
 		in.close();
 	}
