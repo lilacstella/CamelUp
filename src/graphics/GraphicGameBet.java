@@ -64,7 +64,7 @@ public class GraphicGameBet implements GraphicUI
 	@Override
 	public boolean contains(int x, int y)
 	{
-		if (x >= pos.x && x <= pos.x+50 && y >= pos.y && y <= pos.y+100)
+		if (x >= pos.x && x <= pos.x+50 && y - 50 >= pos.y && y <= pos.y+75)
 			return true;
 		return false;
 	}

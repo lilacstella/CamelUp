@@ -1,5 +1,6 @@
 package graphics;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -12,9 +13,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EmptyStackException;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Stack;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,6 +26,7 @@ import javax.swing.Timer;
 
 import core.CamelUp;
 import core.Dice;
+import core.GameBet;
 import core.LegBet;
 import core.Player;
 
@@ -34,7 +39,8 @@ public class GraphicBoard extends JPanel implements MouseListener
 	private GraphicTile[] track;
 	private GraphicPyramid pyramid;
 	private HashMap<String, GraphicLegBet> legBets;
-	private HashMap<String, GraphicGameBet> gameBets;
+	private Stack<GraphicGameBet> winnerBets;
+	private Stack<GraphicGameBet> loserBets;
 	private Timer timer;
 
 	// recreate game structure with graphic classes
@@ -45,6 +51,8 @@ public class GraphicBoard extends JPanel implements MouseListener
 		legBets = new HashMap<String, GraphicLegBet>();
 		for (int i = 0; i < trackPositions.length; i++)
 			track[i] = new GraphicTile(trackPositions[i].x, trackPositions[i].y, game.getTrack()[i]);
+		winnerBets = new Stack<GraphicGameBet>();
+		loserBets = new Stack<GraphicGameBet>();
 //		int adjX = 0;
 //		for(LegBet card : game.getTopLegs())
 //			switch(card.getCamelColor())
@@ -65,8 +73,37 @@ public class GraphicBoard extends JPanel implements MouseListener
 		drawPlayer(g2D);
 		drawLegBetDock(g2D);
 		drawLeaderBoard(g2D);
+		drawGameBetDock(g2D);
 		drawBoard(g2D);
 		repaint();
+	}
+
+	public void drawGameBetDock(Graphics2D g)
+	{
+		g.setColor(Color.black);
+		g.setStroke(new BasicStroke(3));
+		g.drawString("Win",675,150);
+		g.drawString("Lose",875,150);
+		g.drawRect(600, 200, 200, 400);
+		g.drawRect(800, 200, 200, 400);
+		if (!winnerBets.isEmpty())
+			
+		try
+		{
+			winnerBets.peek().draw(g);
+		}
+		catch(EmptyStackException e)
+		{
+			
+		}
+		try
+		{
+			loserBets.peek().draw(g);
+		}
+		catch(EmptyStackException e)
+		{
+			
+		}
 	}
 
 	public void drawDiceRolled(Graphics2D graphics2D)
@@ -86,22 +123,22 @@ public class GraphicBoard extends JPanel implements MouseListener
 	{
 		pyramid.draw(g2);
 		for (int i = 0; i < 5; i++)
-			drawTile(i,g2);
-		for(int i = 0; i < 4; i++)
+			drawTile(i, g2);
+		for (int i = 0; i < 4; i++)
 		{
-			drawTile(4+i,g2);
-			drawTile(15-i,g2);
+			drawTile(4 + i, g2);
+			drawTile(15 - i, g2);
 		}
-		for(int i = 0; i < 5; i++)
-			drawTile(i+8,g2);
+		for (int i = 0; i < 5; i++)
+			drawTile(i + 8, g2);
 	}
-	
+
 	public void drawTile(int i, Graphics2D g2)
 	{
 		track[i].update(game.getTrack()[i]);
 		track[i].draw(g2);
 	}
-	
+
 	public void drawPlayer(Graphics2D graphics2D)
 	{
 		Player player = game.getCurrentPlayer();
@@ -145,7 +182,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 				break;
 			}
 	}
-	
+
 	public void drawLeaderBoard(Graphics2D graphics2D)
 	{
 		Player[] leaderBoard = Arrays.copyOf(game.getPlayers(), game.getPlayers().length);
@@ -164,48 +201,44 @@ public class GraphicBoard extends JPanel implements MouseListener
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
-		if(game.won())
+		if (game.won())
 			return;
-		
+
 		// check four places
 		// corresponds to the 4 places a player can click
 
 		// roll
-		if (game.won()) 
-			return;
-		
-		if(pyramid.contains(e.getX(), e.getY()))
+		if (pyramid.contains(e.getX(), e.getY()))
 		{
 			game.roll();
 			game.proceed();
 			return;
 		}
 		// trap
-
-		for (String color : legBets.keySet()) {
-			if (legBets.get(color).contains(e.getX(), e.getY())) {
-				if(game.legBet(color));
-				{
+		for (String color : legBets.keySet())
+			if (legBets.get(color).contains(e.getX(), e.getY()))
+			{
+				if (game.legBet(color))
 					game.proceed();
-				}
 				return;
 			}
-		}
-
+		//game bet
 		Player player = game.getCurrentPlayer();
 		GraphicPlayer graphicPlayer = new GraphicPlayer(new Point(20, 500), player);
 
-		for (GraphicGameBet graphicGameBet : graphicPlayer.getPlayerGraphicGameBets()) {
-			if (graphicGameBet.contains(e.getX(), e.getY())) {
-				game.gameBet(graphicGameBet.getGameBet().getCamelColor(), graphicGameBet.containsWinner(e.getX(), e.getY()));
+		for (GraphicGameBet graphicGameBet : graphicPlayer.getPlayerGraphicGameBets())
+			if (graphicGameBet.contains(e.getX(), e.getY()))
+			{
+				game.gameBet(graphicGameBet.getGameBet().getCamelColor(),
+						graphicGameBet.containsWinner(e.getX(), e.getY()));
+				if (graphicGameBet.containsWinner(e.getX(), e.getY()))
+					winnerBets.push(new GraphicGameBet(new Point(650, 300), graphicGameBet.getGameBet()));
+				else
+					loserBets.push(new GraphicGameBet(new Point(850, 300), graphicGameBet.getGameBet()));
 				game.proceed();
 				return;
 			}
-		}
 
-
-		
-	
 	}
 
 	private void startTimer()
@@ -219,16 +252,16 @@ public class GraphicBoard extends JPanel implements MouseListener
 				double y = MouseInfo.getPointerInfo().getLocation().getY() - window.getLocationOnScreen().y;
 				// if graphic tiles .contains(e.x,e.y) then display plus or minus
 //				System.out.println(x + " " + y);
-				for(GraphicTile tile : track)
-					if(tile.contains((int)x,(int)y))
+				for (GraphicTile tile : track)
+					if (tile.contains((int) x, (int) y))
 						tile.setGlow(true);
-					else 
+					else
 						tile.setGlow(false);
 				repaint();
 			}
 		});
 		timer.setRepeats(true);
-		//timer.setDelay(0);
+		// timer.setDelay(0);
 		timer.start();
 	}
 

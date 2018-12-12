@@ -223,6 +223,4 @@ public class CamelUp
 		}
 		return topCards;
 	}
-
-
 }
