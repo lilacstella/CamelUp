@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.concurrent.TimeUnit;
 
 public class CamelUp
 {
@@ -46,10 +47,15 @@ public class CamelUp
 	public void proceed()
 	{
 		current = ++current % 5;
-		if (rolled.size() == 5)
+		if (rolled.size() == 6)
 		{
 			pyramid.reset();
 			rolled.clear();
+			legBetDocks.get("blue").reset();
+			legBetDocks.get("yellow").reset();
+			legBetDocks.get("green").reset();
+			legBetDocks.get("orange").reset();
+			legBetDocks.get("white").reset();
 			legCalc();
 		}
 	}
@@ -67,7 +73,7 @@ public class CamelUp
 		int dieFace = temp.getDieFace();
 		rolled.add(temp);
 		int index = indices[color2Num(color)];
-		System.out.println(index);
+//		System.out.println(index);
 		ArrayList<Camel> list = track[index].remCamels(color);
 		for (Camel item : list)
 			indices[color2Num(item.getCamelColor())] = (index + dieFace > 15) ? 15 : index + dieFace;

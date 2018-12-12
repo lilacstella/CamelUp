@@ -22,6 +22,7 @@ import java.util.EmptyStackException;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -219,7 +220,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 		if (pyramid.contains(e.getX(), e.getY()))
 		{
 			game.roll();
-			game.proceed();
+			proceed();
 			return;
 		}
 
@@ -228,7 +229,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 			if(track[i].contains(e.getX(), e.getY()))
 			{
 				if(game.trap(i, track[i].containsDir(e.getX(), e.getY())))
-					game.proceed();
+					proceed();
 			}
 
 		//leg bet
@@ -236,7 +237,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 			if (legBets.get(color) == null) return;
 			if (legBets.get(color).contains(e.getX(), e.getY())) {
 				if (game.legBet(color))
-					game.proceed();
+					proceed();
 				return;
 			}
 		}
@@ -255,10 +256,15 @@ public class GraphicBoard extends JPanel implements MouseListener
 					winnerBets.push(new GraphicGameBet(new Point(650, 300), graphicGameBet.getGameBet()));
 				else
 					loserBets.push(new GraphicGameBet(new Point(850, 300), graphicGameBet.getGameBet()));
-				game.proceed();
+				proceed();
 				return;
 			}
 
+	}
+
+	private void proceed()
+	{
+		game.proceed();
 	}
 
 	private void startTimer()
