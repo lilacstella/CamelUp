@@ -95,8 +95,8 @@ public class GraphicTile implements GraphicUI
 	@Override
 	public boolean contains(int x, int y)
 	{
-		System.out.println(x + " " + y + "contain method");
-		if (x >= this.x && x <= this.x + 100 && y >= this.y && y <= this.y + 300)
+		if (x >= this.x && x <= this.x + 100 && y-50 >= this.y && y+90 <= this.y + 300)
+//		if (x >= this.x && x <= this.x && y >= this.y && y <= this.y)
 			return true;
 		return false;
 	}

@@ -207,6 +207,8 @@ public class GraphicBoard extends JPanel implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent arg0)
 	{
+		System.out.println(arg0.getPoint());
+		System.out.println(MouseInfo.getPointerInfo().getLocation());
 	}
 
 	@Override

@@ -10,7 +10,8 @@ import java.util.HashMap;
 
 import core.GameBet;
 
-public class GraphicGameBet {
+public class GraphicGameBet implements GraphicUI
+{
     private GameBet gameBet;
     private Point pos;
     private HashMap<String, Color> colorHashMap;
@@ -43,6 +44,21 @@ public class GraphicGameBet {
         graphics2D.setStroke(oldStroke);
         graphics2D.setFont(oldFont);
     }
+
+	@Override
+	public boolean contains(int x, int y)
+	{
+		if (x >= pos.x && x <= pos.x && y >= pos.y && y <= pos.y)
+			return true;
+		return false;
+	}
+
+	@Override
+	public void update(Object obj)
+	{
+		// TODO Auto-generated method stub
+		
+	}
 
 
 
