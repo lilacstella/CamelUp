@@ -28,6 +28,7 @@ import core.Player;
 @SuppressWarnings("serial")
 public class GraphicBoard extends JPanel implements MouseListener
 {
+	private static JFrame window;
 	private static CamelUp game;
 	private static Point[] trackPositions;
 	private GraphicTile[] track;
@@ -163,6 +164,9 @@ public class GraphicBoard extends JPanel implements MouseListener
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
+		if(game.won())
+			return;
+		
 		// check four places
 		// corresponds to the 4 places a player can click
 
@@ -201,6 +205,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 
 
 		
+	
 	}
 
 	private void startTimer()
@@ -210,8 +215,8 @@ public class GraphicBoard extends JPanel implements MouseListener
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				double x = MouseInfo.getPointerInfo().getLocation().getX();
-				double y = MouseInfo.getPointerInfo().getLocation().getY();
+				double x = MouseInfo.getPointerInfo().getLocation().getX() - window.getLocationOnScreen().x;
+				double y = MouseInfo.getPointerInfo().getLocation().getY() - window.getLocationOnScreen().y;
 				// if graphic tiles .contains(e.x,e.y) then display plus or minus
 //				System.out.println(x + " " + y);
 				for(GraphicTile tile : track)
@@ -230,8 +235,8 @@ public class GraphicBoard extends JPanel implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent arg0)
 	{
-		System.out.println(arg0.getPoint());
-		System.out.println(MouseInfo.getPointerInfo().getLocation());
+//		System.out.println(arg0.getPoint());
+//		System.out.println(MouseInfo.getPointerInfo().getLocation());
 	}
 
 	@Override
@@ -254,7 +259,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 	public static void main(String[] args) throws FileNotFoundException
 	{
 		Scanner in = new Scanner(new File("TrackPositions.dat"));
-		JFrame window = new JFrame("Camel Up");
+		window = new JFrame("Camel Up");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setSize(1920, 1080);
 		game = new CamelUp();

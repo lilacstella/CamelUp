@@ -26,7 +26,7 @@ public class GraphicPyramid implements GraphicUI
 	@Override
 	public boolean contains(int x, int y)
 	{
-		if(x >= pos.x && x <= pos.x+300 && y >= pos.y && y<= pos.y+300)
+		if(x >= pos.x +100 && x <= pos.x+200 && y >= pos.y + 100 && y<= pos.y+200)
 			return true;
 		return false;
 	}
