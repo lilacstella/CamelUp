@@ -167,9 +167,9 @@ public class GraphicBoard extends JPanel implements MouseListener
 		// corresponds to the 4 places a player can click
 
 		// roll
-		if (game.won()) {
+		if (game.won()) 
 			return;
-		}
+		
 		if(pyramid.contains(e.getX(), e.getY()))
 		{
 			game.roll();
