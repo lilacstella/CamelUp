@@ -233,14 +233,13 @@ public class GraphicBoard extends JPanel implements MouseListener
 		Scanner in = new Scanner(new File("TrackPositions.dat"));
 		JFrame window = new JFrame("Camel Up");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setSize(1600, 1200);
+		window.setSize(1920, 1080);
 		game = new CamelUp();
 		trackPositions = new Point[16];
 		for (int i = 0; i < trackPositions.length; i++)
-		{
 			trackPositions[i] = new Point(in.nextInt(), in.nextInt());
-		}
 		window.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		window.setResizable(false);
 		GraphicBoard board = new GraphicBoard();
 		window.addMouseListener(board);
 		window.add(board);
