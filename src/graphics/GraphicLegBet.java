@@ -10,12 +10,14 @@ import java.util.HashMap;
 
 import core.LegBet;
 
-public class GraphicLegBet {
+public class GraphicLegBet implements GraphicUI
+{
     private LegBet legBet;
     private Point pos;
     private HashMap<String, Color> colorHashMap;
 
-    public GraphicLegBet(Point pos, LegBet legBet) {
+    public GraphicLegBet(Point pos, LegBet legBet) 
+    {
         this.pos = pos;
         this.legBet = legBet;
         colorHashMap = new HashMap<>();
@@ -58,4 +60,20 @@ public class GraphicLegBet {
 
 
     }
+
+
+	@Override
+	public boolean contains(int x, int y)
+	{
+		if(x >= pos.x && x <= pos.x+50 && y >= pos.y && y<= pos.y+100)
+			return true;
+		return false;
+	}
+
+
+	@Override
+	public void update(Object obj)
+	{
+		
+	}
 }

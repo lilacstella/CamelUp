@@ -59,8 +59,7 @@ public class CamelUp
 		return rolled;
 	}
 
-	public boolean roll() // will always be true because if there are no more roll cards the leg will
-							// reset
+	public boolean roll() // will always be true because if there are no more roll cards the leg will reset
 	{
 		players[current].addRollCard();
 		Dice temp = pyramid.roll();
