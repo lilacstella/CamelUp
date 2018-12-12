@@ -95,12 +95,18 @@ public class GraphicTile implements GraphicUI
 	@Override
 	public boolean contains(int x, int y)
 	{
-		if (x >= this.x && x <= this.x + 100 && y-50 >= this.y && y+90 <= this.y + 300)
+		if (x >= this.x && x <= this.x + 100 && y-50 >= this.y && y <= this.y + 100)
 //		if (x >= this.x && x <= this.x && y >= this.y && y <= this.y)
 			return true;
 		return false;
 	}
-
+	
+	public int containsDir(int x, int y)
+	{
+		if (x >= this.x && x <= this.x + 50 && y-50 >= this.y + 50 && y+90 <= this.y + 50)
+			return 1;
+		return -1;
+	}
 	@Override
 	public void update(Object obj)
 	{

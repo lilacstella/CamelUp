@@ -214,7 +214,15 @@ public class GraphicBoard extends JPanel implements MouseListener
 			game.proceed();
 			return;
 		}
-		// trap
+		//trap
+		for(int i = 0; i < track.length; i++)
+			if(track[i].contains(e.getX(), e.getY()))
+			{
+				game.trap(i, track[i].containsDir(e.getX(), e.getY()));
+				game.proceed();
+			}
+		
+		//leg bet
 		for (String color : legBets.keySet())
 			if (legBets.get(color).contains(e.getX(), e.getY()))
 			{
@@ -222,6 +230,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 					game.proceed();
 				return;
 			}
+		
 		//game bet
 		Player player = game.getCurrentPlayer();
 		GraphicPlayer graphicPlayer = new GraphicPlayer(new Point(20, 500), player);
@@ -304,7 +313,6 @@ public class GraphicBoard extends JPanel implements MouseListener
 		GraphicBoard board = new GraphicBoard();
 		window.addMouseListener(board);
 		window.add(board);
-		game.roll();
 		window.setVisible(true);
 		in.close();
 	}
