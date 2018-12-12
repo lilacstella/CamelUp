@@ -36,8 +36,8 @@ public class GraphicLegBetDockTest extends JPanel {
 
 
     public void drawLegBetDock(Graphics2D graphics2D) {
-        GraphicLegBetDock graphicLegBetDock = new GraphicLegBetDock(new Point(500, 500), gameState.getTopLegs());
-        graphicLegBetDock.draw(graphics2D);
+//        GraphicLegBetDock graphicLegBetDock = new GraphicLegBetDock(new Point(500, 500), gameState.getTopLegs());
+//        graphicLegBetDock.draw(graphics2D);
     }
 
 }
