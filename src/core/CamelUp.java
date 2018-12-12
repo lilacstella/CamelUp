@@ -67,6 +67,7 @@ public class CamelUp
 		int dieFace = temp.getDieFace();
 		rolled.add(temp);
 		int index = indices[color2Num(color)];
+		System.out.println(index);
 		ArrayList<Camel> list = track[index].remCamels(color);
 		for (Camel item : list)
 			indices[color2Num(item.getCamelColor())] = (index + dieFace > 15) ? 15 : index + dieFace;
@@ -74,17 +75,19 @@ public class CamelUp
 		{
 			int dir = track[indices[color2Num(color)]].add(list);
 			if(dir == 1)
-				track[indices[color2Num(color)]+1].add(list);
+				track[++indices[color2Num(color)]].add(list);
 			else if(dir == -1)
-				track[indices[color2Num(color)]-1].add(list,0);
+				track[--indices[color2Num(color)]].add(list,0);
 			getCurrentPlayer().setCoins(getCurrentPlayer().getCoins()+1);
 		}
+		System.out.println(Arrays.toString(track));
 		return true;
 	}
 
 	public boolean trap(int index, int dir)
 	{
-
+		if(!track[index].empty())
+			return false;
 		int oldIndex = -1;
 		Trap oldTrap = null;
 

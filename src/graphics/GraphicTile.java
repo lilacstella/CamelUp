@@ -118,6 +118,8 @@ public class GraphicTile implements GraphicUI
 					i));
 		if (tile.getTrap() != null)
 			this.trap = new GraphicTrap(x, y, tile.getTrap());
+		else
+			this.trap = null;
 	}
 
 	public void setGlow(boolean glow)

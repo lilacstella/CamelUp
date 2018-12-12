@@ -214,12 +214,13 @@ public class GraphicBoard extends JPanel implements MouseListener
 			game.proceed();
 			return;
 		}
+		
 		//trap
 		for(int i = 0; i < track.length; i++)
 			if(track[i].contains(e.getX(), e.getY()))
 			{
-				game.trap(i, track[i].containsDir(e.getX(), e.getY()));
-				game.proceed();
+				if(game.trap(i, track[i].containsDir(e.getX(), e.getY())))
+					game.proceed();
 			}
 		
 		//leg bet
