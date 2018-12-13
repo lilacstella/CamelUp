@@ -141,7 +141,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 //		lastList = Arrays.toString(game.getTrack());
 		track[i].draw(g2);
 		paintLine(g2, 1274, 449, false);
-		paintLine(g2, 1175, 651, true);
+//		paintLine(g2, 1175, 651, true);
 		track[i].drawCamel(g2);
 	}
 
