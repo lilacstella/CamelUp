@@ -27,7 +27,6 @@ public class CamelUp
 		{ new Camel("blue"), new Camel("yellow"), new Camel("green"), new Camel("orange"), new Camel("white") })));
 		// need to determine the orders these start
 		indices = new int[5]; // 0 = blue, 1 = yellow, 2 = green, 3 = orange, 4 = white
-		Arrays.fill(indices, 0);
 		pyramid = new Pyramid();
 		rolled = new HashSet<>();
 		gameBetDocks = new HashMap<>();
@@ -83,7 +82,7 @@ public class CamelUp
 		}
 		else
 			index += dieFace;
-		System.out.println(indices[color2Num(list.get(0).getCamelColor())]);
+//		System.out.println(indices[color2Num(list.get(0).getCamelColor())]);
 		for (Camel item : list)
 			indices[color2Num(item.getCamelColor())] = index;
 		System.out.println(index);
@@ -102,7 +101,7 @@ public class CamelUp
 
 	public boolean trap(int index, int dir)
 	{
-		if (index == 0 || index == 15)
+		if (index == 0)
 			return false;
 		try
 		{
