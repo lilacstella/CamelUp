@@ -94,7 +94,7 @@ public class CamelUp
 
 	public boolean trap(int index, int dir)
 	{
-		if (index == 0 || index == 15)
+		if (index == 1 || index == 15)
 			return false;
 		try
 		{
