@@ -81,9 +81,13 @@ public class CamelUp
 			index = (index + dieFace)%15;
 			won= true;
 		}
+		else
+			index += dieFace;
+		System.out.println(indices[color2Num(list.get(0).getCamelColor())]);
 		for (Camel item : list)
 			indices[color2Num(item.getCamelColor())] = index;
 		System.out.println(index);
+		
 		if (track[indices[color2Num(color)]].add(list) != 0)
 		{
 			int dir = track[indices[color2Num(color)]].add(list);
