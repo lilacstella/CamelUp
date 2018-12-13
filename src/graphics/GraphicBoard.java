@@ -73,8 +73,8 @@ public class GraphicBoard extends JPanel implements MouseListener
 		double y = MouseInfo.getPointerInfo().getLocation().getY() - window.getLocationOnScreen().y;
 		super.paintComponent(graphics);
 		Graphics2D g = (Graphics2D) graphics;
-		if (game.won())
-			end(g);
+//		if (game.won())
+//			end(g);
 		g.setColor(new Color(255,218,185));
 		g.fillRect(0, 0, 1920, 1080);
 		g.setColor(Color.black);
