@@ -11,6 +11,7 @@ public class GraphicCamel
 	private Path2D path;
 	private Color color;
 	private int size;
+	private Point point;
 
 	public GraphicCamel(Color color, Point point, int pos)
 	{
@@ -76,5 +77,10 @@ public class GraphicCamel
 	public void setSize(int size)
 	{
 		this.size = size;
+		path.reset();
+		path.moveTo(arr[0] * size + point.x, arr[1] * size + point.y);
+		for (int i = 2; i < arr.length - 2; i += 2)
+			path.lineTo(arr[i] * size + point.x, arr[i + 1] * size + point.y);
+		path.closePath();
 	}
 }

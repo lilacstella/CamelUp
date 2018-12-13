@@ -73,16 +73,18 @@ public class GraphicBoard extends JPanel implements MouseListener
 		double y = MouseInfo.getPointerInfo().getLocation().getY() - window.getLocationOnScreen().y;
 		super.paintComponent(graphics);
 		Graphics2D g = (Graphics2D) graphics;
+		if (game.won())
+			end(g);
 		drawDiceRolled(g);
 		drawPlayer(g);
 		drawLegBetDock(g);
 		drawLeaderBoard(g);
 		drawGameBetDock(g);
 		drawBoard(g);
-		g.setColor(new Color(129,9,233));
+		g.setColor(new Color(129, 9, 233));
 		g.setStroke(new BasicStroke(3));
-		g.draw(new Line2D.Double(x-5,y,x+5,y));
-		g.draw(new Line2D.Double(x,y-5,x,y+5));
+		g.draw(new Line2D.Double(x - 5, y, x + 5, y));
+		g.draw(new Line2D.Double(x, y - 5, x, y + 5));
 		g.setColor(Color.black);
 		repaint();
 	}
@@ -91,16 +93,16 @@ public class GraphicBoard extends JPanel implements MouseListener
 	{
 		g.setColor(Color.black);
 		g.setStroke(new BasicStroke(3));
-		g.drawString("Win",695,175);
-		g.drawString("Lose",765,175);
+		g.drawString("Win", 695, 175);
+		g.drawString("Lose", 765, 175);
 		g.drawRect(690, 200, 70, 250);
 		g.drawRect(760, 200, 70, 250);
 		if (!winnerBets.isEmpty())
 
-		for(GraphicGameBet thing : winnerBets)
-			thing.draw(g,Color.BLACK);
-		for(GraphicGameBet thing : loserBets)
-			thing.draw(g,Color.black);
+			for (GraphicGameBet thing : winnerBets)
+				thing.draw(g, Color.BLACK);
+		for (GraphicGameBet thing : loserBets)
+			thing.draw(g, Color.black);
 	}
 
 	public void drawDiceRolled(Graphics2D graphics2D)
@@ -120,7 +122,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 	{
 		pyramid.draw(g2);
 		for (int i = 0; i < 5; i++)
-			drawTile(4-i, g2);
+			drawTile(4 - i, g2);
 		for (int i = 0; i < 4; i++)
 		{
 			drawTile(4 + i, g2);
@@ -132,11 +134,11 @@ public class GraphicBoard extends JPanel implements MouseListener
 
 	public void drawTile(int i, Graphics2D g2)
 	{
-		track[i].update(game.getTrack()[i],i);
+		track[i].update(game.getTrack()[i], i);
 //		lastList = Arrays.toString(game.getTrack());
 		track[i].draw(g2);
-		paintLine(g2,1274,449,false);
-		paintLine(g2,1175,651,true);
+		paintLine(g2, 1274, 449, false);
+		paintLine(g2, 1175, 651, true);
 		track[i].drawCamel(g2);
 	}
 
@@ -154,34 +156,37 @@ public class GraphicBoard extends JPanel implements MouseListener
 
 		int adjX = 0;
 		legBets.clear();
-		for (LegBet card : game.getTopLegs()) {
-			if (card == null) continue;
-			switch (card.getCamelColor()) {
-				case ("blue"):
-					legBets.put("blue", new GraphicLegBet(new Point(180 + adjX, 275), card));
-					adjX += 60;
-					legBets.get("blue").draw(graphics2D);
-					break;
-				case ("yellow"):
-					legBets.put("yellow", new GraphicLegBet(new Point(180 + adjX, 275), card));
-					adjX += 60;
-					legBets.get("yellow").draw(graphics2D);
-					break;
-				case ("green"):
-					legBets.put("green", new GraphicLegBet(new Point(180 + adjX, 275), card));
-					adjX += 60;
-					legBets.get("green").draw(graphics2D);
-					break;
-				case ("orange"):
-					legBets.put("orange", new GraphicLegBet(new Point(180 + adjX, 275), card));
-					adjX += 60;
-					legBets.get("orange").draw(graphics2D);
-					break;
-				case ("white"):
-					legBets.put("white", new GraphicLegBet(new Point(180 + adjX, 275), card));
-					adjX += 60;
-					legBets.get("white").draw(graphics2D);
-					break;
+		for (LegBet card : game.getTopLegs())
+		{
+			if (card == null)
+				continue;
+			switch (card.getCamelColor())
+			{
+			case ("blue"):
+				legBets.put("blue", new GraphicLegBet(new Point(180 + adjX, 275), card));
+				adjX += 60;
+				legBets.get("blue").draw(graphics2D);
+				break;
+			case ("yellow"):
+				legBets.put("yellow", new GraphicLegBet(new Point(180 + adjX, 275), card));
+				adjX += 60;
+				legBets.get("yellow").draw(graphics2D);
+				break;
+			case ("green"):
+				legBets.put("green", new GraphicLegBet(new Point(180 + adjX, 275), card));
+				adjX += 60;
+				legBets.get("green").draw(graphics2D);
+				break;
+			case ("orange"):
+				legBets.put("orange", new GraphicLegBet(new Point(180 + adjX, 275), card));
+				adjX += 60;
+				legBets.get("orange").draw(graphics2D);
+				break;
+			case ("white"):
+				legBets.put("white", new GraphicLegBet(new Point(180 + adjX, 275), card));
+				adjX += 60;
+				legBets.get("white").draw(graphics2D);
+				break;
 			}
 		}
 	}
@@ -218,26 +223,28 @@ public class GraphicBoard extends JPanel implements MouseListener
 			return;
 		}
 
-		//trap
-		for(int i = 0; i < track.length; i++)
-			if(track[i].contains(e.getX(), e.getY()))
+		// trap
+		for (int i = 0; i < track.length; i++)
+			if (track[i].contains(e.getX(), e.getY()))
 			{
-				if(game.trap(i, track[i].containsDir(e.getX(), e.getY())))
+				if (game.trap(i, track[i].containsDir(e.getX(), e.getY())))
 					proceed();
 			}
 
-		//leg bet
-		for (String color : legBets.keySet()) {
-			if (legBets.get(color) == null) return;
-			if (legBets.get(color).contains(e.getX(), e.getY())) {
+		// leg bet
+		for (String color : legBets.keySet())
+		{
+			if (legBets.get(color) == null)
+				return;
+			if (legBets.get(color).contains(e.getX(), e.getY()))
+			{
 				if (game.legBet(color))
 					proceed();
 				return;
 			}
 		}
 
-
-		//game bet
+		// game bet
 		Player player = game.getCurrentPlayer();
 		GraphicPlayer graphicPlayer = new GraphicPlayer(new Point(20, 500), player);
 
@@ -247,13 +254,26 @@ public class GraphicBoard extends JPanel implements MouseListener
 				game.gameBet(graphicGameBet.getGameBet().getCamelColor(),
 						graphicGameBet.containsWinner(e.getX(), e.getY()));
 				if (graphicGameBet.containsWinner(e.getX(), e.getY()))
-					winnerBets.push(new GraphicGameBet(new Point(700, 210 + 10 *winnerBets.size()), player.getName()));
+					winnerBets.push(new GraphicGameBet(new Point(700, 210 + 10 * winnerBets.size()), player.getName()));
 				else
-					loserBets.push(new GraphicGameBet(new Point(770, 210 + 10 *loserBets.size()), player.getName()));
+					loserBets.push(new GraphicGameBet(new Point(770, 210 + 10 * loserBets.size()), player.getName()));
 				proceed();
 				return;
 			}
 
+	}
+
+	private void end(Graphics2D g)
+	{
+		GraphicCamel first = new GraphicCamel(string2Color(game.getRankCamel(1).getCamelColor()), new Point(650, 650),
+				0);
+		first.setSize(300);
+		GraphicCamel last = new GraphicCamel(string2Color(game.getRankCamel(16).getCamelColor()), new Point(950, 650),
+				0);
+		last.setSize(300);
+		first.draw(g);
+		last.draw(g);
+		
 	}
 
 	private void proceed()
@@ -285,34 +305,34 @@ public class GraphicBoard extends JPanel implements MouseListener
 		timer.start();
 	}
 
-    public void paintLine(Graphics g, int posX, int posY, boolean b) {
-        if (b) {
-            for (int i = 1; i <= 10; i++) {
-                if (i % 2 == 0)
-                    g.setColor(Color.BLACK);
-                else
-                    g.setColor(Color.WHITE);
-                g.fillRect(posX, posY, 10, 10);
-                posX += 10;
-            }
-        } else {
-            for (int i = 1; i <= 10; i++) {
-                if (i % 2 == 0)
-                    g.setColor(Color.BLACK);
-                else
-                    g.setColor(Color.WHITE);
-                g.fillRect(posX, posY, 10, 10);
-                posY += 10;
-            }
-
-
-        }
-    }
+	public void paintLine(Graphics g, int posX, int posY, boolean b)
+	{
+		if (b)
+			for (int i = 1; i <= 10; i++)
+			{
+				if (i % 2 == 0)
+					g.setColor(Color.BLACK);
+				else
+					g.setColor(Color.WHITE);
+				g.fillRect(posX, posY, 10, 10);
+				posX += 10;
+			}
+		else
+			for (int i = 1; i <= 10; i++)
+			{
+				if (i % 2 == 0)
+					g.setColor(Color.BLACK);
+				else
+					g.setColor(Color.WHITE);
+				g.fillRect(posX, posY, 10, 10);
+				posY += 10;
+			}
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent arg0)
 	{
-//		System.out.println(arg0.getPoint());
+		System.out.println(arg0.getPoint());
 //		System.out.println(MouseInfo.getPointerInfo().getLocation());
 	}
 
@@ -348,8 +368,28 @@ public class GraphicBoard extends JPanel implements MouseListener
 		GraphicBoard board = new GraphicBoard();
 		window.addMouseListener(board);
 		window.add(board);
-		window.getContentPane().setCursor(Toolkit.getDefaultToolkit().createCustomCursor(new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB), new Point(0, 0), "blank cursor"));
+		window.getContentPane().setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
+				new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB), new Point(0, 0), "blank cursor"));
 		window.setVisible(true);
 		in.close();
+	}
+
+	private Color string2Color(String color)
+	{
+		switch (color)
+		{
+		case ("blue"):
+			return Color.blue;
+		case ("yellow"):
+			return Color.yellow;
+		case ("green"):
+			return Color.green;
+		case ("orange"):
+			return Color.orange;
+		case ("white"):
+			return Color.WHITE;
+		default:
+			return null;
+		}
 	}
 }
