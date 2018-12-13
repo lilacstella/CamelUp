@@ -15,8 +15,11 @@ public class GraphicGameBet implements GraphicUI
     private GameBet gameBet;
     private Point pos;
     private HashMap<String, Color> colorHashMap;
-
-    public GraphicGameBet(Point pos, GameBet gameBet) {
+    private String player;
+    
+    
+    public GraphicGameBet(Point pos, GameBet gameBet) 
+    {
         this.pos = pos;
         this.gameBet = gameBet;
         colorHashMap = new HashMap<>();
@@ -26,7 +29,33 @@ public class GraphicGameBet implements GraphicUI
         colorHashMap.put("orange", Color.orange);
         colorHashMap.put("white", Color.white);
     }
+    
+    public GraphicGameBet(Point pos, String player)
+    {
+    	this.pos = pos;
+    	this.player = player;
+    }
+    
+    public void draw(Graphics2D g, Color color)
+    {
+    	g.setColor(color);
+    	int x = pos.x;
+        int y = pos.y;
 
+        g.setPaint(Color.BLACK);
+        int thickness = 3;
+        Stroke oldStroke = g.getStroke();
+        g.setStroke(new BasicStroke(thickness));
+        g.fillRect(x, y, 50, 100);
+        g.setColor(Color.white);
+        Font oldFont = g.getFont();
+        g.drawRect(x, y, 50, 100);
+        g.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+        g.drawString(player, x + 15, y + 43);
+        g.setStroke(oldStroke);
+        g.setFont(oldFont);
+    }
+    
     public void draw(Graphics2D graphics2D) {
         int x = pos.x;
         int y = pos.y;

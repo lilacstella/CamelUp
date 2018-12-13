@@ -10,11 +10,13 @@ public class GraphicCamel
 	private double[] arr;
 	private Path2D path;
 	private Color color;
+	private int size;
 
 	public GraphicCamel(Color color, Point point, int pos)
 	{
 		path = new Path2D.Double();
 		this.color = color;
+		size = 100;
 		arr = new double[]
 		{ -0.11, -0.41,
 //              -0.11, -1,
@@ -58,15 +60,21 @@ public class GraphicCamel
 	{
 		graphics2D.setColor(color);
 		graphics2D.fill(path);
+//		graphics2D.setStroke(new BasicStroke(10));
 		graphics2D.setColor(Color.black);
 		graphics2D.draw(path);
 	}
 
 	public void update(Point point, int pos)
 	{
-		path.moveTo(arr[0] * 100 + point.x, arr[1] * 100 + point.y - pos * 50);
+		path.moveTo(arr[0] * size + point.x, arr[1] * size + point.y - pos * 50);
 		for (int i = 2; i < arr.length - 2; i += 2)
-			path.lineTo(arr[i] * 100 + point.x, arr[i + 1] * 100 + point.y - pos * 50);
+			path.lineTo(arr[i] * size + point.x, arr[i + 1] * size + point.y - pos * 50);
 		path.closePath();
+	}
+	
+	public void setSize(int size)
+	{
+		this.size = size;
 	}
 }

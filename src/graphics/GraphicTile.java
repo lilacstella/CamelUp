@@ -18,6 +18,8 @@ public class GraphicTile implements GraphicUI
 	private int x, y;
 	private ArrayList<GraphicCamel> list;
 	private GraphicTrap trap;
+	private final static int[] SHIFTS =
+	{ 14, 13, 10, 6, 1, 0, 8, 12, 16, 2, 15, 5, 3, 7, 11, 4 };
 
 	public GraphicTile(int x, int y, ArrayList<Camel> camels, Trap trap)
 	{
@@ -72,58 +74,71 @@ public class GraphicTile implements GraphicUI
 		g.setColor(Color.black);
 		g.setStroke(new BasicStroke(3));
 		g.draw(new Rectangle(x, y, 100, 100));
-		for (GraphicCamel camel : list)
-			camel.draw(g);
-		if (trap == null)
+		if (trap != null)
 		{
-			if (glow)
-			{
-				g.setColor(new Color(0, 255, 0, 100));
-				g.fillRect(x, y + 50, 50, 50);
-				g.setColor(new Color(255, 0, 0, 100));
-				g.fillRect(x + 50, y + 50, 50, 50);
-				g.setColor(Color.BLACK);
-				g.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
-				g.drawString("-", x + 65, y + 85);
-				g.drawString("+", x + 15, y + 85);
-			}
-			return;
+			trap.draw(g);
 		}
-		trap.draw(g);
+		if (glow)
+		{
+			g.setColor(new Color(0, 255, 0, 100));
+			g.fillRect(x, y + 50, 50, 50);
+			g.setColor(new Color(255, 0, 0, 100));
+			g.fillRect(x + 50, y + 50, 50, 50);
+			g.setColor(Color.BLACK);
+			g.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
+			g.drawString("-", x + 65, y + 85);
+			g.drawString("+", x + 15, y + 85);
+		}
 	}
 
 	@Override
 	public boolean contains(int x, int y)
 	{
-		if (x >= this.x && x <= this.x + 100 && y-50 >= this.y && y <= this.y + 100)
+		if (x >= this.x && x <= this.x + 100 && y - 50 >= this.y && y <= this.y + 100)
 //		if (x >= this.x && x <= this.x && y >= this.y && y <= this.y)
 			return true;
 		return false;
 	}
-	
+
 	public int containsDir(int x, int y)
 	{
-		if (x >= this.x && x <= this.x + 50 && y >= this.y + 50 && y <= this.y+100)
+		if (x >= this.x && x <= this.x + 50 && y >= this.y + 50 && y <= this.y + 100)
 			return 1;
 		return -1;
 	}
+
 	@Override
 	public void update(Object obj)
 	{
+
+	}
+
+	public void update(Object obj, int index)
+	{
 		Tile tile = (Tile) obj;
+		if (tile.getCamels().isEmpty())
+			if (tile.getTrap() != null)
+				this.trap = new GraphicTrap(x, y, tile.getTrap());
+			else
+				this.trap = null;
+		else if (tile.getCamels().equals(list))
+			return;
 		list = new ArrayList<GraphicCamel>();
 		list.clear();
 		for (int i = 0; i < tile.getCamels().size(); i++)
-			list.add(new GraphicCamel(string2Color(tile.getCamels().get(i).getCamelColor()), new Point(x + 50, y + 50),
-					i));
-		if (tile.getTrap() != null)
-			this.trap = new GraphicTrap(x, y, tile.getTrap());
-		else
-			this.trap = null;
+			list.add(new GraphicCamel(string2Color(tile.getCamels().get(i).getCamelColor()),
+					new Point(x + 50 + SHIFTS[index], y + 50), i));
+
 	}
 
 	public void setGlow(boolean glow)
 	{
 		this.glow = glow;
+	}
+
+	public void drawCamel(Graphics2D g2)
+	{
+		for (GraphicCamel camel : list)
+			camel.draw(g2);
 	}
 }

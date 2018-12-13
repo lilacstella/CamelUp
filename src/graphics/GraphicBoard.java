@@ -7,7 +7,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.MouseInfo;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +21,6 @@ import java.util.EmptyStackException;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Stack;
-import java.util.concurrent.TimeUnit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -30,6 +28,7 @@ import javax.swing.Timer;
 
 import core.CamelUp;
 import core.Dice;
+import core.GameBet;
 import core.LegBet;
 import core.Player;
 
@@ -80,9 +79,11 @@ public class GraphicBoard extends JPanel implements MouseListener
 		drawLeaderBoard(g);
 		drawGameBetDock(g);
 		drawBoard(g);
+		g.setColor(new Color(129,9,233));
 		g.setStroke(new BasicStroke(3));
 		g.draw(new Line2D.Double(x-5,y,x+5,y));
 		g.draw(new Line2D.Double(x,y-5,x,y+5));
+		g.setColor(Color.black);
 		repaint();
 	}
 
@@ -90,28 +91,16 @@ public class GraphicBoard extends JPanel implements MouseListener
 	{
 		g.setColor(Color.black);
 		g.setStroke(new BasicStroke(3));
-		g.drawString("Win",675,150);
-		g.drawString("Lose",875,150);
-		g.drawRect(600, 200, 200, 400);
-		g.drawRect(800, 200, 200, 400);
+		g.drawString("Win",695,175);
+		g.drawString("Lose",765,175);
+		g.drawRect(690, 200, 70, 250);
+		g.drawRect(760, 200, 70, 250);
 		if (!winnerBets.isEmpty())
 
-		try
-		{
-			winnerBets.peek().draw(g);
-		}
-		catch(EmptyStackException e)
-		{
-
-		}
-		try
-		{
-			loserBets.peek().draw(g);
-		}
-		catch(EmptyStackException e)
-		{
-
-		}
+		for(GraphicGameBet thing : winnerBets)
+			thing.draw(g,Color.BLACK);
+		for(GraphicGameBet thing : loserBets)
+			thing.draw(g,Color.black);
 	}
 
 	public void drawDiceRolled(Graphics2D graphics2D)
@@ -131,7 +120,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 	{
 		pyramid.draw(g2);
 		for (int i = 0; i < 5; i++)
-			drawTile(i, g2);
+			drawTile(4-i, g2);
 		for (int i = 0; i < 4; i++)
 		{
 			drawTile(4 + i, g2);
@@ -143,8 +132,12 @@ public class GraphicBoard extends JPanel implements MouseListener
 
 	public void drawTile(int i, Graphics2D g2)
 	{
-		track[i].update(game.getTrack()[i]);
+		track[i].update(game.getTrack()[i],i);
+//		lastList = Arrays.toString(game.getTrack());
 		track[i].draw(g2);
+		paintLine(g2,1274,449,false);
+		paintLine(g2,1175,651,true);
+		track[i].drawCamel(g2);
 	}
 
 	public void drawPlayer(Graphics2D graphics2D)
@@ -253,9 +246,9 @@ public class GraphicBoard extends JPanel implements MouseListener
 				game.gameBet(graphicGameBet.getGameBet().getCamelColor(),
 						graphicGameBet.containsWinner(e.getX(), e.getY()));
 				if (graphicGameBet.containsWinner(e.getX(), e.getY()))
-					winnerBets.push(new GraphicGameBet(new Point(650, 300), graphicGameBet.getGameBet()));
+					winnerBets.push(new GraphicGameBet(new Point(700, 210 + 10 *winnerBets.size()), player.getName()));
 				else
-					loserBets.push(new GraphicGameBet(new Point(850, 300), graphicGameBet.getGameBet()));
+					loserBets.push(new GraphicGameBet(new Point(770, 210 + 10 *loserBets.size()), player.getName()));
 				proceed();
 				return;
 			}
