@@ -160,6 +160,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 		graphics2D.drawString("LegBet Dock: ", 20, 325);
 
 		int adjX = 0;
+		legBets.clear();
 		for (LegBet card : game.getTopLegs()) {
 			if (card == null) continue;
 			switch (card.getCamelColor()) {
