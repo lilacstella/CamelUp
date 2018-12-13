@@ -75,6 +75,9 @@ public class GraphicBoard extends JPanel implements MouseListener
 		Graphics2D g = (Graphics2D) graphics;
 		if (game.won())
 			end(g);
+		g.setColor(new Color(255,218,185));
+		g.fillRect(0, 0, 1920, 1080);
+		g.setColor(Color.black);
 		drawDiceRolled(g);
 		drawPlayer(g);
 		drawLegBetDock(g);
