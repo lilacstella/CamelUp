@@ -15,7 +15,8 @@ public class CamelUp
 	private HashMap<String, LegBetDock> legBetDocks; // 5 legBetDocks called by getColor
 	private Player[] players; // array of all players in game to be iterated through with the variable current
 	private int current; // current player number
-
+	private boolean won;
+	
 	// initialize board
 	public CamelUp()
 	{
@@ -66,8 +67,7 @@ public class CamelUp
 		return rolled;
 	}
 
-	public boolean roll() // will always be true because if there are no more roll cards the leg will
-							// reset
+	public boolean roll() // will always be true because if there are no more roll cards the leg will reset
 	{
 		players[current].addRollCard();
 		Dice temp = pyramid.roll();
@@ -75,10 +75,15 @@ public class CamelUp
 		int dieFace = temp.getDieFace();
 		rolled.add(temp);
 		int index = indices[color2Num(color)];
-//		System.out.println(index);
 		ArrayList<Camel> list = track[index].remCamels(color);
+		if(index + dieFace > 15)
+		{
+			index = (index + dieFace)%15;
+			won= true;
+		}
 		for (Camel item : list)
-			indices[color2Num(item.getCamelColor())] = (index + dieFace > 15) ? 15 : index + dieFace;
+			indices[color2Num(item.getCamelColor())] = index;
+		System.out.println(index);
 		if (track[indices[color2Num(color)]].add(list) != 0)
 		{
 			int dir = track[indices[color2Num(color)]].add(list);
@@ -88,7 +93,6 @@ public class CamelUp
 				track[--indices[color2Num(color)]].add(list, 0);
 			getCurrentPlayer().setCoins(getCurrentPlayer().getCoins() + 1);
 		}
-//		System.out.println(Arrays.toString(track));
 		return true;
 	}
 
@@ -181,8 +185,8 @@ public class CamelUp
 //if the game has been won and cash out if yes
 	public boolean won()
 	{
-		if (track[15].empty())
-			return false;
+		if(!won)
+			return won;
 
 		Camel winner = track[15].getCamels().get(track[15].getCamels().size() - 1);
 		Camel loser = null;

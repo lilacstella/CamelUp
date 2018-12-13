@@ -101,7 +101,6 @@ public class GraphicBoard extends JPanel implements MouseListener
 		g.drawRect(690, 200, 70, 250);
 		g.drawRect(760, 200, 70, 250);
 		if (!winnerBets.isEmpty())
-
 			for (GraphicGameBet thing : winnerBets)
 				thing.draw(g, Color.BLACK);
 		for (GraphicGameBet thing : loserBets)
@@ -335,7 +334,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent arg0)
 	{
-		System.out.println(arg0.getPoint());
+//		System.out.println(arg0.getPoint());
 //		System.out.println(MouseInfo.getPointerInfo().getLocation());
 	}
 
