@@ -83,7 +83,7 @@ public class CamelUp
 		{
 
 			for (int i = 0; i < players.length; i++) {
-				System.out.println(players[i].getName() + " " + track[indices[color2Num(color)]].getTrap().getPlayerName());
+//				System.out.println(players[i].getName() + " " + track[indices[color2Num(color)]].getTrap().getPlayerName());
 				if (players[i].getName().equals(track[indices[color2Num(color)]].getTrap().getPlayerName())) {
 					players[i].setCoins(players[i].getCoins() + 1);
 				}
