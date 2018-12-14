@@ -90,12 +90,10 @@ public class GraphicGameBet implements GraphicUI
 	@Override
 	public boolean contains(int x, int y)
 	{
-		System.out.println(pos.x + " " + pos.y);
+//		System.out.println(pos.x + " " + pos.y);
 		if (x >= pos.x && x <= pos.x+50 && y >= pos.y && y <= pos.y+100)
-		{
-			System.out.println("yes");
+//			System.out.println("yes");
 			return true;
-		}
 		return false;
 	}
 

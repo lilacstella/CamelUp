@@ -34,10 +34,6 @@ public class Tile
 		return t;
 	}
 
-	public Trap getTrap() {
-		return trap;
-	}
-
 	// get the linkedList of camels for the graphics
 	public ArrayList<Camel> getCamels()
 	{
