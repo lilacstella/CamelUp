@@ -3,7 +3,6 @@ package core;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class CamelUp
 {
@@ -79,6 +78,8 @@ public class CamelUp
 		{
 			index = (index + dieFace)%15;
 			won= true;
+			for(Camel camel : list)
+				camel.addLap();
 		}
 		else
 			index += dieFace;
@@ -198,8 +199,8 @@ public class CamelUp
 		if(!won)
 			return won;
 
-		Camel winner = track[15].getCamels().get(track[15].getCamels().size() - 1);
-		Camel loser = null;
+		Camel winner = getRankCamel(1);
+		Camel loser = getRankCamel(16);
 		for (Tile item : track)
 			if (!item.empty())
 			{
