@@ -166,6 +166,8 @@ public class CamelUp
 				track[index].setTrap(new Trap(players[current],dir));
 			return true;
 		}
+    
+		// if player already has put a trap then remove it from primary location
 
 		if (!track[index].empty())
 		{// if the tile already has camels on it
@@ -176,6 +178,14 @@ public class CamelUp
 
 		try // testing if the surrounding tiles have traps
 		{
+			if (getCurrentPlayer().placedTrap())
+				for(Tile tile : track)
+					if (tile.getTrap().getPlayer().equals(players[current].getName()))
+					{
+						tile.removeTrap();
+						players[current].removeTrap();
+						break;
+					}
 			if (track[index].hasTrap() || track[index + 1].hasTrap() || track[index - 1].hasTrap())
 			{
 				if (getCurrentPlayer().placedTrap())

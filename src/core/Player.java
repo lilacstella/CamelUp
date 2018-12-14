@@ -72,12 +72,20 @@ public class Player implements Comparable<Player> {
 		return trap;
 	}
 
-	public void trap() {
-
+	public void legClear(Camel firstRank, Camel secondRank) 
+  {
+	public void trap()
+	{
 		trap = true; //trap = true
 	}
 
-	public void legClear(Camel firstRank, Camel secondRank) {
+	public void removeTrap()
+	{
+		trap = false;
+	}
+
+	public void legClear(Camel firstRank, Camel secondRank)
+	{
 		coins += rollCards;
 		rollCards = 0;
 		trap = false;
