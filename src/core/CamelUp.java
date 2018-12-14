@@ -251,19 +251,22 @@ public class CamelUp
 		return track;
 	}
 
-	public Camel getRankCamel(int place) // gets the camel given a rank ex. first place
+	public Camel getRankCamel(int place) // gets the camel given a rank ex. first place - 1 second - 2 
 	{
 		int camelRank = 1;
+		for(int i = 0; i < track.length; i++)
+		{
+			ArrayList<Camel> camelList = track[i].getCamels();
+			for(int j = camelList.size() - 1; j >= 0; j--)
+				if(camelList.get(j).getLap()==1&&camelRank++==place)
+					return camelList.get(j);
+		}
 		for (int i = track.length - 1; i > -1; i--)
 		{
 			ArrayList<Camel> camelList = track[i].getCamels();
 			for (int j = camelList.size() - 1; j > -1; j--)
-			{
 				if (camelRank++ == place)
-				{
 					return camelList.get(j);
-				}
-			}
 		}
 		return null;
 	}
