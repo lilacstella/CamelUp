@@ -81,16 +81,17 @@ public class CamelUp
 			indices[color2Num(item.getCamelColor())] = (index + dieFace > 15) ? 15 : index + dieFace;
 		if (track[indices[color2Num(color)]].add(list) != 0)
 		{
+//			for (int i = 0; i < players.length; i++) {
+//				if (players[i].getName().equals(track[indices[color2Num(color)]].getTrap().getPlayerName())) {
+//					players[i].setCoins(players[i].getCoins() + 1);
+//				}
+//			}
 			int dir = track[indices[color2Num(color)]].add(list);
 			if (dir == 1)
 				track[++indices[color2Num(color)]].add(list);
 			else if (dir == -1)
 				track[--indices[color2Num(color)]].add(list, 0);
-			for (int i = 0; i < players.length; i++) {
-				if (players[i].getName() == track[indices[color2Num(color)]].getTrap().getPlayerName()) {
-					players[i].setCoins(players[i].getCoins() + 1);
-				}
-			}
+
 		}
 //		System.out.println(Arrays.toString(track));
 		return true;
