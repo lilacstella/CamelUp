@@ -72,15 +72,12 @@ public class GraphicGameBet implements GraphicUI
         graphics2D.drawString(gameBet.getPlayerName(), x + 15, y + 43);
         graphics2D.setStroke(oldStroke);
         graphics2D.setFont(oldFont);
-
-//        graphics2D.setColor(new Color(0, 255, 0, 100));
-//        graphics2D.fillRect(x, y, 25, 100);
-//        graphics2D.setColor(new Color(255, 0, 0, 100));
-//        graphics2D.fillRect(x + 25, y , 25, 100);
         graphics2D.setColor(Color.BLACK);
         graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
         graphics2D.drawString("-", x + 30, y + 85);
         graphics2D.drawString("+", x + 10, y + 85);
+        graphics2D.drawLine(x, y + 75,x+50, y+75 );
+
 
 
 

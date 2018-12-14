@@ -71,8 +71,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 		double y = MouseInfo.getPointerInfo().getLocation().getY() - window.getLocationOnScreen().y;
 		super.paintComponent(graphics);
 		Graphics2D g2D = (Graphics2D) graphics;
-//		if (game.won())
-//			end(g);
+
 		g2D.setColor(new Color(255,218,185));
 		g2D.fillRect(0, 0, 1920, 1080);
 		g2D.setColor(Color.black);
@@ -84,7 +83,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 		drawBoard(g2D);
 		g2D.setColor(new Color(129, 9, 233));
 //		if (game.won())
-		drawEndGame(g2D);
+			drawEndGame(g2D);
 
 		g2D.setStroke(new BasicStroke(3));
 		g2D.draw(new Line2D.Double(x - 5, y, x + 5, y));
@@ -280,8 +279,23 @@ public class GraphicBoard extends JPanel implements MouseListener
 		graphics2D.fillRect(x, y, 550, 400);
 		graphics2D.setColor(Color.BLACK);
 		graphics2D.drawRect(x, y, 550, 400);
-		graphics2D.drawString("Winner", x + 30, y + 20);
-		graphics2D.drawString("Loser", x + 440, y + 20);
+		graphics2D.drawString("Winner Camel", x + 10, y + 20);
+		graphics2D.drawString("Loser Camel", x + 420, y + 20);
+		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
+		graphics2D.drawString("End Game", x + 180, y + 50);
+
+		Player[] leaderBoard = Arrays.copyOf(game.getPlayers(), game.getPlayers().length);
+		Arrays.sort(leaderBoard);
+		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
+		graphics2D.drawString(leaderBoard[0].getName() + " Wins!", x + 220, y + 100);
+		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		int adjY = y+150;
+		for (int i = 0; i < leaderBoard.length; i++) {
+			graphics2D.drawString(i + 1 + ". " + leaderBoard[i].getName(), x+190, adjY += 30);
+			graphics2D.drawString(Integer.toString(leaderBoard[i].getCoins()), x + 360, adjY);
+		}
+
+
 
 
 		GraphicCamel first = new GraphicCamel(string2Color(game.getRankCamel(1).getCamelColor()), new Point(x+70, y+100),
