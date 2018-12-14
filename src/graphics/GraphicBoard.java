@@ -81,6 +81,8 @@ public class GraphicBoard extends JPanel implements MouseListener
 		drawLeaderBoard(g2D);
 		drawGameBetDock(g2D);
 		drawBoard(g2D);
+		drawEndGame(g2D);
+		drawTitle(g2D);
 		g2D.setColor(new Color(129, 9, 233));
 		if (game.won())
 			drawEndGame(g2D);
@@ -259,12 +261,16 @@ public class GraphicBoard extends JPanel implements MouseListener
 		for (GraphicGameBet graphicGameBet : graphicPlayer.getPlayerGraphicGameBets())
 			if (graphicGameBet.contains(e.getX(), e.getY()))
 			{
-				game.gameBet(graphicGameBet.getGameBet().getCamelColor(),
-						graphicGameBet.containsWinner(e.getX(), e.getY()));
-				if (graphicGameBet.containsWinner(e.getX(), e.getY()))
+				if (graphicGameBet.containsWinner(e.getX(), e.getY())) {
 					winnerBets.push(new GraphicGameBet(new Point(700, 210 + 10 * winnerBets.size()), player.getName()));
-				else
+					game.gameBet(graphicGameBet.getGameBet().getCamelColor(), true);
+				} else if (graphicGameBet.containsLoser(e.getX(), e.getY())) {
 					loserBets.push(new GraphicGameBet(new Point(770, 210 + 10 * loserBets.size()), player.getName()));
+					game.gameBet(graphicGameBet.getGameBet().getCamelColor(), false);
+				} else {
+					return;
+				}
+
 				proceed();
 				return;
 			}
@@ -425,4 +431,14 @@ public class GraphicBoard extends JPanel implements MouseListener
 			return null;
 		}
 	}
+
+	private void drawTitle(Graphics2D graphics2D) {
+		graphics2D.setColor(new Color(212,175,55));
+		graphics2D.setFont(new Font("Comic Sans MS", Font.ITALIC, 80));
+		graphics2D.drawString("Camel Up", 750, 100);
+	}
+
+
+
+
 }
