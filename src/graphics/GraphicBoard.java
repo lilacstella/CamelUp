@@ -72,23 +72,26 @@ public class GraphicBoard extends JPanel implements MouseListener
 		double x = MouseInfo.getPointerInfo().getLocation().getX() - window.getLocationOnScreen().x;
 		double y = MouseInfo.getPointerInfo().getLocation().getY() - window.getLocationOnScreen().y;
 		super.paintComponent(graphics);
-		Graphics2D g = (Graphics2D) graphics;
+		Graphics2D g2D = (Graphics2D) graphics;
 //		if (game.won())
 //			end(g);
-		g.setColor(new Color(255,218,185));
-		g.fillRect(0, 0, 1920, 1080);
-		g.setColor(Color.black);
-		drawDiceRolled(g);
-		drawPlayer(g);
-		drawLegBetDock(g);
-		drawLeaderBoard(g);
-		drawGameBetDock(g);
-		drawBoard(g);
-		g.setColor(new Color(129, 9, 233));
-		g.setStroke(new BasicStroke(3));
-		g.draw(new Line2D.Double(x - 5, y, x + 5, y));
-		g.draw(new Line2D.Double(x, y - 5, x, y + 5));
-		g.setColor(Color.black);
+		g2D.setColor(new Color(255,218,185));
+		g2D.fillRect(0, 0, 1920, 1080);
+		g2D.setColor(Color.black);
+		drawDiceRolled(g2D);
+		drawPlayer(g2D);
+		drawLegBetDock(g2D);
+		drawLeaderBoard(g2D);
+		drawGameBetDock(g2D);
+		drawBoard(g2D);
+		g2D.setColor(new Color(129, 9, 233));
+//		if (game.won())
+		drawEndGame(g2D);
+
+		g2D.setStroke(new BasicStroke(3));
+		g2D.draw(new Line2D.Double(x - 5, y, x + 5, y));
+		g2D.draw(new Line2D.Double(x, y - 5, x, y + 5));
+		g2D.setColor(Color.black);
 		repaint();
 	}
 
@@ -121,28 +124,28 @@ public class GraphicBoard extends JPanel implements MouseListener
 		}
 	}
 
-	public void drawBoard(Graphics2D g2)
+	public void drawBoard(Graphics2D g2D)
 	{
-		pyramid.draw(g2);
+		pyramid.draw(g2D);
 		for (int i = 0; i < 5; i++)
-			drawTile(4 - i, g2);
+			drawTile(4 - i, g2D);
 		for (int i = 0; i < 4; i++)
 		{
-			drawTile(4 + i, g2);
-			drawTile(15 - i, g2);
+			drawTile(4 + i, g2D);
+			drawTile(15 - i, g2D);
 		}
 		for (int i = 0; i < 5; i++)
-			drawTile(i + 8, g2);
+			drawTile(i + 8, g2D);
 	}
 
-	public void drawTile(int i, Graphics2D g2)
+	public void drawTile(int i, Graphics2D g2D)
 	{
 		track[i].update(game.getTrack()[i], i);
 //		lastList = Arrays.toString(game.getTrack());
-		track[i].draw(g2);
-		paintLine(g2, 1274, 449, false);
+		track[i].draw(g2D);
+		paintLine(g2D, 1274, 449, false);
 //		paintLine(g2, 1175, 651, true);
-		track[i].drawCamel(g2);
+		track[i].drawCamel(g2D);
 	}
 
 	public void drawPlayer(Graphics2D graphics2D)
@@ -213,8 +216,9 @@ public class GraphicBoard extends JPanel implements MouseListener
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
-		if (game.won())
+		if (game.won()) {
 			return;
+		}
 
 		// check four places
 		// corresponds to the 4 places a player can click
@@ -233,6 +237,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 			{
 				if (game.trap(i, track[i].containsDir(e.getX(), e.getY())))
 					proceed();
+				return;
 			}
 
 		// leg bet
@@ -246,6 +251,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 					proceed();
 				return;
 			}
+
 		}
 
 		// game bet
@@ -264,19 +270,31 @@ public class GraphicBoard extends JPanel implements MouseListener
 				proceed();
 				return;
 			}
-
 	}
 
-	private void end(Graphics2D g)
+	private void drawEndGame(Graphics2D graphics2D)
 	{
-		GraphicCamel first = new GraphicCamel(string2Color(game.getRankCamel(1).getCamelColor()), new Point(650, 650),
+
+		int x = 500;
+		int y = 500;
+
+		graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		graphics2D.setColor(new Color(240,230,140));
+		graphics2D.fillRect(x, y, 550, 400);
+		graphics2D.setColor(Color.BLACK);
+		graphics2D.drawRect(x, y, 550, 400);
+		graphics2D.drawString("Winner", x + 30, y + 20);
+		graphics2D.drawString("Loser", x + 440, y + 20);
+
+
+		GraphicCamel first = new GraphicCamel(string2Color(game.getRankCamel(1).getCamelColor()), new Point(x+70, y+100),
 				0);
-		first.setSize(300);
-		GraphicCamel last = new GraphicCamel(string2Color(game.getRankCamel(16).getCamelColor()), new Point(950, 650),
+		first.setSize(150);
+		GraphicCamel last = new GraphicCamel(string2Color(game.getRankCamel(5).getCamelColor()), new Point(x+480, y+100),
 				0);
-		last.setSize(300);
-		first.draw(g);
-		last.draw(g);
+		last.setSize(150);
+		first.draw(graphics2D);
+		last.draw(graphics2D);
 		
 	}
 
@@ -391,7 +409,7 @@ public class GraphicBoard extends JPanel implements MouseListener
 		case ("orange"):
 			return Color.orange;
 		case ("white"):
-			return Color.WHITE;
+			return Color.white;
 		default:
 			return null;
 		}

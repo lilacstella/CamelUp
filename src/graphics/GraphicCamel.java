@@ -68,6 +68,7 @@ public class GraphicCamel
 
 	public void update(Point point, int pos)
 	{
+		this.point = point;
 		path.moveTo(arr[0] * size + point.x, arr[1] * size + point.y - pos * 50);
 		for (int i = 2; i < arr.length - 2; i += 2)
 			path.lineTo(arr[i] * size + point.x, arr[i + 1] * size + point.y - pos * 50);
