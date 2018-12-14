@@ -51,6 +51,7 @@ hs_err_pid*
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
+.idea/CamelUp.iml
 
 # Gradle
 .idea/**/gradle.xml
@@ -146,3 +147,4 @@ local.properties
 
 # Annotation Processing
 .apt_generated/
+.idea/CamelUp.iml

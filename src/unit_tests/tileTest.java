@@ -25,7 +25,8 @@ public class tileTest {
         printTrack(gameState);
 
         print10blankLines();
-        gameState.trap(1, -1);
+        gameState.trap(8, -1);
+        gameState.trap(0, 1);
         printTrack(gameState);
 
         System.out.println(gameState.getCurrentPlayer());

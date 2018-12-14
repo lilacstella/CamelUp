@@ -18,6 +18,7 @@ public class camelRankTest {
         gameState.roll();
         gameState.roll();
         gameState.roll();
+        gameState.proceed();
         gameState.roll();
         gameState.roll();
         gameState.roll();

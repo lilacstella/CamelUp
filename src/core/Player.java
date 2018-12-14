@@ -2,22 +2,22 @@ package core;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-public class Player
-{
+
+public class Player implements Comparable<Player> {
+
 	private int coins;
 	private ArrayList<GameBet> gameBets;
 	private ArrayList<LegBet> legBets;
 	private String name;
 	private int rollCards;
 	private boolean trap; // true if trap is on track
-	private static final String[] camelColors = { "blue", "yellow", "green", "orange", "white" };
+	private static final String[] camelColors = {"blue", "yellow", "green", "orange", "white"};
 
 	// TO DO
 	// ALSO I HAVE TO COMMENT SOME OF MY METHODS IN MY GAMEBET DOCK AFTER THESE
 	// ISSUES ARE RESOLVED
 
-	public Player(String name)
-	{
+	public Player(String name) {
 		this.name = name;
 		setCoins(3); // start out with 3 coins issue #28
 		gameBets = new ArrayList<>(); // initialize gameBets
@@ -28,26 +28,21 @@ public class Player
 		trap = false;
 	}
 
-	public int getCoins()
-	{
+	public int getCoins() {
 		return coins;
 	}
 
-	public void setCoins(int coins)
-	{
+	public void setCoins(int coins) {
 		this.coins = coins;
 	}
 
-	public ArrayList<GameBet> getGameBets()
-	{
+	public ArrayList<GameBet> getGameBets() {
 		return gameBets;
 	}
 
-	public GameBet remGameBet(String color)
-	{
+	public GameBet remGameBet(String color) {
 		Iterator<GameBet> iter = gameBets.iterator();
-		while (iter.hasNext())
-		{
+		while (iter.hasNext()) {
 			GameBet temp = iter.next();
 			if (!temp.getCamelColor().equals(color))
 				continue;
@@ -57,23 +52,19 @@ public class Player
 		return null;
 	}
 
-	public ArrayList<LegBet> getLegBets()
-	{
+	public ArrayList<LegBet> getLegBets() {
 		return legBets;
 	}
 
-	public void addRollCard()
-	{
+	public void addRollCard() {
 		rollCards++;
 	}
 
-	public int getRollCards()
-	{
+	public int getRollCards() {
 		return rollCards;
 	}
 
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 
@@ -81,6 +72,8 @@ public class Player
 		return trap;
 	}
 
+	public void legClear(Camel firstRank, Camel secondRank) 
+  {
 	public void trap()
 	{
 		trap = true; //trap = true
@@ -109,9 +102,8 @@ public class Player
 		legBets.clear();
 
 	}
-	
-	public boolean addLegBet(LegBet legBet)
-	{
+
+	public boolean addLegBet(LegBet legBet) {
 		if (legBet == null)
 			return false;
 		return legBets.add(legBet);
@@ -126,5 +118,10 @@ public class Player
 		ret += "game bets: " + getGameBets() + "\n";
 		ret += "has trap: " + trap + "\n";
 		return ret;
+	}
+
+
+	public int compareTo(Player o) {
+		return o.getCoins()-getCoins();
 	}
 }

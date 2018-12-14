@@ -23,6 +23,10 @@ public class Trap
 		return dir;
 	}
 
+	public String getPlayerName() {
+		return player.getName();
+	}
+
 	public String toString() {
 		return "player" + player.getName() + "dir" + dir;
 	}
