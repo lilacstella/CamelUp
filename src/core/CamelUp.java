@@ -15,7 +15,8 @@ public class CamelUp
 	private HashMap<String, LegBetDock> legBetDocks; // 5 legBetDocks called by getColor
 	private Player[] players; // array of all players in game to be iterated through with the variable current
 	private int current; // current player number
-
+	private boolean won;
+	
 	// initialize board
 	public CamelUp()
 	{
@@ -26,7 +27,6 @@ public class CamelUp
 		{ new Camel("blue"), new Camel("yellow"), new Camel("green"), new Camel("orange"), new Camel("white") })));
 		// need to determine the orders these start
 		indices = new int[5]; // 0 = blue, 1 = yellow, 2 = green, 3 = orange, 4 = white
-		Arrays.fill(indices, 0);
 		pyramid = new Pyramid();
 		rolled = new ArrayList<>();
 		gameBetDocks = new HashMap<>();
@@ -66,8 +66,7 @@ public class CamelUp
 		return rolled;
 	}
 
-	public boolean roll() // will always be true because if there are no more roll cards the leg will
-							// reset
+	public boolean roll() // will always be true because if there are no more roll cards the leg will reset
 	{
 		players[current].addRollCard();
 		Dice temp = pyramid.roll();
@@ -75,10 +74,19 @@ public class CamelUp
 		int dieFace = temp.getDieFace();
 		rolled.add(temp);
 		int index = indices[color2Num(color)];
-//		System.out.println(index);
 		ArrayList<Camel> list = track[index].remCamels(color);
+		if(index + dieFace > 15)
+		{
+			index = (index + dieFace)%15;
+			won= true;
+		}
+		else
+			index += dieFace;
+//		System.out.println(indices[color2Num(list.get(0).getCamelColor())]);
 		for (Camel item : list)
-			indices[color2Num(item.getCamelColor())] = (index + dieFace > 15) ? 15 : index + dieFace;
+			indices[color2Num(item.getCamelColor())] = index;
+		System.out.println(index);
+		
 		if (track[indices[color2Num(color)]].add(list) != 0)
 		{
 
@@ -95,13 +103,16 @@ public class CamelUp
 				track[--indices[color2Num(color)]].add(list, 0);
 
 		}
-//		System.out.println(Arrays.toString(track));
 		return true;
 	}
 
 	public boolean trap(int index, int dir)
 	{
+<<<<<<< HEAD
 		if (index == 1 || index == 15)
+=======
+		if (index == 0)
+>>>>>>> thingytodelte
 			return false;
 		try
 		{
@@ -188,8 +199,8 @@ public class CamelUp
 //if the game has been won and cash out if yes
 	public boolean won()
 	{
-		if (track[15].empty())
-			return false;
+		if(!won)
+			return won;
 
 		Camel winner = track[15].getCamels().get(track[15].getCamels().size() - 1);
 		Camel loser = null;

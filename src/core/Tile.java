@@ -77,6 +77,14 @@ public class Tile
 		camels.addAll(index, camel);
 		return 0;
 	}
+	
+	public int add(Camel camel)
+	{
+		if(trap!=null)
+			return trap.getDir();
+		camels.add(camel);
+		return 0;
+	}
 
 	public Trap getTrap() {
 		return trap;

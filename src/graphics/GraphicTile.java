@@ -19,7 +19,11 @@ public class GraphicTile implements GraphicUI
 	private ArrayList<GraphicCamel> list;
 	private GraphicTrap trap;
 	private final static int[] SHIFTS =
+<<<<<<< HEAD
 	{ -10, 0, 10, 0, -10, 0, 10, 0, -10, 0, 10, 0, -10, 0, 10, 0 };
+=======
+	{ -7, 0, 7, 0, -7, 0, 7, 0, 7, 0, -7, 0, 7, 0, -7, 0 };
+>>>>>>> thingytodelte
 
 	public GraphicTile(int x, int y, ArrayList<Camel> camels, Trap trap)
 	{
