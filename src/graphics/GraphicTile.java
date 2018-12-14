@@ -39,7 +39,7 @@ public class GraphicTile implements GraphicUI
 		this.y = y;
 		if (tile.getTrap() != null)
 			this.trap = new GraphicTrap(x, y, tile.getTrap());
-		if(tile.getCamels().isEmpty())
+		if (tile.getCamels().isEmpty())
 			return;
 		list = new ArrayList<GraphicCamel>();
 		for (int i = 0; i < tile.getCamels().size(); i++)

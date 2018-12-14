@@ -81,12 +81,11 @@ public class GraphicBoard extends JPanel implements MouseListener
 		drawLeaderBoard(g2D);
 		drawGameBetDock(g2D);
 		drawBoard(g2D);
-		drawEndGame(g2D);
+//		drawEndGame(g2D);
 		drawTitle(g2D);
 		g2D.setColor(new Color(129, 9, 233));
 		if (game.won())
 			drawEndGame(g2D);
-
 		g2D.setStroke(new BasicStroke(3));
 		g2D.draw(new Line2D.Double(x - 5, y, x + 5, y));
 		g2D.draw(new Line2D.Double(x, y - 5, x, y + 5));
