@@ -5,6 +5,7 @@ import core.Dice;
 import graphics.GraphicDice;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.awt.*;
 
@@ -33,7 +34,7 @@ public class graphicsDiceTest extends JPanel {
         repaint();
     }
 
-    public void drawDiceRolled(Graphics2D graphics2D, HashSet<Dice> diceRolled) {
+    public void drawDiceRolled(Graphics2D graphics2D, ArrayList<Dice> diceRolled) {
 
         int adjX = 0;
         for (Dice dice : diceRolled) {

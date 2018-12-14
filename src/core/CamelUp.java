@@ -10,7 +10,7 @@ public class CamelUp
 	private Tile[] track; // array of all the tiles
 	private int[] indices; // keeps track of each camel
 	private Pyramid pyramid; // what is yet to be rolled - just the pyramid
-	private HashSet<Dice> rolled; // to store the dice rolled out of pyramid for display
+	private ArrayList<Dice> rolled; // to store the dice rolled out of pyramid for display
 	private HashMap<String, GameBetDock> gameBetDocks;// 2 gameBetDocks called by winner/loser
 	private HashMap<String, LegBetDock> legBetDocks; // 5 legBetDocks called by getColor
 	private Player[] players; // array of all players in game to be iterated through with the variable current
@@ -28,7 +28,7 @@ public class CamelUp
 		indices = new int[5]; // 0 = blue, 1 = yellow, 2 = green, 3 = orange, 4 = white
 		Arrays.fill(indices, 0);
 		pyramid = new Pyramid();
-		rolled = new HashSet<>();
+		rolled = new ArrayList<>();
 		gameBetDocks = new HashMap<>();
 		gameBetDocks.put("winner", new GameBetDock());
 		gameBetDocks.put("loser", new GameBetDock());
@@ -61,7 +61,7 @@ public class CamelUp
 		}
 	}
 
-	public HashSet<Dice> getRolled()
+	public ArrayList<Dice> getRolled()
 	{
 		return rolled;
 	}
@@ -81,11 +81,13 @@ public class CamelUp
 			indices[color2Num(item.getCamelColor())] = (index + dieFace > 15) ? 15 : index + dieFace;
 		if (track[indices[color2Num(color)]].add(list) != 0)
 		{
-//			for (int i = 0; i < players.length; i++) {
-//				if (players[i].getName().equals(track[indices[color2Num(color)]].getTrap().getPlayerName())) {
-//					players[i].setCoins(players[i].getCoins() + 1);
-//				}
-//			}
+
+			for (int i = 0; i < players.length; i++) {
+				System.out.println(players[i].getName() + " " + track[indices[color2Num(color)]].getTrap().getPlayerName());
+				if (players[i].getName().equals(track[indices[color2Num(color)]].getTrap().getPlayerName())) {
+					players[i].setCoins(players[i].getCoins() + 1);
+				}
+			}
 			int dir = track[indices[color2Num(color)]].add(list);
 			if (dir == 1)
 				track[++indices[color2Num(color)]].add(list);
