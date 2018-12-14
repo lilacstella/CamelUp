@@ -86,7 +86,11 @@ public class CamelUp
 				track[++indices[color2Num(color)]].add(list);
 			else if (dir == -1)
 				track[--indices[color2Num(color)]].add(list, 0);
-			getCurrentPlayer().setCoins(getCurrentPlayer().getCoins() + 1);
+			for (int i = 0; i < players.length; i++) {
+				if (players[i].getName() == track[indices[color2Num(color)]].getTrap().getPlayerName()) {
+					players[i].setCoins(players[i].getCoins() + 1);
+				}
+			}
 		}
 //		System.out.println(Arrays.toString(track));
 		return true;
