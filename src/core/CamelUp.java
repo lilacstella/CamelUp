@@ -108,11 +108,7 @@ public class CamelUp
 
 	public boolean trap(int index, int dir)
 	{
-<<<<<<< HEAD
-		if (index == 1 || index == 15)
-=======
 		if (index == 0)
->>>>>>> thingytodelte
 			return false;
 		try
 		{
