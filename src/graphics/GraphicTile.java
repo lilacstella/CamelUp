@@ -19,7 +19,7 @@ public class GraphicTile implements GraphicUI
 	private ArrayList<GraphicCamel> list;
 	private GraphicTrap trap;
 	private final static int[] SHIFTS =
-	{ -10, 0, 10, 0, -10, 0, 10, 0, -10, 0, 10, 0, -10, 0, 10, 0 };
+	{ 0, 0, 10, 0, -10, 0, 10, 0, -10, 0, 10, 0, -10, 0, 10, 0 };
 
 	public GraphicTile(int x, int y, ArrayList<Camel> camels, Trap trap)
 	{
@@ -37,12 +37,14 @@ public class GraphicTile implements GraphicUI
 	{
 		this.x = x;
 		this.y = y;
+		if (tile.getTrap() != null)
+			this.trap = new GraphicTrap(x, y, tile.getTrap());
+		if(tile.getCamels().isEmpty())
+			return;
 		list = new ArrayList<GraphicCamel>();
 		for (int i = 0; i < tile.getCamels().size(); i++)
 			list.add(new GraphicCamel(string2Color(tile.getCamels().get(i).getCamelColor()), new Point(x + 50, y + 50),
 					i));
-		if (tile.getTrap() != null)
-			this.trap = new GraphicTrap(x, y, tile.getTrap());
 	}
 
 	public Color string2Color(String string)

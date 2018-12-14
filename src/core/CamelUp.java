@@ -3,6 +3,7 @@ package core;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Random;
 
 public class CamelUp
 {
@@ -15,17 +16,37 @@ public class CamelUp
 	private Player[] players; // array of all players in game to be iterated through with the variable current
 	private int current; // current player number
 	private boolean won;
-	
+
 	// initialize board
 	public CamelUp()
 	{
 		track = new Tile[16];
 		for (int i = 0; i < track.length; i++)
 			track[i] = new Tile();
-		track[0].add(new ArrayList<Camel>(Arrays.asList(new Camel[]
-		{ new Camel("blue"), new Camel("yellow"), new Camel("green"), new Camel("orange"), new Camel("white") })));
+//		track[0].add(new ArrayList<Camel>(Arrays.asList(new Camel[]
+//		{ new Camel("blue"), new Camel("yellow"), new Camel("green"), new Camel("orange"), new Camel("white")}))); //1 - blue 2 - yellow 3 - green 4 - orange 5 - white
+		indices = new int[5];
+		Random gen = new Random();
+		for(int i = 0; i < 5; i++)
+		{
+			int temp = gen.nextInt(3)+1;
+			Camel camel;
+			switch(i)
+			{
+			case(0):camel = new Camel("blue");break;
+			case(1):camel = new Camel("yellow");break;
+			case(2):camel = new Camel("green");break;
+			case(3):camel = new Camel("orange");break;
+			case(4):camel = new Camel("white");break;
+			default:camel = null;
+			}
+			indices[i] = temp;
+			track[temp].add(camel);
+		}
+		System.out.println(Arrays.toString(indices));
+//		System.out.println(Arrays.toString(track));
 		// need to determine the orders these start
-		indices = new int[5]; // 0 = blue, 1 = yellow, 2 = green, 3 = orange, 4 = white
+//		indices = new int[5]; // 0 = blue, 1 = yellow, 2 = green, 3 = orange, 4 = white
 		pyramid = new Pyramid();
 		rolled = new ArrayList<>();
 		gameBetDocks = new HashMap<>();
@@ -40,7 +61,6 @@ public class CamelUp
 		players = new Player[5];
 		for (int i = 0; i < players.length; i++)
 			players[i] = new Player("P" + (i + 1));
-
 	}
 
 //called before each move, checks background processes
@@ -86,8 +106,8 @@ public class CamelUp
 //		System.out.println(indices[color2Num(list.get(0).getCamelColor())]);
 		for (Camel item : list)
 			indices[color2Num(item.getCamelColor())] = index;
-		System.out.println(index);
-		
+//		System.out.println(index);
+
 		if (track[indices[color2Num(color)]].add(list) != 0)
 		{
 
@@ -134,7 +154,7 @@ public class CamelUp
 				}
 			}
 		}
-		
+
 		if(oldIndex == index)
 		{
 			if(oldTrap.getDir()==dir)
@@ -146,7 +166,7 @@ public class CamelUp
 				track[index].setTrap(new Trap(players[current],dir));
 			return true;
 		}
-		
+
 		if (!track[index].empty())
 		{// if the tile already has camels on it
 			if (getCurrentPlayer().placedTrap())
@@ -251,7 +271,7 @@ public class CamelUp
 		return track;
 	}
 
-	public Camel getRankCamel(int place) // gets the camel given a rank ex. first place - 1 second - 2 
+	public Camel getRankCamel(int place) // gets the camel given a rank ex. first place - 1 second - 2
 	{
 		int camelRank = 1;
 		for(int i = 0; i < track.length; i++)
