@@ -433,8 +433,8 @@ public class GraphicBoard extends JPanel implements MouseListener
 
 	private void drawTitle(Graphics2D graphics2D) {
 		graphics2D.setColor(new Color(212,175,55));
-		graphics2D.setFont(new Font("Comic Sans MS", Font.ITALIC, 80));
-		graphics2D.drawString("Camel Up", 750, 100);
+		graphics2D.setFont(new Font("Comic Sans MS", Font.ITALIC., 100));
+		graphics2D.drawString("Camel Up", 625, 100);
 	}
 
 
