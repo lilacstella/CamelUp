@@ -73,10 +73,12 @@ public class GraphicGameBet implements GraphicUI
         graphics2D.setStroke(oldStroke);
         graphics2D.setFont(oldFont);
         graphics2D.setColor(Color.BLACK);
-        graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-        graphics2D.drawString("-", x + 30, y + 85);
-        graphics2D.drawString("+", x + 10, y + 85);
-        graphics2D.drawLine(x, y + 75,x+50, y+75 );
+        graphics2D.setFont(new Font("Comic Sans MS", Font.BOLD, 10));
+        graphics2D.drawString("L", x + 30, y + 85);
+        graphics2D.drawString("W", x + 10, y + 85);
+        graphics2D.setStroke(new BasicStroke(2));
+        graphics2D.drawLine(x, y + 65,x+50, y+65);
+        graphics2D.drawLine(x + 25, y + 65,x+25, y+100);
 
 
 
@@ -107,7 +109,14 @@ public class GraphicGameBet implements GraphicUI
 	}
 
     public boolean containsWinner(int x, int y) {
-        if (x > pos.x && x < pos.x + 25 && y > pos.y && y < pos.y + 100) {
+        if (x > pos.x && x < pos.x + 25 && y > pos.y + 65 && y < pos.y + 100) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean containsLoser(int x, int y) {
+        if (x > pos.x + 25 && x < pos.x + 50 && y > pos.y + 65 && y < pos.y + 100) {
             return true;
         }
         return false;
