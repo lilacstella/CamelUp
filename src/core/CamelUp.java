@@ -43,7 +43,7 @@ public class CamelUp
 			indices[i] = temp;
 			track[temp].add(camel);
 		}
-		System.out.println(Arrays.toString(indices));
+//		System.out.println(Arrays.toString(indices));
 //		System.out.println(Arrays.toString(track));
 		// need to determine the orders these start
 //		indices = new int[5]; // 0 = blue, 1 = yellow, 2 = green, 3 = orange, 4 = white
@@ -217,7 +217,7 @@ public class CamelUp
 	public boolean won()
 	{
 		if(!won)
-			return won;
+			return false;
 
 		Camel winner = getRankCamel(1);
 		Camel loser = getRankCamel(16);
